@@ -8,6 +8,17 @@
         }
     }
 
+/* Coloring navbar icons */
 .nav-item .nav-a {
     color: black !important;
+}
+
+/* On hover navbar icons */
+.nav-item .nav-a:hover{
+    color: rgb(218, 214, 214) !important;
+}
+
+/* Brand image */
+.navbar-brand img{
+    width: 200px;
 }
