@@ -1,0 +1,13 @@
+/* Centering navbar brand */
+@media (min-width: 768px) {
+    .navbar-brand
+        {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+.nav-item .nav-a {
+    color: black !important;
+}
