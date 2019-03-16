@@ -1,11 +1,26 @@
 import {combineReducers} from 'redux';
 
-const replaceMe = () => {
-    return 10
+const init = {
+    id: "",
+    username: "",
+}
+
+const AuthReducers = (state = init, action) => {
+    switch (action.type) {
+        case 'LOGIN_SUCCESS':
+            return{
+                ...state,
+                id: action.payload.id,
+                username: action.payload.username
+            }
+
+        default:
+            return state
+    }
 }
 
 export default combineReducers (
     {
-        fake: replaceMe
+        auth: AuthReducers
     }
 )

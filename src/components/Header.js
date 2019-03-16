@@ -26,12 +26,12 @@ export default class Header extends Component {
                     
                 </form>
                 <ul className="navbar-nav ml-auto col-12 col-sm-1">
-                  <li className="nav-item m-3">
+                  <li className="nav-item m-3 float-right">
                     <Link className="nav-a" to="/register">
                       <FontAwesomeIcon icon="user-alt" />
                     </Link>
                   </li>
-                  <li className="nav-item m-3">
+                  <li className="nav-item m-3 float-right">
                     <Link className="nav-a" to="/login">
                       <FontAwesomeIcon icon="sign-in-alt" />
                     </Link>

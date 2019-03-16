@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-// BrowserRouter, route digunakan utk menentukan directory component ketika 
+// BrowserRouter, route digunakan utk menentukan directory component ketika diclick
+import {connect} from 'react-redux';
+import cookies from 'universal-cookie';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
@@ -13,8 +16,16 @@ import Register from './Register';
 library.add(faUserAlt);
 library.add(faSignInAlt);
 
+const cookie = new cookies()
 
 class App extends Component {
+    componentDidMount() {
+        var userCookie = cookie.get('stillLogged')
+        if(userCookie !== undefined){
+            this.props.keepLogin(userCookie)
+        }
+    }
+
     render () {
         return (
             <BrowserRouter>
@@ -29,4 +40,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect()(App);

@@ -22,3 +22,17 @@
 .navbar-brand img{
     width: 200px;
 }
+
+/* Card title */
+.card-title {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.btn{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.card-title h1{
+    font-size: 30px;
+    letter-spacing: 2px;
+}
