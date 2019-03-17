@@ -1,47 +1,109 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import {
+  Button,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem 
+} from 'reactstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import mainLogo from './mainLogo.png';
 
 
 
-export default class Header extends Component {
+class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
+
   render() {
-    return (
-      <div>
+    if(this.props.username === ""){
+      return (
         <div>
-          <nav className="navbar navbar-expand-sm navbar-light mb-3">
+          <Navbar light expand="md" className="mt-2 mb-2">
             <div className="container">
-
-            {/* Navbar Brand */}
-              <Link className="navbar-brand" to="/"><img src={mainLogo} alt="ESSENCE"></img></Link>
-              <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav2">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              {/* Icon Search, Register, Login */}
-              <div className="collapse navbar-collapse row p-2" id="navbarNav2">
-                <form className="input-group col-12 col-md-7 ml-auto">
-                    
-                </form>
-                <ul className="navbar-nav ml-auto col-12 col-sm-1">
-                  <li className="nav-item m-3 float-right">
-                    <Link className="nav-a" to="/register">
-                      <FontAwesomeIcon icon="user-alt" />
-                    </Link>
-                  </li>
-                  <li className="nav-item m-3 float-right">
-                    <Link className="nav-a" to="/login">
-                      <FontAwesomeIcon icon="sign-in-alt" />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <Link className="navbar-brand" to="/">
+                <img src={mainLogo} alt="ESSENCE"></img>
+              </Link>
+              <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <Link className="nav-link" to="/">All Product</Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to="/register"><FontAwesomeIcon icon="user-alt" /></Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to="/login"><FontAwesomeIcon icon="sign-in-alt" /></Link>
+                  </NavItem>
+                </Nav>
+              </Collapse>
             </div>
-          </nav>
+          </Navbar>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <Navbar light expand="md" className="mt-2 mb-2">
+            <div className="container">
+              <NavbarBrand href="/">
+                <img src={mainLogo} alt="ESSENCE"></img>
+              </NavbarBrand>
+              <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  <UncontrolledDropdown nav inNavbar>
+                    <DropdownToggle nav caret>
+                      WELCOME, {this.props.username}
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <Link className="dropdown-item" to="/manageproduct">
+                        <DropdownItem>Manage Product</DropdownItem>
+                      </Link>
+                      <DropdownItem divider />
+                      <Button className="dropdown-item" onClick={this.props.onLogoutUser}>
+                        LOGOUT
+                      </Button>
+
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                  <NavItem>
+                    <Link className="nav-link" to="/cart"><FontAwesomeIcon icon="shopping-cart" /></Link>
+                  </NavItem>
+                </Nav>
+              </Collapse>
+            </div>
+          </Navbar>
+        </div>
+        );
+    }
   }
 }
+
+const mapsStateToProps = state => {
+  return {user: state.auth}
+}
+
+export default connect(mapsStateToProps)(Header)

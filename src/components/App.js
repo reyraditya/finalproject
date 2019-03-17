@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-// BrowserRouter, route digunakan utk menentukan directory component ketika diclick
 import {connect} from 'react-redux';
 import cookies from 'universal-cookie';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 
+import { keepLogin } from '../action';
+
 library.add(faUserAlt);
 library.add(faSignInAlt);
+library.add(faShoppingCart);
+
 
 const cookie = new cookies()
 
@@ -40,4 +44,8 @@ class App extends Component {
     }
 }
 
-export default connect()(App);
+const mapsStateToProps = state => {
+    return {username: state.auth.username}
+}
+
+export default connect(mapsStateToProps, {keepLogin})(App);
