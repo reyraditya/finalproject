@@ -15,6 +15,8 @@ import {
   DropdownItem 
 } from 'reactstrap';
 
+import { onLogoutUser } from '../action';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import mainLogo from './mainLogo.png';
 
@@ -37,7 +39,9 @@ class Header extends Component {
   }
 
   render() {
-    if(this.props.username === ""){
+    const {user} = this.props
+
+    if(user.username === ""){
       return (
         <div>
           <Navbar light expand="md" className="mt-2 mb-2">
@@ -48,14 +52,11 @@ class Header extends Component {
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <Link className="nav-link" to="/">All Product</Link>
+                  <NavItem className="m-2 mx-2">
+                    <Link to="/register" className="iconzz"><FontAwesomeIcon icon="user-alt" /></Link>
                   </NavItem>
-                  <NavItem>
-                    <Link to="/register"><FontAwesomeIcon icon="user-alt" /></Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link to="/login"><FontAwesomeIcon icon="sign-in-alt" /></Link>
+                  <NavItem className="m-2 mx-2">
+                    <Link to="/login" className="iconzz mx-1"><FontAwesomeIcon icon="sign-in-alt" /></Link>
                   </NavItem>
                 </Nav>
               </Collapse>
@@ -74,9 +75,9 @@ class Header extends Component {
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
-                  <UncontrolledDropdown nav inNavbar>
+                  <UncontrolledDropdown className="dropdownz" nav inNavbar>
                     <DropdownToggle nav caret>
-                      WELCOME, {this.props.username}
+                      WELCOME, {user.username}
                     </DropdownToggle>
                     <DropdownMenu right>
                       <Link className="dropdown-item" to="/manageproduct">
@@ -90,7 +91,7 @@ class Header extends Component {
                     </DropdownMenu>
                   </UncontrolledDropdown>
                   <NavItem>
-                    <Link className="nav-link" to="/cart"><FontAwesomeIcon icon="shopping-cart" /></Link>
+                    <Link className="nav-link" to="/cart"><FontAwesomeIcon icon="shopping-cart" />(0)</Link>
                   </NavItem>
                 </Nav>
               </Collapse>
@@ -98,12 +99,12 @@ class Header extends Component {
           </Navbar>
         </div>
         );
+      }
     }
   }
-}
 
 const mapsStateToProps = state => {
   return {user: state.auth}
 }
 
-export default connect(mapsStateToProps)(Header)
+export default connect(mapsStateToProps,{onLogoutUser})(Header)

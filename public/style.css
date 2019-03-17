@@ -9,12 +9,12 @@
     }
 
 /* Coloring navbar icons */
-.nav-item .nav-a {
+.iconzz {
     color: black !important;
 }
 
 /* On hover navbar icons */
-.nav-item .nav-a:hover{
+.iconzz:hover{
     color: rgb(218, 214, 214) !important;
 }
 
@@ -35,4 +35,8 @@
 .card-title h1{
     font-size: 30px;
     letter-spacing: 2px;
+}
+
+.dropdownz{
+    font-family: 'Roboto Condensed', sans-serif !important;
 }

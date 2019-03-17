@@ -27,6 +27,8 @@ export const onLoginClick = (user, pass) => {
                     payload: "Username and Password don't match."
                 })
             }
+        }).catch(ifDatabaseDoesNotWorking => {
+            console.log("System Error");
         })
     }
 }
@@ -46,4 +48,9 @@ export const keepLogin = (user) => {
             }
         })
     }
+}
+
+export const onLogoutUser = () => {
+    cookie.remove('stillLogged')
+    return {type: "LOGOUT_USER"};
 }
