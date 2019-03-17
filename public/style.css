@@ -11,16 +11,21 @@
 /* Coloring navbar icons */
 .iconzz {
     color: black !important;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    line-height: 20px !important;
 }
 
 /* On hover navbar icons */
 .iconzz:hover{
     color: rgb(218, 214, 214) !important;
+    text-decoration: none;
 }
 
 /* Brand image */
 .navbar-brand img{
-    width: 200px;
+    width: 150px;
 }
 
 /* Card title */
@@ -28,6 +33,7 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+/* Button Font */
 .btn{
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -37,6 +43,13 @@
     letter-spacing: 2px;
 }
 
+/* Dropdown Font */
 .dropdownz{
     font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+/* Error alert Font and Color */
+.loginErrorAlert{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: red;
 }

@@ -51,6 +51,10 @@ export const keepLogin = (user) => {
 }
 
 export const onLogoutUser = () => {
-    cookie.remove('stillLogged')
+    cookie.remove("stillLogged")
     return {type: "LOGOUT_USER"};
+}
+
+export const onSetTimeOut = () => {
+    return {type: "SET_TIMEOUT"}
 }

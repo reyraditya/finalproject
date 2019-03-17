@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { onLoginClick } from '../action';
+import { onSetTimeOut } from '../action';
 
 
 class Login extends Component {
@@ -10,6 +11,19 @@ class Login extends Component {
     const user = this.username.value
     const pass = this.password.value
     this.props.onLoginClick(user, pass)
+  }
+
+  onErrorLogin = () => {
+    if(this.props.user.error !== ''){
+      setTimeout(this.props.onSetTimeOut, 3000);
+      return(
+        <div className="mt-3 loginErrorAlert">
+          {this.props.user.error}
+        </div>
+      )
+    } else{
+      return null
+    }
   }
 
   render() {
@@ -37,6 +51,7 @@ class Login extends Component {
                     </div>
                     <div className="text-center mt-4">
                       <button className="btn btn-outline-dark px-5" onClick={this.onSubmitClick}>Login</button>
+                      {this.onErrorLogin()}
                     </div>
                 </div>
             </div>
@@ -52,4 +67,4 @@ const mapsStateToProps = state => {
   return {user: state.auth}
 }
 
-export default connect (mapsStateToProps, {onLoginClick})(Login);
+export default connect (mapsStateToProps, {onSetTimeOut, onLoginClick})(Login);

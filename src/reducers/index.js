@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 const init = {
     id: "",
     username: "",
+    error: '',
 }
 
 const AuthReducers = (state = init, action) => {
@@ -16,6 +17,18 @@ const AuthReducers = (state = init, action) => {
         
         case 'LOGOUT_USER':
             return(state = init);
+        
+        case 'AUTH_ERROR':
+            return{
+                ...state,
+                error: action.payload
+            }
+        
+        case 'SET_TIMEOUT':
+            return{
+                ...state,
+                error: '',
+            }
 
         default:
             return state

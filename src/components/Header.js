@@ -49,14 +49,26 @@ class Header extends Component {
               <Link className="navbar-brand" to="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </Link>
-              <NavbarToggler onClick={this.toggle} />
+              <NavbarToggler onClick={this.toggle} data-target="#navBarz" />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                   <NavItem className="m-2 mx-2">
-                    <Link to="/register" className="iconzz"><FontAwesomeIcon icon="user-alt" /></Link>
+                    <Link to="/register" className="iconzz">
+                      {/* <FontAwesomeIcon icon="user-alt" /> */}
+                      REGISTER
+                    </Link>
                   </NavItem>
                   <NavItem className="m-2 mx-2">
-                    <Link to="/login" className="iconzz mx-1"><FontAwesomeIcon icon="sign-in-alt" /></Link>
+                    <Link to="/login" className="iconzz">
+                      {/* <FontAwesomeIcon icon="sign-in-alt" /> */}
+                      SIGN IN
+                    </Link>
+                  </NavItem>
+                  <NavItem className="m-2 mx-2">
+                    <Link to="/login" className="iconzz">
+                      {/* <FontAwesomeIcon icon="sign-in-alt" /> */}
+                      SEARCH
+                    </Link>
                   </NavItem>
                 </Nav>
               </Collapse>
@@ -84,7 +96,7 @@ class Header extends Component {
                         <DropdownItem>Manage Product</DropdownItem>
                       </Link>
                       <DropdownItem divider />
-                      <Button className="dropdown-item" onClick={this.props.onLogoutUser}>
+                      <Button className="dropdown-item" href="/" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
 
