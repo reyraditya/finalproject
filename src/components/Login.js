@@ -30,8 +30,8 @@ class Login extends Component {
     if(this.props.user.username === ""){
       return (
         <div className="mt-5 pt-5 row">
-            <div className="col-10 col-lg-3 col-md-3 col-sm-3 mx-auto card">
-                <div className="card-body">
+            <div className="col-10 col-md-3 mx-auto card">
+                <div className="card-body bodyLogin">
                     <div className="border-bottom card-title">
                       <h1>
                         SIGN IN

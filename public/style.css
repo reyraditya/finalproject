@@ -1,12 +1,21 @@
 /* Centering navbar brand */
+
 @media (min-width: 768px) {
-    .navbar-brand
-        {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
+}
+
+/* No right scroll */
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
 
 /* Coloring navbar icons */
 .iconzz {
@@ -18,14 +27,18 @@
 }
 
 /* On hover navbar icons */
-.iconzz:hover{
+.iconzz:hover {
     color: rgb(218, 214, 214) !important;
     text-decoration: none;
 }
 
 /* Brand image */
-.navbar-brand img{
+.navbar-brand img {
     width: 150px;
+}
+
+.navbar2 {
+    background-color: white;
 }
 
 /* Card title */
@@ -34,22 +47,27 @@
 }
 
 /* Button Font */
-.btn{
+.btn {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-.card-title h1{
+.card-title h1 {
     font-size: 30px;
     letter-spacing: 2px;
 }
 
 /* Dropdown Font */
-.dropdownz{
+.dropdownz {
     font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 /* Error alert Font and Color */
-.loginErrorAlert{
+.loginErrorAlert {
     font-family: 'Roboto Condensed', sans-serif;
     color: red;
+}
+
+/* HomeCard1 */
+.homeCard1{
+    border: none !important;
 }
