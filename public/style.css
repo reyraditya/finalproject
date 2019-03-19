@@ -71,3 +71,31 @@ body {
 .homeCard1{
     border: none !important;
 }
+
+.card-body p{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px !important;
+}
+
+/* HomeElement2 */
+.homeBody2 img {
+    width: 350px;
+}
+.homeBody2 a{
+    color: black !important;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 30px !important;
+    text-decoration: none !important;
+}
+.homeBody2 p{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px !important;
+}

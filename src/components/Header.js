@@ -18,7 +18,7 @@ import {
 import { onLogoutUser } from '../action';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import mainLogo from './mainLogo.png';
+import mainLogo from './Logo-regular.png';
 
 
 
@@ -109,15 +109,14 @@ class Header extends Component {
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
                   <UncontrolledDropdown className="dropdownz mx-3" nav inNavbar>
-                    <DropdownToggle className="to-uppercase" nav caret>
+                    <DropdownToggle className="text-uppercase" nav caret>
                       WELCOME, {user.username}
                     </DropdownToggle>
                     <DropdownMenu right>
                       <Link className="dropdown-item" to="/manageproduct">
-                        <DropdownItem>Manage Product</DropdownItem>
+                        <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
-                      <DropdownItem divider />
-                      <Button className="dropdown-item" href="/home" onClick={this.props.onLogoutUser}>
+                      <Button className="dropdown-item text-center" href="/home" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
 
