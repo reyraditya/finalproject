@@ -46,7 +46,7 @@ class Header extends Component {
         <div>
           <Navbar light expand="md" className="mb-2 fixed-top navbar2">
             <div className="container">
-              <Link className="navbar-brand" to="/home">
+              <Link className="navbar-brand" to="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </Link>
               <NavbarToggler onClick={this.toggle} data-target="#navBarz" />
@@ -93,7 +93,7 @@ class Header extends Component {
         <div>
           <Navbar light expand="md" className="mb-2 fixed-top navbar2">
             <div className="container">
-              <NavbarBrand href="/home">
+              <NavbarBrand href="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
@@ -116,7 +116,7 @@ class Header extends Component {
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
-                      <Button className="dropdown-item text-center" href="/home" onClick={this.props.onLogoutUser}>
+                      <Button className="dropdown-item text-center" href="/" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
                     </DropdownMenu>

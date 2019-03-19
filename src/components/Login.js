@@ -58,7 +58,7 @@ class Login extends Component {
         </div>
       )
     } else {
-      return <Redirect to="/home"/>
+      return <Redirect to="/"/>
     }
   }
 }
