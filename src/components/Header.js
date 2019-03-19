@@ -112,7 +112,7 @@ class Header extends Component {
                     <DropdownToggle className="text-uppercase" nav caret>
                       WELCOME, {user.username}
                     </DropdownToggle>
-                    <DropdownMenu right>
+                    <DropdownMenu right className="dropdownMenu">
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
