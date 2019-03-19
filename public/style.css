@@ -41,6 +41,26 @@ body {
     background-color: white;
 }
 
+/* Dropdown menu */
+.dropdownMenu{
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    right: -50px !important;
+}
+
+.dropdown-item{
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+}
+
+.dropdown-item:hover{
+   background-color: white !important;
+   text-decoration: underline !important;
+}
+
 /* Card title */
 .card-title {
     font-family: 'Roboto Condensed', sans-serif;

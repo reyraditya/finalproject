@@ -119,7 +119,6 @@ class Header extends Component {
                       <Button className="dropdown-item text-center" href="/home" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
-
                     </DropdownMenu>
                   </UncontrolledDropdown>
                   <NavItem>
