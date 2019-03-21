@@ -1,0 +1,15 @@
+/* Register card */
+.cardRegister{
+    border-radius: 0px !important;
+    border-color: black;
+    margin-top: 50px;
+}
+
+.inputRegister{
+    border-radius: 0px !important;
+    border-color: black;
+}
+
+/* .buttonRegister{
+    border-radius: 0px !important;
+} */

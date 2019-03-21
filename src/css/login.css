@@ -1,0 +1,59 @@
+/* Card title */
+.card-title {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Button Font */
+.btn {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.card-title h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+/* Login box */
+.cardLogin{
+    border-radius: 0px !important;
+    border-color: black !important;
+    margin-top: 50px;
+}
+
+.inputLogin{
+    border-radius: 0px !important;
+    border-color: black !important;
+}
+
+.loginText{
+    font-family: 'Roboto Condensed', sans-serif !important;
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+    text-transform: uppercase !important;
+}
+
+.loginTextMargin{
+    margin-bottom: 0px !important;
+}
+
+.loginText .linkLogin{
+    color: black !important;
+}
+
+.loginText1{
+    text-transform: uppercase !important;
+}
+
+.loginText1 .linkLogin:hover{
+    text-decoration: none;
+    color:  rgb(218, 214, 214) !important;
+}
+
+/* Error alert Font and Color */
+.loginErrorAlert {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: red;
+}

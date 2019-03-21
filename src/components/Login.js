@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { onLoginClick } from '../action';
 import { onSetTimeOut } from '../action';
+
+import "../css/login.css"
 
 
 class Login extends Component {
@@ -30,28 +32,34 @@ class Login extends Component {
     if(this.props.user.username === ""){
       return (
         <div className="mt-5 pt-5 row">
-            <div className="col-10 col-md-3 mx-auto card">
+            <div className="col-10 col-md-3 mx-auto card cardLogin">
                 <div className="card-body bodyLogin">
                     <div className="border-bottom card-title">
-                      <h1>
-                        SIGN IN
+                      <h1 className="text-center">
+                        LOG IN
                       </h1>
                     </div>
                     <div className="card-title mt-4">
-                      <p>USERNAME</p>
+                      <p className="mb-0">USERNAME</p>
                     <form className="input-group">
-                        <input ref={input => {this.username = input}} className="form-control" type="text"/>
+                        <input ref={input => {this.username = input}} className="form-control inputLogin" type="text"/>
                     </form>
                     </div>
                     <div className="card-title mt-4">
-                      <p>PASSWORD</p>
+                      <p className="mb-0">PASSWORD</p>
                     <form className="input-group">
-                        <input ref={input => {this.password = input}} className="form-control" type="password"/>
+                        <input ref={input => {this.password = input}} className="form-control inputLogin" type="password"/>
                     </form>
                     </div>
                     <div className="text-center mt-4">
-                      <button className="btn btn-outline-dark px-5" onClick={this.onSubmitClick}>Login</button>
+                      <button className="btn btn-dark px-5" onClick={this.onSubmitClick}>LOGIN</button>
                       {this.onErrorLogin()}
+                    </div>
+                    <div className="mt-4 text-center">
+                      <p className="loginText loginTextMargin">New customer?</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="loginText1">Register <Link to="/register" className="loginText linkLogin">HERE</Link></p>
                     </div>
                 </div>
             </div>

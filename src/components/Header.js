@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   DropdownItem 
 } from 'reactstrap';
+import "../css/header.css"
 
 import { onLogoutUser } from '../action';
 

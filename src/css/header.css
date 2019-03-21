@@ -1,0 +1,48 @@
+/* Coloring navbar icons */
+.iconzz {
+    color: black !important;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    line-height: 20px !important;
+}
+
+/* On hover navbar icons */
+.iconzz:hover {
+    color: rgb(218, 214, 214) !important;
+    text-decoration: none;
+}
+
+/* Brand image */
+.navbar-brand img {
+    width: 150px;
+}
+
+.navbar2 {
+    background-color: white;
+}
+
+/* Dropdown menu */
+.dropdownMenu{
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    right: -50px !important;
+}
+
+.dropdown-item{
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+}
+
+.dropdown-item:hover{
+   background-color: white !important;
+   text-decoration: underline !important;
+}
+
+/* Dropdown Font */
+.dropdownz {
+    font-family: 'Roboto Condensed', sans-serif !important;
+}

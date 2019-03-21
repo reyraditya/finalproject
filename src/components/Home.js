@@ -6,6 +6,8 @@ import header2 from './img/header2.jpg';
 import header2a from './img/header2-martine-rose.jpg';
 import header2b from './img/header2-balenciaga-trainers.jpg'
 
+import "../css/home.css"
+
 
 
 class Home extends Component {
@@ -23,7 +25,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="card homeCard1 col-md-6 mt-2 mt-5" >
-            <img className="card-img-top" src={header1} alt="Liam Hodges" />
+            <img className="card-img-top" src={header1} alt="Margiela" />
             <div className="card-body px-0">
               <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
               <div className="text-center">
