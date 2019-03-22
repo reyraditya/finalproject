@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import "../css/register.css"
 
@@ -38,7 +38,7 @@ export default class Register extends Component {
                       <button className="btn btn-dark px-5 buttonRegister" onClick={this.onSubmitClick}>CREATE</button>
                     </div>
                     <div className="mt-4 text-center">
-                      <p>HAVE AN ACCOUNT? <Link to="/login">LOGIN</Link></p>
+                      <p>HAVE AN ACCOUNT? <Link to="/login" className="registerText">LOGIN</Link></p>
                     </div>
                 </div>
             </div>

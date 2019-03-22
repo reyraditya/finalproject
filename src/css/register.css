@@ -10,6 +10,15 @@
     border-color: black;
 }
 
+.registerText {
+    color: black !important;
+}
+
+.registerText:hover{
+    color: rgb(218, 214, 214) !important;
+    text-decoration: none;
+}
+
 /* .buttonRegister{
     border-radius: 0px !important;
 } */
