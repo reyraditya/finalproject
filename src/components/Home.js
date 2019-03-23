@@ -5,7 +5,8 @@ import header1 from './img/header.jpg';
 import header1a from './img/img-header.jpg'
 import header2 from './img/header2.jpg';
 import header2a from './img/header2-martine-rose.jpg';
-import header2b from './img/header2-balenciaga-trainers.jpg'
+import header2b from './img/header2-balenciaga-trainers.jpg';
+import header3 from './img/header3-alt.jpg';
 
 import "../css/home.css"
 
@@ -17,7 +18,7 @@ class Home extends Component {
       <div className="container p-5">
         <div className="d-flex row">
           <div className="card homeCard1 col-md-6 mt-5" >
-            <img className="card-img-top" src={header1a} alt="Valentino" />
+            <Link to="/alldesigners"><img className="card-img-top" src={header1a} alt="Valentino" /></Link>
             <div className="card-body px-0">
               <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
               <div className="text-center">
@@ -26,7 +27,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="card homeCard1 col-md-6 mt-2 mt-5" >
-            <img className="card-img-top" src={header1} alt="Margiela" />
+            <Link to="/alldesigners"><img className="card-img-top" src={header1} alt="Margiela" /></Link>
             <div className="card-body px-0">
               <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
               <div className="text-center">
@@ -44,20 +45,34 @@ class Home extends Component {
         <div className="container homeBody2 pt-5">
           <div className="row">
             <div className="d-inline mx-auto">
-              <img src={header2} alt="header2"></img>
+              <Link to="/alldesigners"><img src={header2} alt="header2-prada"></img></Link>
               <Link to="/alldesigners" className="d-block text-center mt-3">THE HAT</Link>
-              <p className="d-block text-center">by Prada</p>
+              <Link to="/alldeginers" className="d-block text-center textHomeBody2">by Prada</Link>
             </div>
             <div className="d-inline mx-auto">
-              <img src={header2a} alt="header2-martine-rose"></img>
+              <Link to="/alldesigners"><img src={header2a} alt="header2-martine-rose"></img></Link>
               <Link to="/alldesigners" className="d-block text-center mt-3">THE SHIRT</Link>
-              <p className="d-block text-center">by Martine Rose</p>
+              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Martine Rose</Link>
             </div>
             <div className="d-inline mx-auto">
-              <img src={header2b} alt="header2-balenciaga"></img>
+              <Link to="/alldesigners"><img src={header2b} alt="header2-balenciaga"></img></Link>
               <Link to="/alldesigners" className="d-block text-center mt-3">THE SHOES</Link>
-              <p className="d-block text-center">by Balenciaga</p>
+              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Balenciaga</Link>
             </div>
+          </div>
+        </div>
+      )
+    }
+
+    homeBody3 = () => {
+      return(
+        <div className="container homeBody3 p-5">
+          <Link to="/alldesigners"><img src={header3} alt="Acne Studios"></img></Link>
+          <div className="text-center mt-4">
+            <Link to="/alldesigners" className="homeBody3Head">IN FOCUS: ACNE STUDIOS</Link>
+          </div>
+          <div className="text-center mt-2">
+           <Link to="/alldesigners" className="d-block">Nothing at Acne Studios is quite as you expected. These are key pieces from the new season, as worn by artist Albert Riera Galceran.</Link>
           </div>
         </div>
       )
@@ -77,6 +92,7 @@ class Home extends Component {
       <div>
         {this.homeBody1()}
         {this.homeBody2()}
+        {this.homeBody3()}
         {this.footer()}
       </div>
     )
