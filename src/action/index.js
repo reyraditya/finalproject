@@ -24,7 +24,7 @@ export const onLoginClick = (user, pass) => {
             } else {
                 dispatch({
                     type: "AUTH_ERROR",
-                    payload: "Username and Password don't match."
+                    payload: "USERNAME AND PASSWORD DON'T MATCH"
                 })
             }
         }).catch(ifDatabaseDoesNotWorking => {
@@ -57,4 +57,32 @@ export const onLogoutUser = () => {
 
 export const onSetTimeOut = () => {
     return {type: "SET_TIMEOUT"}
+}
+
+export const onRegisterUser = (user, email, pass) => {
+    return dispatch => {
+        axios.get('http://localhost:1995/users', {
+            params:{
+                username: user
+            }
+        }).then(res => {
+            if(res.data.length === 0){
+                axios.post('http://localhost:1995/users', {
+                    username: user,
+                    email,
+                    password: pass
+                }).then(res => {
+                    dispatch({
+                        type: 'AUTH_SUCCESS',
+                        payload: 'YOU HAVE BEEN REGISTERED. PLEASE LOGIN'
+                    });
+                })
+            } else{
+                dispatch({
+                    type: 'AUTH_ERROR',
+                    payload: 'USERNAME HAS BEEN TAKEN'
+                })
+            }
+        })
+    }
 }

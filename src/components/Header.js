@@ -18,7 +18,7 @@ import "../css/header.css"
 
 import { onLogoutUser } from '../action';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import shoppingBag from './shopping-bag.png';
 import mainLogo from './Logo-regular.png';
 
 
@@ -50,7 +50,7 @@ class Header extends Component {
               <Link className="navbar-brand" to="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </Link>
-              <NavbarToggler onClick={this.toggle} data-target="#navBarz" />
+              <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 {/* Menu navbar left */}
                 <Nav className="mr-auto" navbar>
@@ -81,7 +81,9 @@ class Header extends Component {
                     </Link>
                   </NavItem>
                   <NavItem className="m-2 mx-2 my-auto">
-                    <Link className="nav-link" to="/cart"><FontAwesomeIcon icon="shopping-cart" />(0)</Link>
+                    <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
+                    <span className="shoppingCount">(0)</span>
+                    </Link>
                   </NavItem>
                 </Nav>
               </Collapse>
@@ -102,18 +104,18 @@ class Header extends Component {
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
                   <NavItem>
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/alldesigners" className="iconzz mt-1">
                       ALL DESIGNERS
                     </Link>
                   </NavItem>
                 </Nav>
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
-                  <UncontrolledDropdown className="dropdownz mx-3" nav inNavbar>
-                    <DropdownToggle className="text-uppercase" nav caret>
+                  <UncontrolledDropdown className="mt-1 mx-3" nav inNavbar>
+                    <DropdownToggle className="iconzz text-uppercase" nav>
                       WELCOME, {user.username}
                     </DropdownToggle>
-                    <DropdownMenu right className="dropdownMenu">
+                    <DropdownMenu right className="dropdownMenu dropdownz">
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
@@ -123,7 +125,9 @@ class Header extends Component {
                     </DropdownMenu>
                   </UncontrolledDropdown>
                   <NavItem>
-                    <Link className="nav-link" to="/cart"><FontAwesomeIcon icon="shopping-cart" />(0)</Link>
+                    <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
+                    <span className="shoppingCount">(0)</span>
+                    </Link>
                   </NavItem>
                 </Nav>
               </Collapse>

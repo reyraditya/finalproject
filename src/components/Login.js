@@ -52,8 +52,10 @@ class Login extends Component {
                     </form>
                     </div>
                     <div className="text-center mt-4">
+                      <div className="mb-3">
+                        {this.onErrorLogin()}
+                      </div>
                       <button className="btn btn-dark px-5" onClick={this.onSubmitClick}>LOGIN</button>
-                      {this.onErrorLogin()}
                     </div>
                     <div className="mt-4 text-center">
                       <p className="loginText loginTextMargin">New customer?</p>

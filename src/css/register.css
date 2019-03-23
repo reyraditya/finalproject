@@ -22,3 +22,8 @@
 /* .buttonRegister{
     border-radius: 0px !important;
 } */
+
+.registerSuccessAlert {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: rgb(5, 173, 5);
+}

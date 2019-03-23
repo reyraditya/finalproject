@@ -22,6 +22,15 @@
     background-color: white;
 }
 
+/* Dropdown Toggle */
+.dropdownToggle{
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+}
+
 /* Dropdown menu */
 .dropdownMenu{
     border: 1px solid black !important;
@@ -45,4 +54,12 @@
 /* Dropdown Font */
 .dropdownz {
     font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+.shoppingCount{
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
 }
