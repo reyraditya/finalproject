@@ -24,7 +24,7 @@ class Home extends Component {
             <div className="card-body px-0">
               <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
               <div className="text-center">
-                <Link to="/alldesigner" className="btn btn-outline-dark">SHOP NOW</Link>
+                <Link to="/alldesigners" className="btn btn-outline-dark">SHOP NOW</Link>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ class Home extends Component {
             <div className="d-inline mx-auto">
               <Link to="/alldesigners"><img src={header2} alt="header2-prada"></img></Link>
               <Link to="/alldesigners" className="d-block text-center mt-3">THE HAT</Link>
-              <Link to="/alldeginers" className="d-block text-center textHomeBody2">by Prada</Link>
+              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Prada</Link>
             </div>
             <div className="d-inline mx-auto">
               <Link to="/alldesigners"><img src={header2a} alt="header2-martine-rose"></img></Link>

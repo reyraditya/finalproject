@@ -46,7 +46,7 @@ class Header extends Component {
       return (
         <div>
           <Navbar light expand="md" className="mb-2 fixed-top navbar2">
-            <div className="container">
+            <div className="container-fluid mx-3">
               <Link className="navbar-brand" to="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </Link>
@@ -57,7 +57,7 @@ class Header extends Component {
                 <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner my-auto">
                     <Link to="/alldesigners" className="iconzz">
-                      ALL DESIGNERS
+                      ALL COLLECTION
                     </Link>
                   </NavItem>
                   <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
@@ -97,7 +97,7 @@ class Header extends Component {
       return (
         <div>
           <Navbar light expand="md" className="mb-2 fixed-top navbar2">
-            <div className="container">
+            <div className="container-fluid mx-3">
               <NavbarBrand href="/">
                 <img src={mainLogo} alt="ESSENCE"></img>
               </NavbarBrand>
@@ -108,7 +108,7 @@ class Header extends Component {
               <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner my-auto">
                     <Link to="/alldesigners" className="iconzz">
-                      ALL DESIGNERS
+                      ALL COLLECTION
                     </Link>
                   </NavItem>
                   <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>

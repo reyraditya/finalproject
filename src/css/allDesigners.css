@@ -1,0 +1,27 @@
+.panel-title{
+    margin-bottom: 0 !important;
+}
+
+.panel-title a{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 450;
+    letter-spacing: 1px;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}
+
+.list-group-item{
+    border: none !important;
+    padding: 0 !important;
+    margin-left: 8px !important
+}
+
+.list-group-item a{
+    color: black !important;
+    font-size: 5px;
+    font-weight: 330;
+    letter-spacing: 1px;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}

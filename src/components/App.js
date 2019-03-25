@@ -3,21 +3,13 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import cookies from 'universal-cookie';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
 import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
+import AllDesigners from './AllDesigners';
 
 import { keepLogin } from '../action';
-
-library.add(faUserAlt);
-library.add(faSignInAlt);
-library.add(faShoppingCart);
 
 
 const cookie = new cookies()
@@ -38,6 +30,7 @@ class App extends Component {
                     <Route path="/" exact component={Home}/>
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
+                    <Route path="/alldesigners" component={AllDesigners} />
                 </div>
             </BrowserRouter>
         )
