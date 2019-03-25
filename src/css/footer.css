@@ -1,0 +1,47 @@
+footer{
+    background-color: rgb(250, 250, 250);
+}
+.footerTitle{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 30px !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+}
+
+.footerText{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 20px !important;
+}
+
+.footerIcon{
+    width: 15px !important;
+}
+
+.buttonFooter{
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}
+
+.footerInput{
+    width: 318px;
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    line-height: 20px !important;
+}
+.footerInput:focus{
+    outline-width: 0;
+    text-decoration: none !important;
+    background-color: white !important;
+}

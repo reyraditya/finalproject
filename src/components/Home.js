@@ -8,6 +8,8 @@ import header2a from './img/header2-martine-rose.jpg';
 import header2b from './img/header2-balenciaga-trainers.jpg';
 import header3 from './img/header3-alt.jpg';
 
+import Footer from './Footer';
+
 import "../css/home.css"
 
 
@@ -76,16 +78,7 @@ class Home extends Component {
           </div>
         </div>
       )
-    }
-
-    footer = () => {
-      return(
-        <div className="row">
-          
-        </div>  
-      )
-    }
-  
+    }  
   
   render() {
     return (
@@ -93,7 +86,7 @@ class Home extends Component {
         {this.homeBody1()}
         {this.homeBody2()}
         {this.homeBody3()}
-        {this.footer()}
+        <Footer/>
       </div>
     )
   }

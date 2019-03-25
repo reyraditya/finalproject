@@ -18,7 +18,7 @@ import "../css/header.css"
 
 import { onLogoutUser } from '../action';
 
-import shoppingBag from './shopping-bag.png';
+import shoppingBag from './icons/shopping-bag.png';
 import mainLogo from './Logo-regular.png';
 
 

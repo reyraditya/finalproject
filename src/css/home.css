@@ -3,6 +3,10 @@
     border: none !important;
 }
 
+.card-img-top{
+    border-radius: 0px !important;
+}
+
 .card-body p{
     color: black !important;
     font-size: 10px;
