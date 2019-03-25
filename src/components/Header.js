@@ -52,32 +52,34 @@ class Header extends Component {
               </Link>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
+
                 {/* Menu navbar left */}
                 <Nav className="mr-auto" navbar>
-                  <NavItem>
+                  <NavItem className="navItemDesigner my-auto">
                     <Link to="/alldesigners" className="iconzz">
                       ALL DESIGNERS
                     </Link>
                   </NavItem>
+                  <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
+                    <DropdownToggle className="iconzz navItemSearch" nav>
+                      SEARCH
+                    </DropdownToggle>
+                    <DropdownMenu right className="dropdownMenu dropdownz">
+                        <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
                 </Nav>
+
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
                   <NavItem className="m-2 mx-2 my-auto">
                     <Link to="/register" className="iconzz">
-                      {/* <FontAwesomeIcon icon="user-alt" /> */}
                       REGISTER
                     </Link>
                   </NavItem>
                   <NavItem className="m-2 mx-2 my-auto">
                     <Link to="/login" className="iconzz">
-                      {/* <FontAwesomeIcon icon="sign-in-alt" /> */}
                       LOGIN
-                    </Link>
-                  </NavItem>
-                  <NavItem className="m-2 mx-2 my-auto">
-                    <Link to="#" className="iconzz">
-                      {/* <FontAwesomeIcon icon="sign-in-alt" /> */}
-                      SEARCH
                     </Link>
                   </NavItem>
                   <NavItem className="m-2 mx-2 my-auto">
@@ -101,17 +103,27 @@ class Header extends Component {
               </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
+
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
-                  <NavItem>
-                    <Link to="/alldesigners" className="iconzz mt-1">
+                  <NavItem className="navItemDesigner my-auto">
+                    <Link to="/alldesigners" className="iconzz">
                       ALL DESIGNERS
                     </Link>
                   </NavItem>
+                  <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
+                    <DropdownToggle className="iconzz navItemSearch" nav>
+                      SEARCH
+                    </DropdownToggle>
+                    <DropdownMenu right className="dropdownMenu dropdownz">
+                        <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
                 </Nav>
+
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
-                  <UncontrolledDropdown className="mt-1 mx-3" nav inNavbar>
+                  <UncontrolledDropdown className="mt-1" nav inNavbar>
                     <DropdownToggle className="iconzz text-uppercase" nav>
                       WELCOME, {user.username}
                     </DropdownToggle>

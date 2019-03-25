@@ -22,6 +22,12 @@
     background-color: white;
 }
 
+/* Nav search */
+.navItemSearch{
+    margin-top: 2.5px !important;
+}
+
+
 /* Dropdown Toggle */
 .dropdownToggle{
     color: black !important;
@@ -49,6 +55,21 @@
 .dropdown-item:hover{
    background-color: white !important;
    text-decoration: underline !important;
+}
+
+.dropdownSearch{
+    width: 200px;
+}
+
+.inputSearch{
+    width: 380px !important;
+}
+
+/* Remove blue highlight on click */
+.inputSearch:focus{
+    outline-width: 0;
+    text-decoration: none !important;
+    background-color: white !important;
 }
 
 /* Dropdown Font */

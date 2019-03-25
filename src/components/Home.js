@@ -67,12 +67,12 @@ class Home extends Component {
     homeBody3 = () => {
       return(
         <div className="container homeBody3 p-5">
-          <Link to="/alldesigners"><img src={header3} alt="Acne Studios"></img></Link>
+            <Link to="/story"><img src={header3} alt="Acne Studios"></img></Link>
           <div className="text-center mt-4">
-            <Link to="/alldesigners" className="homeBody3Head">IN FOCUS: ACNE STUDIOS</Link>
+            <Link to="/story" className="homeBody3Head">IN FOCUS: ACNE STUDIOS</Link>
           </div>
           <div className="text-center mt-2">
-           <Link to="/alldesigners" className="d-block">Nothing at Acne Studios is quite as you expected. These are key pieces from the new season, as worn by artist Albert Riera Galceran.</Link>
+           <Link to="/story" className="d-block">Nothing at Acne Studios is quite as you expected. These are key pieces from the new season, as worn by artist Albert Riera Galceran.</Link>
           </div>
         </div>
       )
