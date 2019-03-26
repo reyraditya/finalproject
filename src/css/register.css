@@ -5,6 +5,11 @@
     margin-top: 50px;
 }
 
+.bodyRegister{
+    border: 1px solid black;
+    padding: 30px !important;
+}
+
 .inputRegister{
     border-radius: 0px !important;
     border-color: black;

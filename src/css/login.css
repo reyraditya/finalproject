@@ -20,6 +20,11 @@
     margin-top: 50px;
 }
 
+.bodyLogin{
+    border: 1px solid black !important;
+    padding: 30px !important;
+}
+
 .inputLogin{
     border-radius: 0px !important;
     border-color: black !important;

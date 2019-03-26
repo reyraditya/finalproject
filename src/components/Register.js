@@ -41,7 +41,7 @@ class Register extends Component {
       <div>
           <div className="mt-5 pt-5 row">
             <div className="col-10 col-md-4 mx-auto card cardRegister">
-                <div className="card-body">
+                <div className="card-body bodyRegister">
                     <div className="border-bottom card-title">
                       <h1 className="text-center">
                         CREATE AN ACCOUNT

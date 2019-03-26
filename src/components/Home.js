@@ -19,20 +19,20 @@ class Home extends Component {
     return(
       <div className="container p-5">
         <div className="d-flex row">
-          <div className="card homeCard1 col-md-6 mt-5" >
+          <div className="card homeCard1 col-md-6 mt-4" >
             <Link to="/alldesigners"><img className="card-img-top" src={header1a} alt="Valentino" /></Link>
             <div className="card-body px-0">
               <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
-              <div className="text-center">
+              <div className="text-center mt-4">
                 <Link to="/alldesigners" className="btn btn-outline-dark">SHOP NOW</Link>
               </div>
             </div>
           </div>
-          <div className="card homeCard1 col-md-6 mt-2 mt-5" >
+          <div className="card homeCard1 col-md-6 mt-2 mt-4" >
             <Link to="/alldesigners"><img className="card-img-top" src={header1} alt="Margiela" /></Link>
             <div className="card-body px-0">
               <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
-              <div className="text-center">
+              <div className="text-center mt-4">
                 <Link to="/alldesigners" className="btn btn-outline-dark">SHOP NOW</Link>
               </div>
             </div>

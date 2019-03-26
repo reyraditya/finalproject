@@ -25,6 +25,10 @@
 /* Nav search */
 .navItemSearch{
     margin-top: 2.5px !important;
+    padding: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 5px !important;
+    width: fit-content !important;
 }
 
 
@@ -62,7 +66,9 @@
 }
 
 .inputSearch{
-    width: 380px !important;
+    width: 392px !important;
+    height: 20px !important;
+    padding: 10px !important;
 }
 
 /* Remove blue highlight on click */
