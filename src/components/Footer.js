@@ -17,7 +17,7 @@ class Footer extends Component{
         return(
             <footer>
             <div className="container">
-              <div className="row p-5 text-center align-self-center">
+              <div className="row pt-5 text-center align-self-center">
                 {/* About us */}
                 <div className="col-4">
                   <h5 className="footerTitle">About Us</h5>

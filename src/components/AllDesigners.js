@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import Footer from './Footer';
 
 import '../css/allDesigners.css'
 
@@ -6,9 +8,9 @@ import '../css/allDesigners.css'
 class AllDesigners extends Component {
     render(){
         return (
-            <div className="container-fluid mx-4">
-                <div className="row">
-                    <div class="panel-group mt-5 pt-4 col-3">
+            <div className="allDesigners">
+                <div className="container-fluid d-flex mx-2">
+                    <div class="panel-group mt-5 pt-5 col-2">
 
                     {/* All categories */}
                         <div class="panel panel-default">
@@ -52,6 +54,9 @@ class AllDesigners extends Component {
                                     </li>
                                     <li class="list-group-item">
                                         <span><a href="/alldesigners/designers/balenciaga">balenciaga</a></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><a href="/alldesigners/designers/balenciaga">berluti</a></span>
                                     </li>
                                     <li class="list-group-item">
                                         <span><a href="/alldesigners/designers/calvin-klein">calvin klein 205w39nyc</a></span>
@@ -131,7 +136,94 @@ class AllDesigners extends Component {
                     </div>
 
                     {/* Display product */}
-                    <div className="col-10"></div>
+                    <div className="displayProduct text-center mt-5 pt-5 col-8">
+                        <div className="row">
+                        {/* Card product item */}
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M204005_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">blue cotton sweatshirt</p>
+                                        <p className="card-text">480€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M177001_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">blue denim cut-out jacket</p>
+                                        <p className="card-text">1345€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213020_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">orange & green striped knit t-shirt</p>
+                                        <p className="card-text">470€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M201009_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">black décortiqué sleeveless turtleneck</p>
+                                        <p className="card-text">525€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206001_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">white & black sleeveless v-neck pullover</p>
+                                        <p className="card-text">530€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213015_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">white telephone t-shirt</p>
+                                        <p className="card-text">505€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206002_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">orange collegiate décortiqué v-neck sweater</p>
+                                        <p className="card-text">690€</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-3 pb-4">
+                                <div className="card">
+                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M192009_1.jpg" alt="img"></img>
+                                    <div className="card-body">
+                                        <p className="card-title">Maison Margiela</p>
+                                        <p className="card-text">white & beige telephone shirt</p>
+                                        <p className="card-text">385€</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div className="footer">
+                    <Footer/>
                 </div>
             </div>
         )
