@@ -28,6 +28,15 @@
 .inputLogin{
     border-radius: 0px !important;
     border-color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    line-height: 20px !important;
+}
+
+.inputLogin:focus{
+    outline-width: 0 !important;
+    box-shadow: none !important;
 }
 
 .loginText{

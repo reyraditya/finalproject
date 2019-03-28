@@ -84,7 +84,7 @@ class Header extends Component {
                   </NavItem>
                   <NavItem className="m-2 mx-2 my-auto">
                     <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
-                    <span className="shoppingCount">(0)</span>
+                    <span className="shoppingCount">(1)</span>
                     </Link>
                   </NavItem>
                 </Nav>

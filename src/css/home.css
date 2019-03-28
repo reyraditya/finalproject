@@ -58,3 +58,8 @@
     line-height: 30px !important;
     text-decoration: none !important;
 }
+
+.buttonHome{
+    font-family: 'Roboto Condensed';
+    font-size: 15px !important;
+}

@@ -8,6 +8,7 @@ import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import AllDesigners from './AllDesigners';
+import Cart from './Cart';
 
 import { keepLogin } from '../action';
 
@@ -31,6 +32,7 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route path="/alldesigners" component={AllDesigners} />
+                    <Route path="/cart" component={Cart} />
                 </div>
             </BrowserRouter>
         )

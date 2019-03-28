@@ -24,7 +24,7 @@ class Home extends Component {
             <div className="card-body px-0">
               <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
               <div className="text-center mt-4">
-                <Link to="/alldesigners" className="btn btn-outline-dark">SHOP NOW</Link>
+                <Link to="/alldesigners" className="btn btn-outline-dark buttonHome">SHOP NOW</Link>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ class Home extends Component {
             <div className="card-body px-0">
               <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
               <div className="text-center mt-4">
-                <Link to="/alldesigners" className="btn btn-outline-dark">SHOP NOW</Link>
+                <Link to="/alldesigners" className="btn btn-outline-dark buttonHome">SHOP NOW</Link>
               </div>
             </div>
           </div>

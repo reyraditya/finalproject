@@ -30,8 +30,11 @@ class AllDesigners extends Component {
                                     <li class="list-group-item">
                                         <span><a href="#">clothing</a></span>
                                     </li>
-                                    <li class="list-group-item mb-4">
+                                    <li class="list-group-item">
                                         <span><a href="#">shoes</a></span>
+                                    </li>
+                                    <li class="list-group-item mb-4">
+                                        <span><a href="#">all</a></span>
                                     </li>
                                 </ul>
                             </div>
@@ -139,82 +142,82 @@ class AllDesigners extends Component {
                     <div className="displayProduct text-center mt-5 pt-5 col-8">
                         <div className="row">
                         {/* Card product item */}
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M204005_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M204005_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">blue cotton sweatshirt</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">blue cotton sweatshirt</p></a>
                                         <p className="card-text">480€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M177001_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M177001_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">blue denim cut-out jacket</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">blue denim cut-out jacket</p></a>
                                         <p className="card-text">1345€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213020_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213020_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">orange & green striped knit t-shirt</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">orange & green striped knit t-shirt</p></a>
                                         <p className="card-text">470€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M201009_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M201009_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">black décortiqué sleeveless turtleneck</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">black décortiqué sleeveless turtleneck</p></a>
                                         <p className="card-text">525€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206001_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206001_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">white & black sleeveless v-neck pullover</p>
+                                        <a href="#"></a><p className="card-title">Maison Margiela</p>
+                                        <a href="#"></a><p className="card-text cardText">white & black sleeveless v-neck pullover</p>
                                         <p className="card-text">530€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213015_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M213015_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">white telephone t-shirt</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">white telephone t-shirt</p></a>
                                         <p className="card-text">505€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206002_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M206002_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">orange collegiate décortiqué v-neck sweater</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p>
+                                        <p className="card-text cardText">orange collegiate décortiqué v-neck sweater</p></a>
                                         <p className="card-text">690€</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 pb-4">
+                            <div className="col-3 pb-4 cardDisplay">
                                 <div className="card">
-                                    <img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M192009_1.jpg" alt="img"></img>
+                                    <a href="#"><img className="card-img-top" src="https://img.ssensemedia.com/image/upload/b_white,c_lpad,g_south,h_706,w_470/c_scale,h_280/f_auto,dpr_1.0/191168M192009_1.jpg" alt="img"></img></a>
                                     <div className="card-body">
-                                        <p className="card-title">Maison Margiela</p>
-                                        <p className="card-text">white & beige telephone shirt</p>
+                                        <a href="#"><p className="card-title">Maison Margiela</p></a>
+                                        <a href="#"><p className="card-text cardText">white & beige telephone shirt</p></a>
                                         <p className="card-text">385€</p>
                                     </div>
                                 </div>
