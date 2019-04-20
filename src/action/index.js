@@ -1,57 +1,66 @@
-import axios from 'axios';
+import axios from '../config/axios';
 import cookies from 'universal-cookie';
 
 const cookie = new cookies()
 
 
-export const onLoginClick = (user, pass) => {
-    return (dispatch) => {
-        axios.get('http://localhost:1995/users',{
-            params: {
-                username: user, 
-                password: pass
-            }
-        }).then(res => {
-            if(res.data.length > 0) {
-                console.log(res.data[0]);
+export const onLoginClick = (email, password) => {
+    return async dispatch => {
+        try {
+            const res = await axios.post('/users/login', { email, password })
+            console.log(res);
 
-                const {id, username} = res.data[0]
-                dispatch({
-                    type: "LOGIN_SUCCESS",
-                    payload: {id, username}
-                })
-                cookie.set('stillLogged', username, {path:"/"})
-            } else {
-                dispatch({
-                    type: "AUTH_ERROR",
-                    payload: "USERNAME AND PASSWORD DON'T MATCH"
-                })
-            }
-        }).catch(ifDatabaseDoesNotWorking => {
-            console.log("System Error");
-        })
+            cookie.set('stillLogged', res.data.username, { path: '/' })
+            cookie.set('idLogin', res.data._id, { path: '/' })
+            cookie.set('email', res.data.email, { path: '/' })
+            // cookie.set('password', res.data.password, { path: '/' })
+
+
+            dispatch({
+                type: 'LOGIN_SUCCESS',
+                payload: {
+                    id: res.data._id,
+                    username: res.data.username,
+                    email: res.data.email,
+                    // password: res.data.password
+                }
+            })
+
+        } catch (e) {
+            console.log(e);
+
+        }
     }
 }
 
-export const keepLogin = (user) => {
-    return dispatch => {
-        axios.get('http://localhost:1995/users', {
-            params: {
-                username: user
+export const keepLogin = (id, username, email, password) => {
+    if(username === undefined && id === undefined){
+        return{
+            type: 'KEEP_LOGIN',
+            payload: {
+                id: '',
+                username: '',
+                email: '',
+                password: ''
             }
-        }).then(res => {
-            if(res.data.length > 0){
-                dispatch({
-                    type: "LOGIN_SUCCESS",
-                    payload: {username: user}
-                })
-            }
-        })
+        } 
+    }return{
+        type: 'KEEP_LOGIN',
+        payload: {
+            id, 
+            username,
+            email,
+            password
+        }
     }
 }
 
 export const onLogoutUser = () => {
     cookie.remove("stillLogged")
+    cookie.remove("idLogin")
+    cookie.remove("username")
+    cookie.remove("email")
+    cookie.remove("password")
     return {type: "LOGOUT_USER"};
 }
 
@@ -59,30 +68,15 @@ export const onSetTimeOut = () => {
     return {type: "SET_TIMEOUT"}
 }
 
-export const onRegisterUser = (user, email, pass) => {
-    return dispatch => {
-        axios.get('http://localhost:1995/users', {
-            params:{
-                username: user
-            }
+export const onRegisterUser = (username, email, password) => {
+    return () => {
+        axios.post('/users', {
+            username, email, password
         }).then(res => {
-            if(res.data.length === 0){
-                axios.post('http://localhost:1995/users', {
-                    username: user,
-                    email,
-                    password: pass
-                }).then(res => {
-                    dispatch({
-                        type: 'AUTH_SUCCESS',
-                        payload: 'YOU HAVE BEEN REGISTERED. PLEASE LOGIN'
-                    });
-                })
-            } else{
-                dispatch({
-                    type: 'AUTH_ERROR',
-                    payload: 'USERNAME HAS BEEN TAKEN'
-                })
-            }
+            console.log("Register successful");
+
+        }).catch(e => {
+            console.log(e.response.data);
         })
     }
 }

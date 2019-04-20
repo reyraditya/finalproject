@@ -19,7 +19,7 @@ import "../css/header.css"
 import { onLogoutUser } from '../action';
 
 import shoppingBag from './icons/shopping-bag.png';
-import mainLogo from './Logo-regular.png';
+import mainLogo from '../components/img/Logo-regular.png';
 
 
 
@@ -138,7 +138,7 @@ class Header extends Component {
                   </UncontrolledDropdown>
                   <NavItem>
                     <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
-                    <span className="shoppingCount">(0)</span>
+                    <span className="shoppingCount">(1)</span>
                     </Link>
                   </NavItem>
                 </Nav>

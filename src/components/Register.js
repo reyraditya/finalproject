@@ -12,11 +12,11 @@ import { setTimeout } from 'timers';
 
 class Register extends Component {
   onRegisterClick = () => {
-    const user = this.username.value;
-    const pass = this.password.value;
-    const mail = this.email.value;
+    const username = this.username.value;
+    const password = this.password.value;
+    const email = this.email.value;
 
-    this.props.onRegisterUser(user, mail, pass);
+    this.props.onRegisterUser(username, email, password);
   }
 
   onErrorRegister = () => {

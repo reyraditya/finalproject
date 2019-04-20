@@ -17,10 +17,10 @@ const cookie = new cookies()
 
 class App extends Component {
     componentDidMount() {
-        var userCookie = cookie.get('stillLogged')
-        if(userCookie !== undefined){
-            this.props.keepLogin(userCookie)
-        }
+        this.props.keepLogin(
+            cookie.get('idLogin'), 
+            cookie.get('stillLogged'), 
+            cookie.get('email'))
     }
 
     render () {

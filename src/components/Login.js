@@ -9,10 +9,11 @@ import "../css/login.css"
 
 
 class Login extends Component {
+
   onSubmitClick = () => {
-    const user = this.username.value
-    const pass = this.password.value
-    this.props.onLoginClick(user, pass)
+    const email = this.email.value
+    const password = this.password.value
+    this.props.onLoginClick(email, password)
   }
 
   onErrorLogin = () => {
@@ -29,7 +30,9 @@ class Login extends Component {
   }
 
   render() {
-    if(this.props.user.username === ""){
+    const {user} = this.props
+    
+    if(user.username === ""){
       return (
         <div className="mt-5 pt-5 row">
             <div className="col-10 col-md-3 mx-auto card cardLogin">
@@ -40,9 +43,9 @@ class Login extends Component {
                       </h1>
                     </div>
                     <div className="card-title mt-4">
-                      <p className="mb-0">USERNAME</p>
+                      <p className="mb-0">EMAIL</p>
                     <form className="input-group">
-                        <input ref={input => {this.username = input}} className="form-control inputLogin" type="text"/>
+                        <input ref={input => {this.email = input}} className="form-control inputLogin" type="text"/>
                     </form>
                     </div>
                     <div className="card-title mt-4">
