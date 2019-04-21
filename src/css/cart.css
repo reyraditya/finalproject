@@ -40,6 +40,20 @@
     outline: none !important;
 }
 
+.checkoutLogin2{
+    color: black !important;
+    /* font-family: 'Work Sans', sans-serif !important; */
+    font-size: 5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.8px !important;
+    line-height: 15px !important;
+    border: none !important;
+}
+
+.checkoutLogin2 a{
+    color: black !important;
+}
+
 .cartBody{
     color: black;
     font-size: 10px;
