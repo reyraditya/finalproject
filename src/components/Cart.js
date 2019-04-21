@@ -221,7 +221,7 @@ class Cart extends Component{
                         </div>
                         <div className="borderCheckoutLogin mt-4 border-dark">
                           <div className="checkoutLogin2 text-center mt-2 pt-2 px-5 mx-5">
-                            <div>{user.email}</div>
+                            <div className="pb-2">{user.email}</div>
                             <button className="checkoutLogin2" onClick= {this.props.onLogoutUser}>
                                 <Link to='/login'>Not your account? Sign is as another user</Link>
                             </button>

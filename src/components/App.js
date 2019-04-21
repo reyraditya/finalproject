@@ -10,6 +10,7 @@ import Register from './Register';
 import AllDesigners from './AllDesigners';
 import Cart from './Cart';
 import ManageAccount from './ManageAccount';
+import ManageAddress from './ManageAddress';
 
 import { keepLogin } from '../action';
 
@@ -35,6 +36,7 @@ class App extends Component {
                     <Route path="/alldesigners" component={AllDesigners} />
                     <Route path="/cart" component={Cart} />
                     <Route path="/account" component={ManageAccount}/>
+                    <Route path="/addresses" exact component={ManageAddress}/>
                 </div>
             </BrowserRouter>
         )
