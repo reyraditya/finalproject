@@ -1,0 +1,64 @@
+.containerAccount{
+    width: 450px !important;
+}
+
+.title{
+    color: black !important;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: bolder;
+    letter-spacing: 0.8px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-top: 90px;
+}
+
+.body{
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 15px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+}
+
+.bodyInput{
+    color: black;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.accountInputForm{
+    height: 33px;
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    line-height: 20px !important;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+.buttonAccount{
+    width: 200px;
+    height: 35px;
+    color: white !important;
+    background-color: black;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}
+
+.buttonAccount:hover{
+    background-color: black;
+}
+
+.footer{
+    margin-top: 100px !important;
+    width: 100%;
+}

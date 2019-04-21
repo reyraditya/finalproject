@@ -233,4 +233,4 @@ class AllDesigners extends Component {
     }
 }
 
-export default (AllDesigners)
+export default AllDesigners;

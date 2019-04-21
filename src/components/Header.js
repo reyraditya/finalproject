@@ -131,6 +131,9 @@ class Header extends Component {
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
+                      <Link className="dropdown-item text-center mb-1" to="/account">
+                        <DropdownItem>ACCOUNT</DropdownItem>
+                      </Link>
                       <Button className="dropdown-item text-center" href="/" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
