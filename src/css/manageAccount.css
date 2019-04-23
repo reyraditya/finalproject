@@ -64,8 +64,38 @@
     background-color: black;
 }
 
+.buttonAccountCancel{
+    width: 200px;
+    height: 35px;
+    color: black !important;
+    background-color: white;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}
+
+.buttonAccountCancel:hover{
+    background-color: white;
+}
+
 
 .footer{
     padding-top: 120px !important;
     width: 100%;
+}
+
+.addressButton{
+    border: none !important;
+    background-color: none !important;
+    text-transform: uppercase;
+}
+
+.addressButton:hover{
+    text-decoration: underline;
+}
+
+.containerAddButton{
+    margin-left: 100px;
 }

@@ -13,7 +13,7 @@ export const onLoginClick = (email, password) => {
             cookie.set('stillLogged', res.data.username, { path: '/' })
             cookie.set('idLogin', res.data._id, { path: '/' })
             cookie.set('email', res.data.email, { path: '/' })
-            // cookie.set('password', res.data.password, { path: '/' })
+            cookie.set('password', res.data.password, { path: '/' })
 
 
             dispatch({
@@ -22,7 +22,7 @@ export const onLoginClick = (email, password) => {
                     id: res.data._id,
                     username: res.data.username,
                     email: res.data.email,
-                    // password: res.data.password
+                    password: res.data.password
                 }
             })
 

@@ -82,9 +82,7 @@ class Cart extends Component{
                       </div>
                     </div>
                   </div>
-                  {/* Checkout */}
                   <div className="col-6">
-                    {/* Taro conditional disini */}
                     <div className="row">
                       <div className="col-10">
                         <div className="cartTitle p-2 text-center">
