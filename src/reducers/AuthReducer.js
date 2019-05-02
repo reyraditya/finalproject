@@ -3,6 +3,7 @@ const init = {
     username: "",
     email: "",
     password: "",
+    addresses: [],
     error: "",
     success: ""
 }
@@ -15,7 +16,7 @@ export default (state = init, action) => {
                 id: action.payload.id,
                 username: action.payload.username,
                 email: action.payload.email,
-                password: action.payload.password
+                password: action.payload.password,
             };
 
         case 'KEEP_LOGIN':
@@ -24,16 +25,22 @@ export default (state = init, action) => {
                 id: action.payload.id, 
                 username: action.payload.username,
                 email: action.payload.email,
-                password: action.payload.password
+                password: action.payload.password,
             };
         
         case 'LOGOUT_USER':
             return(state = init);
+
+        case 'GET_ADDRESSES':
+            return{
+                ...state, 
+                addresses: action.payload.data
+            };
         
         case 'AUTH_ERROR':
             return{
                 ...state,
-                error: action.payload,
+                error: action.payload.error,
                 success: ""
             };
 

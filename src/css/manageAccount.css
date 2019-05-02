@@ -37,6 +37,15 @@
     margin-bottom: 5px;
 }
 
+.bodyInputAddress{
+    color: black;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 15px;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
 .accountInputForm{
     height: 33px;
     color: black !important;
@@ -80,6 +89,9 @@
     background-color: white;
 }
 
+.buttonAdd{
+    margin-left: 70px;
+}
 
 .footer{
     padding-top: 120px !important;

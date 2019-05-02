@@ -10,19 +10,27 @@ export const onLoginClick = (email, password) => {
             const res = await axios.post('/users/login', { email, password })
             console.log(res);
 
-            cookie.set('stillLogged', res.data.username, { path: '/' })
-            cookie.set('idLogin', res.data._id, { path: '/' })
-            cookie.set('email', res.data.email, { path: '/' })
-            cookie.set('password', res.data.password, { path: '/' })
+            if(res.data.length !== 1) {
+                return dispatch ({
+                    type: 'AUTH_ERROR',
+                    payload:{
+                        error: res.data
+                    }
+                })
+            }
 
+            cookie.set('stillLogged', res.data[0].username, { path: '/' })
+            cookie.set('idLogin', res.data[0].id, { path: '/' })
+            cookie.set('email', res.data[0].email, { path: '/' })
+            cookie.set('password', res.data[0].password, { path: '/' })
 
             dispatch({
                 type: 'LOGIN_SUCCESS',
                 payload: {
-                    id: res.data._id,
-                    username: res.data.username,
-                    email: res.data.email,
-                    password: res.data.password
+                    id: res.data[0].id,
+                    username: res.data[0].username,
+                    email: res.data[0].email,
+                    password: res.data[0].password,
                 }
             })
 
@@ -80,3 +88,22 @@ export const onRegisterUser = (username, email, password) => {
         })
     }
 }
+
+// Show all address
+ export const getAddress = (userid) => {
+     return async dispatch => {
+        try {
+         const res = await axios.get(`/addresses/${userid}`)
+
+         dispatch({
+             type: 'GET_ADDRESSES',
+             payload: res
+
+         })
+        
+        } catch (e) {
+            console.log(e);
+         
+        }
+    }   
+ }

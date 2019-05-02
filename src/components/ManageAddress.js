@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from '../config/axios';
 
+import {getAddress} from '../action/index'
+
 import '../css/manageAccount.css';
 
 import Footer from './Footer';
@@ -13,27 +15,17 @@ const cookie = new Cookies()
 
 class ManageAddress extends Component {
  state= {
-     addresses: [],
-     add: false
+     add: false,
  }
 
  componentDidMount () {
-     this.getAddress();
+     this.props.getAddress(cookie.get('idLogin'));
  }
 
- //  Retrieve addresses
- getAddress = async () => {
-     try {
-         const res = await axios.get(`/address/${cookie.get('idLogin')}`)
-         this.setState({addresses: res.data})
-     } catch (e) {
-         console.log(e);
-         
-     }
- }
 
  //  Post new address
- addAddress = async (userid) => {
+ addAddress = async () => {
+    const user_id = this.props.id
     const first_name = this.firstName.value
     const last_name = this.lastName.value
     const street = this.street.value
@@ -44,7 +36,8 @@ class ManageAddress extends Component {
     const phone = this.phone.value
 
      try {
-         await axios.post(`/addresses/${userid}`, {
+         await axios.post(`/addresses`, {
+             user_id,
              first_name, 
              last_name, 
              street, 
@@ -54,54 +47,60 @@ class ManageAddress extends Component {
              postal_code,
              phone 
          })
-         this.getAddress()
+         this.props.getAddress(user_id)
+         this.setState({add: !this.state.add}) //Redirect to list of address after this button is clicked
      } catch (e) {
          console.log(e);
          
      }
  }
 
+
 //  Delete address
- deleteAddress = async (addressid, owner) => {
-    await axios.delete('/addresses',{data: {addressid, owner}})
-    this.getAddress()
+ deleteAddress = async (addressid, id) => {
+    await axios.delete(`/addresses/${addressid}`)
+    this.props.getAddress(id)
 }
 
  // Show list of address in renderlistAdd 
  renderlistAddress = () => {
-     return this.state.addresses.map(add => {
-         return (
-           <div>  
-                 <div className="bodyInput text-center mt-4">
-                   <span className="d-inline text-capitalize">{add.first_name} </span>
-                   <span className="d-inline text-capitalize">{add.last_name}</span>
-                   <span className="d-block">{add.street}</span>
-                   <span className="d-inline">{add.city}, </span>
-                   <span className="d-inline">{add.province}</span>
-                   <span className="d-block">{add.postal_code} </span>
-                   <span className="d-inline">{add.country}</span>
-                   <span className="d-block">{add.phone}</span>
-                 </div>
-                 <div className="container-fluid d-flex mx-2">
-                    <div className="col-7">
-                        <div className="container containerAddButton">
-                            <button className="bodyInput addressButton d-inline">
-                                Edit
-                            </button>
-                            <button className="bodyInput addressButton d-inline"
-                            onClick={() => {this.deleteAddress(add._id, this.props.id)}}>
-                                Delete
-                            </button>
-                       </div>
+        return this.props.addresses.map((add, i) => {
+            return (
+               <div>  
+                     <div className="bodyInputAddress text-center mt-4">
+                       <span className="d-inline text-capitalize">{add.first_name} </span>
+                       <span className="d-inline text-capitalize">{add.last_name}</span>
+                       <span className="d-block">{add.street}</span>
+                       <span className="d-inline">{add.city}, </span>
+                       <span className="d-inline">{add.province}</span>
+                       <span className="d-block">{add.postal_code} </span>
+                       <span className="d-inline">{add.country}</span>
+                       <span className="d-block">{add.phone}</span>
+                     </div>
+                     <div className="container-fluid d-flex mx-2">
+                        <div className="col-7">
+                            <div className="container containerAddButton">
+                                <Link to={`/editaddress/${i}`}><button className="bodyInput addressButton d-inline"
+                                >
+                                    Edit
+                                </button></Link>
+                                <button className="bodyInput addressButton d-inline"
+                                onClick={() => {this.deleteAddress(add.id, add.user_id)}}>
+                                    Delete
+                                </button>
+                           </div>
+                        </div>
                     </div>
-                 </div>
-               </div>
-         );
-     })
- } 
+                </div>
+             )
+         }
+    )
+}
 
 
   render() {
+      console.log(this.props.addresses);
+      
     if(!this.state.add){
         return (
           <div>
@@ -127,17 +126,14 @@ class ManageAddress extends Component {
                     <p className="body text-center">Saved addresses</p>
                     <span>{this.renderlistAddress()}</span>
                   </div>
-                  <button
-                    type="submit"
-                    className="buttonAccount btn-dark btn-block mt-4 mx-auto p-auto text-center"
-                    onClick={() => {
-                      this.setState({ add: !this.state.add });
-                    }}
-                  >
-                    Add new address
-                  </button>
+                  <button type="submit" className="buttonAccount btn-dark btn-block mt-4 mx-auto p-auto" onClick={() => {this.setState({ add: !this.state.add })}}>
+                        Add new address
+                  </button>   
                 </div>
               </div>
+            </div>
+            <div className="footer">
+              <Footer />
             </div>
           </div>
         );
@@ -242,13 +238,13 @@ class ManageAddress extends Component {
               </div>
             </form>
             <div className="container containerAccount">
-            <Link to="/addresses"><button
+           <button
                 type="submit"
                 className="buttonAccount btn-dark btn-block mt-5 mx-auto p-auto d-inline"
                 onClick={() => this.addAddress(this.props.id)}
               >
                 save
-              </button></Link>
+              </button>
               <button
                 type="submit"
                 className="buttonAccountCancel btn-dark btn-block mt-5 ml-3 p-auto d-inline"
@@ -268,7 +264,7 @@ class ManageAddress extends Component {
 }
 
 const mps = state => {
-    return{id: state.auth.id}
+    return{id: state.auth.id, addresses: state.auth.addresses}
 }
 
-export default connect(mps)(ManageAddress);
+export default connect(mps, {getAddress})(ManageAddress);

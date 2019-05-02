@@ -32,7 +32,7 @@ class ManageAccount extends Component{
                       className="accountInputForm p-2 text-capitalize form-control"
                       type="text"
                       id="name"
-                      placeholder={user.username}
+                      defaultValue={user.username}
                     />
                     <label className="bodyInput mt-3" for="email">
                       Email address
@@ -41,7 +41,7 @@ class ManageAccount extends Component{
                       className="accountInputForm p-2 form-control"
                       type="email"
                       id="email"
-                      placeholder={user.email}
+                      defaultValue={user.email}
                     />
                     <p className="bodyInput mt-3">New Password</p>
                     <input
