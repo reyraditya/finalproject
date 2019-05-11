@@ -111,3 +111,43 @@
 .containerAddButton{
     margin-left: 100px;
 }
+
+.modal-content{
+    padding: 15px !important;
+    border-radius: 0px !important;
+}
+
+.modalHeader{
+    padding: 16px;
+}
+.modal-title{
+    color: black !important;
+    font-size: 17px;
+    font-weight: 400 !important;
+    line-height: 15px !important;
+    letter-spacing: 1.5px !important;
+}
+
+.modalBody{
+    padding: 16px;
+    font-size: 10px;
+    font-weight: 300 !important;
+    line-height: 25px !important;
+    letter-spacing: 1.5px !important;
+}
+
+.modalFooter{
+    padding: 16px;
+}
+
+.buttonAddress{
+    color: white !important;
+    background-color: black !important;
+    border-radius: 0px !important;
+    font-family: inherit !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    line-height: 20px !important;
+    text-transform: uppercase;
+}

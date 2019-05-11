@@ -81,11 +81,11 @@ export const onSetTimeOut = () => {
 export const onRegisterUser = (username, email, password) => {
     return async (dispatch) => {
        try {
-           const res = await axios.get(`/getusers/${email}`)
+           const res = await axios.get(`/getusers/${email}/${username}`)
            console.log(res.data);
            
            if(res.data.length === 0){
-                axios.post('/users', {
+                await axios.post('/users', {
                     username, email, password
                 })
                
@@ -93,10 +93,10 @@ export const onRegisterUser = (username, email, password) => {
                    type: 'AUTH_SUCCESS',
                    payload: 'Register succeeded. Please go to login'
                })
-           } else if(res.data.length === 1){
+           } else if(res.data.length !== 0){
                return dispatch({
                    type: 'AUTH_ERROR',
-                   payload: 'Email and username has been taken'
+                   payload: 'Email or username has been taken'
                })
            }
        } catch (e) {

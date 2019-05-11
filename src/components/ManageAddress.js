@@ -84,23 +84,51 @@ class ManageAddress extends Component {
                                 >
                                     Edit
                                 </button></Link>
-                                <button className="bodyInput addressButton d-inline"
-                                onClick={() => {this.deleteAddress(add.id, add.user_id)}}>
+                                <button className="bodyInput addressButton d-inline" data-toggle="modal" data-target="#exampleModalCenter"
+                                // onClick={() => {this.deleteAddress(add.id, add.user_id)}}
+                                >
                                     Delete
                                 </button>
                            </div>
                         </div>
                     </div>
+
+                    <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                                <div className="modalHeader">
+                                    <h5 className="modal-title d-inline" id="exampleModalLongTitle">
+                                      Delete address
+                                    </h5>
+                                    <button type="button" className="close modalHeader" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modalBody">
+                                    <div className="d-block">Are you sure you want to delete this address?</div>
+                                    <div className="d-block">This action cannot be reverted.</div>
+                                </div>
+                                <div className="modalFooter">
+                                  {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
+                                  <button type="button" className="btn btn-block buttonAddress" data-dismiss="modal"
+                                   onClick={() => {this.deleteAddress(add.id, add.user_id)}}
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
                 </div>
-             )
-         }
-    )
-}
+          )
+        }
+      )
+    }
 
 
   render() {
-      console.log(this.props.addresses);
-      
+    console.log(this.props.addresses);
+    
     if(!this.state.add){
         return (
           <div>
