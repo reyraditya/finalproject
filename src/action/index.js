@@ -21,6 +21,7 @@ export const onLoginClick = (email, password) => {
             cookie.set('idLogin', res.data[0].id, { path: '/' })
             cookie.set('email', res.data[0].email, { path: '/' })
             cookie.set('password', res.data[0].password, { path: '/' })
+            cookie.set('status', res.data[0].status, {path: '/'})
 
             dispatch({
                 type: 'LOGIN_SUCCESS',
