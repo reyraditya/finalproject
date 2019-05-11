@@ -2,14 +2,28 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
 
+import {editCred} from '../action/index'
+
 import Footer from './Footer';
 
 import '../css/manageAccount.css'
 
 class ManageAccount extends Component{
+  onEditButton = (userid) => {
+    const username = this.username.value;
+    const email = this.email.value;
+    const password = this.password.value;
+
+    this.props.editCred(
+      userid,
+      username, 
+      email,
+      password
+    )
+  }
+
     render () {
         const {user} = this.props
-
         return (
           <div>
             <div className="container-fluid d-flex mx-2">
@@ -31,7 +45,7 @@ class ManageAccount extends Component{
                     <input
                       className="accountInputForm p-2 text-capitalize form-control"
                       type="text"
-                      id="name"
+                      ref={input => {this.username = input}}
                       defaultValue={user.username}
                     />
                     <label className="bodyInput mt-3" for="email">
@@ -40,13 +54,14 @@ class ManageAccount extends Component{
                     <input
                       className="accountInputForm p-2 form-control"
                       type="email"
-                      id="email"
+                      ref={input => {this.email = input}}
                       defaultValue={user.email}
                     />
                     <p className="bodyInput mt-3">New Password</p>
                     <input
                       className="accountInputForm p-2 form-control"
                       type="text"
+                      ref={input => {this.password = input}}
                     />
                   </div>
                 </div>
@@ -54,7 +69,8 @@ class ManageAccount extends Component{
               <div className="container containerAccount">
                 <button
                   type="submit"
-                  className="buttonAccount btn-dark btn-block mt-5 mx-auto p-auto">
+                  className="buttonAccount btn-dark btn-block mt-5 mx-auto p-auto"
+                  onClick={() => {this.onEditButton(user.id)}}>
                   save changes
                 </button>
               </div>
@@ -72,4 +88,4 @@ const mps = state => {
     return {user: state.auth}
 }
 
-export default connect(mps)(ManageAccount);
+export default connect(mps, {editCred})(ManageAccount);

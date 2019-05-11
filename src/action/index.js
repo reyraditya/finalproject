@@ -3,20 +3,18 @@ import cookies from 'universal-cookie';
 
 const cookie = new cookies()
 
-
+// Login users
 export const onLoginClick = (email, password) => {
-    return async dispatch => {
+    return async (dispatch) => {
         try {
             const res = await axios.post('/users/login', { email, password })
             console.log(res);
 
             if(res.data.length !== 1) {
                 return dispatch ({
-                    type: 'AUTH_ERROR',
-                    payload:{
-                        error: res.data
-                    }
-                })
+                    type: 'LOGIN_ERR',
+                    payload: res.data
+                }) 
             }
 
             cookie.set('stillLogged', res.data[0].username, { path: '/' })
@@ -41,6 +39,7 @@ export const onLoginClick = (email, password) => {
     }
 }
 
+// keeping user's sessions
 export const keepLogin = (id, username, email, password) => {
     if(username === undefined && id === undefined){
         return{
@@ -63,6 +62,7 @@ export const keepLogin = (id, username, email, password) => {
     }
 }
 
+// Logout user
 export const onLogoutUser = () => {
     cookie.remove("stillLogged")
     cookie.remove("idLogin")
@@ -76,16 +76,32 @@ export const onSetTimeOut = () => {
     return {type: "SET_TIMEOUT"}
 }
 
+// Register new user
 export const onRegisterUser = (username, email, password) => {
-    return () => {
-        axios.post('/users', {
-            username, email, password
-        }).then(res => {
-            console.log("Register successful");
-
-        }).catch(e => {
-            console.log(e.response.data);
-        })
+    return async (dispatch) => {
+       try {
+           const res = await axios.get(`/getusers/${email}`)
+           console.log(res.data);
+           
+           if(res.data.length === 0){
+                axios.post('/users', {
+                    username, email, password
+                })
+               
+                return dispatch({
+                   type: 'AUTH_SUCCESS',
+                   payload: 'Register succeeded. Please go to login'
+               })
+           } else if(res.data.length === 1){
+               return dispatch({
+                   type: 'AUTH_ERROR',
+                   payload: 'Email and username has been taken'
+               })
+           }
+       } catch (e) {
+           console.log(e);
+           
+       }
     }
 }
 
@@ -107,3 +123,21 @@ export const onRegisterUser = (username, email, password) => {
         }
     }   
  }
+
+//  Edit user's credentials
+export const editCred = (userid, username, email, password) => {
+    return () =>  {
+        try {
+            axios.patch(`/users/${userid}`, {
+                username,
+                email,
+                password
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+

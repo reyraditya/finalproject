@@ -17,11 +17,11 @@ class Login extends Component {
   }
 
   onErrorLogin = () => {
-    if(this.props.user.error !== ''){
-      setTimeout(this.props.onSetTimeOut, 3000);
+    if(this.props.errorLogin !== ''){
+      // setTimeout(this.props.onSetTimeOut, 3000);
       return(
         <div className="mt-3 loginErrorAlert">
-          {this.props.user.error}
+          {this.props.errorLogin}
         </div>
       )
     } else{
@@ -77,7 +77,10 @@ class Login extends Component {
 }
 
 const mapsStateToProps = state => {
-  return {user: state.auth}
+  return {
+    user: state.auth, 
+    errorLogin: state.auth.errorLogin
+  }
 }
 
 export default connect (mapsStateToProps, {onSetTimeOut, onLoginClick})(Login);

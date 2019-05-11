@@ -5,6 +5,7 @@ const init = {
     password: "",
     addresses: [],
     error: "",
+    errorLogin: "",
     success: ""
 }
 
@@ -18,6 +19,14 @@ export default (state = init, action) => {
                 email: action.payload.email,
                 password: action.payload.password,
             };
+
+        case 'LOGIN_ERR':
+        console.log(action.payload);
+        
+            return{
+                ...state,
+                errorLogin: action.payload
+            }
 
         case 'KEEP_LOGIN':
             return {
@@ -38,9 +47,10 @@ export default (state = init, action) => {
             };
         
         case 'AUTH_ERROR':
+        // console.log(action.payload);
             return{
                 ...state,
-                error: action.payload.error,
+                error: action.payload,
                 success: ""
             };
 

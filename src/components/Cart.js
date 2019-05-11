@@ -49,12 +49,12 @@ class Cart extends Component{
                         <div>Size: L</div>
                         <div>320212302019</div>
                         <div className="mt-5">
-                          <a href="#">Move to Wishlist</a>
+                          <a href="/wishlist">Move to Wishlist</a>
                         </div>
                       </div>
                       <div className="col-2 my-2 text-right">380€</div>
                       <div className="col-2 my-2 closeIcon">
-                        <a href="#">
+                        <a href="/">
                           <img
                             className="ml-4"
                             src={closeIcon}
@@ -177,12 +177,12 @@ class Cart extends Component{
                         <div>Size: L</div>
                         <div>320212302019</div>
                         <div className="mt-5">
-                          <a href="#">Move to Wishlist</a>
+                          <a href="/wishlist">Move to Wishlist</a>
                         </div>
                       </div>
                       <div className="col-2 my-2 text-right">380€</div>
                       <div className="col-2 my-2 closeIcon">
-                        <a href="#">
+                        <a href="/">
                           <img
                             className="ml-4"
                             src={closeIcon}

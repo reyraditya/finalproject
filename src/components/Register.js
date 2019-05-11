@@ -20,6 +20,8 @@ class Register extends Component {
   }
 
   onErrorRegister = () => {
+    console.log(this.props.error);
+    
     if(this.props.error !== ''){ // if error, then return...
       setTimeout(this.props.onSetTimeOut, 2000);
       return(
