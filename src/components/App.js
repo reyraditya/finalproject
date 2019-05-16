@@ -12,6 +12,8 @@ import Cart from './Cart';
 import ManageAccount from './ManageAccount';
 import ManageAddress from './ManageAddress';
 import EditAddress from './EditAddress';
+import ManageProduct from './ManageProduct';
+import AddProduct from './AddProduct';
 
 import { keepLogin } from '../action';
 
@@ -39,6 +41,8 @@ class App extends Component {
                     <Route path="/account" component={ManageAccount}/>
                     <Route path="/addresses" component={ManageAddress}/>
                     <Route path="/editaddress/:path" component={EditAddress}/>
+                    <Route path="/manageproduct/" component={ManageProduct}/>
+                    <Route path="/addproduct/" component={AddProduct}/>
                 </div>
             </BrowserRouter>
         )

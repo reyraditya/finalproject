@@ -45,7 +45,19 @@
 .dropdownMenu{
     border: 1px solid black !important;
     border-radius: 0px !important;
-    right: -20px !important;
+    right: -60px !important;
+}
+
+.dropdownzSearch{
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    right: -50px !important;
+}
+
+.dropdownMenuAdmin{
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    right: -40px !important;
 }
 
 .dropdown-item{
@@ -81,6 +93,12 @@
 /* Dropdown Font */
 .dropdownz {
     font-family: 'Roboto Condensed', sans-serif !important;
+    padding: -20px;
+}
+
+.dropdownAdmin{
+    font-family: 'Roboto Condensed', sans-serif !important;
+    padding: -10px;
 }
 
 .shoppingCount{

@@ -107,15 +107,15 @@ export const onRegisterUser = (username, email, password) => {
 }
 
 // Show all address
- export const getAddress = (userid) => {
+ export const getAddress = () => {
      return async dispatch => {
         try {
+         const userid = cookie.get('idLogin')
          const res = await axios.get(`/addresses/${userid}`)
 
          dispatch({
              type: 'GET_ADDRESSES',
              payload: res
-
          })
         
         } catch (e) {
@@ -126,14 +126,58 @@ export const onRegisterUser = (username, email, password) => {
  }
 
 //  Edit user's credentials
-export const editCred = (userid, username, email, password) => {
-    return () =>  {
+export const editCred = (username, email, password) => {
+    return async (dispatch) =>  {
         try {
-            axios.patch(`/users/${userid}`, {
+            const userid = cookie.get('idLogin')
+            const res = await axios.patch(`/users/${userid}`, {
                 username,
                 email,
                 password
             })
+            console.log(res);
+
+            if(res.data[0].username){
+                return dispatch({
+                    type: 'EDIT_PROFILE',
+                    payload: res
+                })
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+// get user's cred by username
+export const getUser = () => {
+    return async dispatch => {
+        try {
+            const userid = cookie.get('idLogin')
+            const res = await axios.get(`/getusers/${userid}`)
+            console.log(res.data);
+            
+            return dispatch({
+                type: 'EDIT_PROFILE',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    } 
+}
+
+// get user's credentials (username and email) => as protective in register
+export const getCred = () => {
+    return async () => {
+        try {
+            const email = cookie.get('email')
+            const username = cookie.get('stillLogged')
+            const res = await axios.get(`/getusers/${email}/${username}`)
+            console.log(res);
             
         } catch (e) {
             console.log(e);

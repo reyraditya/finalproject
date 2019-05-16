@@ -1,0 +1,18 @@
+/* .containerAddPro{
+    width: 450px !important;
+    padding-left: 100px !important;
+} */
+
+.titleManagePro{
+    font-family: inherit !important;
+    color: black !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 15px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 5px !important;
+}
+
+.titleManagePro1{
+   width: 840px !important
+}

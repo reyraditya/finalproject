@@ -4,6 +4,7 @@ const init = {
     email: "",
     password: "",
     addresses: [],
+    users: [],
     error: "",
     errorLogin: "",
     success: ""
@@ -45,6 +46,14 @@ export default (state = init, action) => {
                 ...state, 
                 addresses: action.payload.data
             };
+
+        case 'EDIT_PROFILE':
+        console.log(action.payload.data);
+        
+            return{
+                ...state,
+                users: action.payload.data
+            }
         
         case 'AUTH_ERROR':
         // console.log(action.payload);

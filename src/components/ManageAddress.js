@@ -93,7 +93,7 @@ class ManageAddress extends Component {
                         </div>
                     </div>
 
-                    <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
                                 <div className="modalHeader">
@@ -189,11 +189,11 @@ class ManageAddress extends Component {
                 <h1 className="text-center title">Manage Account</h1>
                 <div className="mt-3">
                   <p className="body text-center">Add an address</p>
-                  <label className="bodyInput" for="firstname">
+                  <label className="bodyInput">
                     First Name
                   </label>
                   <input className="accountInputForm p-2 text-capitalize form-control" type="text" id="firstname" ref={input => this.firstName = input}/>
-                  <label className="bodyInput mt-3" for="lastname">
+                  <label className="bodyInput mt-3">
                     Last Name
                   </label>
                   <input
@@ -202,7 +202,7 @@ class ManageAddress extends Component {
                     id="lastname"
                     ref={input => this.lastName = input}
                   />
-                  <label className="bodyInput mt-3" for="street">
+                  <label className="bodyInput mt-3">
                     Street address
                   </label>
                   <input
@@ -211,7 +211,7 @@ class ManageAddress extends Component {
                     id="street"
                     ref={input => this.street = input}
                   />
-                  <label className="bodyInput mt-3" for="country">
+                  <label className="bodyInput mt-3">
                     Country
                   </label>
                   <input
@@ -220,7 +220,7 @@ class ManageAddress extends Component {
                     id="country"
                     ref={input => this.country = input}
                   />
-                  <label className="bodyInput mt-3" for="province">
+                  <label className="bodyInput mt-3">
                     State or Province
                   </label>
                   <input
@@ -229,7 +229,7 @@ class ManageAddress extends Component {
                     id="province"
                     ref={input => this.province = input}
                   />
-                  <label className="bodyInput mt-3" for="city">
+                  <label className="bodyInput mt-3">
                     City
                   </label>
                   <input
@@ -240,7 +240,7 @@ class ManageAddress extends Component {
                   />
                   <div className="row">
                     <div className="col-6">
-                      <label className="bodyInput mt-3" for="postalcode">
+                      <label className="bodyInput mt-3">
                         ZIP or postal code
                       </label>
                       <input
@@ -251,7 +251,7 @@ class ManageAddress extends Component {
                       />
                     </div>
                     <div className="col-6">
-                      <label className="bodyInput mt-3" for="phone">
+                      <label className="bodyInput mt-3">
                         Phone
                       </label>
                       <input

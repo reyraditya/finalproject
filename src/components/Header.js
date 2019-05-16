@@ -67,7 +67,7 @@ class Header extends Component {
                     <DropdownToggle className="iconzz navItemSearch" nav>
                       SEARCH
                     </DropdownToggle>
-                    <DropdownMenu right className="dropdownMenu dropdownz">
+                    <DropdownMenu right className="dropdownMenu dropdownzSearch">
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
                   </UncontrolledDropdown>
@@ -118,7 +118,7 @@ class Header extends Component {
                     <DropdownToggle className="iconzz navItemSearch" nav>
                       SEARCH
                     </DropdownToggle>
-                    <DropdownMenu right className="dropdownMenu dropdownz">
+                    <DropdownMenu right className="dropdownMenu dropdownzSearch">
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
                   </UncontrolledDropdown>
@@ -126,13 +126,18 @@ class Header extends Component {
 
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
+                  <NavItem className="navItemDesigner mr-2 my-auto">
+                    <Link to="/wishlist" className="iconzz">
+                      WISHLIST
+                    </Link>
+                  </NavItem>
                   <UncontrolledDropdown className="mt-1" nav inNavbar>
-                    <DropdownToggle className="iconzz text-uppercase" nav>
-                      WELCOME, {user.username}
+                    <DropdownToggle className="iconzz mr-2 text-uppercase" nav>
+                      ACCOUNT
                     </DropdownToggle>
                     <DropdownMenu right className="dropdownMenu dropdownz">
                       <Link className="dropdown-item text-center mb-1" to="/account">
-                        <DropdownItem>ACCOUNT</DropdownItem>
+                        <DropdownItem>MANAGE ACCOUNT</DropdownItem>
                       </Link>
                       <Button className="dropdown-item text-center" href="/" onClick={this.props.onLogoutUser}>
                         LOGOUT
@@ -172,7 +177,7 @@ class Header extends Component {
                     <DropdownToggle className="iconzz navItemSearch" nav>
                       SEARCH
                     </DropdownToggle>
-                    <DropdownMenu right className="dropdownMenu dropdownz">
+                    <DropdownMenu right className="dropdownMenu dropdownzSearch">
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
                   </UncontrolledDropdown>
@@ -182,9 +187,9 @@ class Header extends Component {
                 <Nav className="ml-auto" navbar>
                   <UncontrolledDropdown className="mt-1" nav inNavbar>
                     <DropdownToggle className="iconzz text-uppercase" nav>
-                      WELCOME, {user.username}
+                      {user.username}
                     </DropdownToggle>
-                    <DropdownMenu right className="dropdownMenu dropdownz">
+                    <DropdownMenu right className="dropdownMenuAdmin dropdownAdmin">
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
