@@ -27,26 +27,31 @@ class AddProduct extends Component {
       }
 
     renderList = () => {
-        return this.state.file.map(img => {
+        return this.state.file.map((img,i) => {
             return (
             <div className="d-inline">
                 <img className="imageProduct mr-3 ml-3 mb-3" alt="imgupload" src={img}/>
-                <button className="removeButtonImage">
-                    <img className="iconRemoveImage" aria-hidden="true" src={closeIcon}></img>
-                    {/* <span aria-hidden="true">&times;</span> */}
+                <button className="removeButtonImage" onClick={() => {this.deleteImages(i)}}>
+                    <img className="iconRemoveImage" aria-hidden="true" alt="x" src={closeIcon}></img>
                 </button> 
             </div>
             )
         })
     }
 
-    deleteImages(i){
-        var arrFiles = [...this.state.pictures]
-        var index = arrFiles.indexOf(i.target.value)
-        if(index !== -1){
-            arrFiles.splice(index, 1);
-            this.setState({pictures: arrFiles})
-        }
+    deleteImages=(i)=>{
+        Object.keys(this.state.pictures).filter(keys => {
+            if(keys == i){
+                this.state.pictures.splice(i,1)
+                this.state.file.splice(i,1)
+            }
+        })
+        this.setState({
+            pictures: this.state.pictures,
+            file: this.state.file
+        })
+        console.log(i);
+        
       }
 
 
@@ -168,7 +173,7 @@ class AddProduct extends Component {
                     </div>
                 </div>  
               </div>
-              <div className>
+              <div>
                     <input 
                         style={{display: "none"}}
                         ref={input => this.imginput = input}
@@ -176,9 +181,14 @@ class AddProduct extends Component {
                         onChange={this.handleChange} multiple/>
                     
                     <button className="buttonAddImg iconAddImage mt-4 d-inline" onClick={() => {this.imginput.click()}}>
-                        <img className="" src={addIcon}></img>
+                        <img alt="img" src={addIcon}></img>
                     </button>
                     {this.renderList()}
+                </div>
+                <div>
+                    <button>
+                        
+                    </button>
                 </div>
               </div>
            </div> 
