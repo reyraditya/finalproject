@@ -150,7 +150,7 @@ export const editCred = (username, email, password) => {
     }
 }
 
-// get user's cred by username
+// get user's cred by user id
 export const getUser = () => {
     return async dispatch => {
         try {
@@ -186,3 +186,35 @@ export const getCred = () => {
     }
 }
 
+
+// Get all products
+export const getProducts = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/allproducts')
+            console.log(res);
+
+            return dispatch ({
+                type: 'SHOW_PRODUCT',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Delete products
+export const deleteProducts = (productid) => {
+    return async () => {
+        try { 
+            await axios.delete(`/deleteproducts/${productid}`)
+            this.getProducts()
+        } catch (e) {
+            console.log(e);
+    
+        }
+    }
+}

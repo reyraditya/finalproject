@@ -1,10 +1,51 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
+import {getProducts} from '../action/index';
+import {deleteProducts} from '../action/index';
 import '../css/manageProduct.css'
 
-export class ManageProduct extends Component {
-  render() {
+class ManageProduct extends Component {
+    
+    componentDidMount(){
+        this.props.getProducts()
+    }
+
+    deleteProduct = async (productid) => {
+        await 
+        this.props.deleteProducts(productid)
+        this.props.getProducts()
+    }
+
+    renderListProd = () => {    
+        return this.props.products.map(product => {
+                return (
+                <tbody>
+                    <tr key={product.id}>
+                        <td>{product.id}</td>
+                        <td>{product.designer}</td>
+                        <td>{product.product_name}</td>
+                        <td>{product.category}</td>
+                        <td>{product.description}</td>
+                        <td>{product.stock}</td>
+                        <td>${product.price}</td>
+                        <td>
+                            <button className="buttonProdEdit">EDIT</button>
+                            <button className="buttonProdDelete mt-3" onClick={() => {this.deleteProduct(product.id)}}>
+                                DELETE
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                )
+            }
+        )
+    }
+
+render() {
+    console.log(this.props.products);
+    
     return (
     <div>
         <div className="container-fluid d-flex mx-2">
@@ -16,26 +57,20 @@ export class ManageProduct extends Component {
               <h1 className="text-center title titleManagePro1">Manage Product</h1>
               <div className="mt-3">
                 <p className="body text-center titleManagePro1">All Product</p>
-                <table className="table table-hover titleManagePro mb-5">
+                <table className="table table-hover titleManagePro mb-5 mt-4">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">BRAND</th>
+                            <th scope="col">DESIGNER</th>
                             <th scope="col">PRODUCT NAME</th>
                             <th scope="col">CATEGORY</th>
                             <th scope="col">DESCRIPTION</th>
                             <th scope="col">STOCK</th>
                             <th scope="col">PRICE</th>
+                            <th scope="col">ACTIONS</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* {this.renderList()} */}
-                        <tr>
-                        {/* <td colSpan='4'><strong>TOTAL :</strong></td> */}
-                        {/* <td>{`Rp.${this.loopTotal()}`}</td> */}
-                        </tr>
-                        {/* <Checkout dariCart={this.state.cartLocal} /> */}
-                    </tbody>
+                        {this.renderListProd()}
                 </table>
               </div>
             </div>
@@ -46,4 +81,8 @@ export class ManageProduct extends Component {
   }
 }
 
-export default ManageProduct
+const mps = state => {
+    return{products: state.prod.products}
+}
+
+export default connect(mps, {getProducts, deleteProducts})(ManageProduct)

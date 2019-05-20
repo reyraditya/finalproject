@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {editCred, getUser} from '../action/index';
-// import {getUser} from '../action/index';
 
 import Footer from './Footer';
 
 import '../css/manageAccount.css'
 
 class ManageAccount extends Component{ 
+  
   componentDidMount(){
     this.props.getUser()
   }

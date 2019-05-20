@@ -16,3 +16,25 @@
 .titleManagePro1{
    width: 840px !important
 }
+
+.buttonProdEdit{
+    border: 1px solid blue !important;
+    display: inline !important;
+    color: white;
+    background-color: blue
+}
+.buttonProdDelete{
+    border: 1px solid red !important;
+    display: inline !important;
+    color: white;
+    background-color: red
+}
+
+/* .buttonProdEdit:hover{
+    text-decoration: underline !important;
+    color: blue;
+}
+.buttonProdDelete:hover{
+    text-decoration: underline !important;
+    color: red;
+} */
