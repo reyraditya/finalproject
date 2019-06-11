@@ -151,3 +151,8 @@
     line-height: 20px !important;
     text-transform: uppercase;
 }
+
+.avatar{
+    width: 300px;
+    margin: 0 auto !important
+}

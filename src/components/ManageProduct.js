@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {getProducts} from '../action/index';
-import {deleteProducts} from '../action/index';
+import {getProducts, deleteProducts} from '../action/index';
 import '../css/manageProduct.css'
 
 class ManageProduct extends Component {
@@ -19,28 +18,31 @@ class ManageProduct extends Component {
     }
 
     renderListProd = () => {    
-        return this.props.products.map(product => {
-                return (
-                <tbody>
-                    <tr key={product.id}>
-                        <td>{product.id}</td>
-                        <td>{product.designer}</td>
-                        <td>{product.product_name}</td>
-                        <td>{product.category}</td>
-                        <td>{product.description}</td>
-                        <td>{product.stock}</td>
-                        <td>${product.price}</td>
-                        <td>
-                            <button className="buttonProdEdit">EDIT</button>
-                            <button className="buttonProdDelete mt-3" onClick={() => {this.deleteProduct(product.id)}}>
-                                DELETE
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-                )
-            }
-        )
+        if(this.props.products.length){
+            return this.props.products.map((product, i) => {
+                    return (
+                    <tbody>
+                        <tr key={product.id}>
+                            <td>{product.id}</td>
+                            <td>{product.designer}</td>
+                            <td>{product.product_name}</td>
+                            <td className="text-capitalize">{product.gender}</td>
+                            <td className="text-capitalize">{product.category}</td>
+                            <td>{product.description}</td>
+                            <td>{product.stock}</td>
+                            <td>${product.price}</td>
+                            <td>
+                                <Link to={`/editproduct/${i}`}><button className="buttonProdEdit">EDIT</button></Link>
+                                <button className="buttonProdDelete mt-3" onClick={() => {this.deleteProduct(product.id)}}>
+                                    DELETE
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    )
+                }
+            ) 
+        }
     }
 
 render() {
@@ -63,6 +65,7 @@ render() {
                             <th scope="col">ID</th>
                             <th scope="col">DESIGNER</th>
                             <th scope="col">PRODUCT NAME</th>
+                            <th scope="col">GENDER</th>
                             <th scope="col">CATEGORY</th>
                             <th scope="col">DESCRIPTION</th>
                             <th scope="col">STOCK</th>

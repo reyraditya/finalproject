@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
 
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {addProduct} from '../action/index'
+import {getProducts} from '../action/index'
 
 import addIcon from '../components/icons/add.png'
 import closeIcon from '../components/icons/cross.png'
 
 import '../css/addProduct.css'
 
-class AddProduct extends Component {
+class EditProduct extends Component {
+    componentDidMount(){
+        this.props.getProducts()
+    }
+
     constructor(props) {
         super(props);
          this.state = { pictures: [], file: [] };
@@ -57,22 +61,19 @@ class AddProduct extends Component {
         
       }
 
-      onAddProduct = () => {
-          const product_name = this.productName.value
-          const designer = this.designer.value
-          const gender = this.gender.value
-          const category = this.category.value
-          const description = this.description.value
-          const stock = this.stock.value
-          const price = this.price.value
-          const files = this.imginput.files
-
-          this.props.addProduct(product_name, designer, gender, category, description, stock, price, files)
-      }
-
   render() {
-      console.log(this.state.pictures);
-      console.log(this.state.file);
+      console.log(this.props.products[this.props.match.params.path]);
+
+      if(this.props.products.length !== 0){
+        var{
+          product_name,
+          designer,
+          gender,
+          category,
+          description,
+          stock,
+          price
+        } = this.props.products[this.props.match.params.path]}
       
     return (
       <div>
@@ -86,49 +87,49 @@ class AddProduct extends Component {
             <div className="container containerAccountAddProduct">
               <h1 className="text-center title">Manage Product</h1>
               <div className="mt-3">
-                <p className="body text-center">Add New Product</p>
+                <p className="body text-center">Edit Product</p>
                 <div>
                     <form>
                         {/* Product name */}
                         <label className="bodyInput">
                             Product name
                         </label>
-                        <input className="accountInputForm p-2 form-control" type="text" id="productname" ref={input => this.productName = input}/>
+                        <input className="accountInputForm p-2 form-control" type="text" id="productname" ref={input => this.productName = input} defaultValue={product_name}/>
                         {/* Brand name */}
                         <div className="form-group">
                         <label className="bodyInput mt-3">
                             Designer
                         </label>
-                        <input className="accountInputForm p-2 form-control" type="text" id="designer" ref={input => this.designer = input}/>
+                        <input className="accountInputForm p-2 form-control" type="text" id="designer" ref={input => this.designer = input} defaultValue={designer}/>
                         </div>
                         {/* Gender */}
                         <label className="bodyInput mt-3 d-block">
                             Gender
                         </label>
-                        <input className="accountInputForm p-2 form-control" type="text" id="gender" ref={input => this.gender = input}/>
+                        <input className="accountInputForm p-2 form-control" type="text" id="gender" ref={input => this.gender = input} defaultValue={gender}/>
                         {/* Category */}
                         <label className="bodyInput mt-3 d-block">
                             Category
                         </label>
-                        <input className="accountInputForm p-2 form-control" type="text" id="category" ref={input => this.category = input}/>
+                        <input className="accountInputForm p-2 form-control" type="text" id="category" ref={input => this.category = input} defaultValue={category}/>
                         {/* Description */}
                         <label className="bodyInput mt-3 d-block">
                             Descriptions
                         </label>
-                        <textarea className="designerInputForm form-control" rows="10" ref={input => this.description = input}></textarea>
+                        <input className="designerInputForm form-control" ref={input => this.description = input} defaultValue={description}></input>
                         {/* Stocks */}
                         <label className="bodyInput mt-3 d-block">
                             Stock
                         </label>
-                        <input className="accountInputForm form-control" type="number" min="1" max="1000" id="stock" ref={input => this.stock = input}/>
+                        <input className="accountInputForm form-control" type="number" min="1" max="1000" id="stock" ref={input => this.stock = input} defaultValue={stock}/>
                         {/* Price */}
                         <label className="bodyInput mt-3 d-block">
                             Price
                         </label>
-                        <input className="accountInputForm p-2 form-control" type="number" min="1" id="price" ref={input => this.price = input}/>
+                        <input className="accountInputForm p-2 form-control" type="number" min="1" id="price" ref={input => this.price = input} defaultValue={price}/>
                     </form>
                     <div>
-                        <label className="bodyInput mt-3 d-block">Upload images</label>
+                        <label className="bodyInput mt-3 d-block">Edit images</label>
                     </div>
                 </div>  
               </div>
@@ -145,19 +146,22 @@ class AddProduct extends Component {
                     {this.renderList()}
                 </div>
                 <div>
-                    <Link to = "/manageproduct">
                     <button type="button" className="btn btn-block buttonAddress mt-5 text-uppercase"
-                    onClick={() => this.onAddProduct()}>
-                        add product
-                    </button></Link>
+                    >
+                        Save
+                    </button>
                 </div>
               </div>
            </div> 
          </div>
       </div>
-    </div>
+      </div>
     )
   }
 }
 
-export default connect (null, {addProduct}) (AddProduct)
+const mps = state => {
+    return {products: state.prod.products}
+}
+
+export default connect (mps, {getProducts}) (EditProduct)

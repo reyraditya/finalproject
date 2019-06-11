@@ -186,6 +186,79 @@ export const getCred = () => {
     }
 }
 
+// Upload avatar
+export const uploadAvatar =  (username, avatar) => {
+    console.log(avatar[0]);
+    
+    return async () => {
+        try {
+            const formData = new FormData()
+    
+            formData.append('username', username)
+            formData.append('avatar', avatar[0])
+
+            await axios.post('/avatar', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Delete avatar
+export const deleteAvatar = (username) => {
+    console.log(username);
+    
+    return async () => {
+        try {
+           const res = await axios.delete(`/users/${username}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+      
+        }
+    }
+}
+
+// Add product
+export const addProduct = (product_name, designer, gender, category, description, stock, price, files) => {
+    return async () => {
+        try {
+            const res = await axios.post('/addproduct', {
+                product_name,
+                designer,
+                gender,
+                category,
+                description,
+                stock,
+                price
+            })
+            console.log(res);
+            try {
+                const formData = new FormData();
+                if(files.length){
+                    for (let i = 0; i < files.length; i++) {
+                        //   console.log("notdafault");
+                          formData.append("productimage", files[i]);
+                        }
+                }
+                const res = await axios.post('/productimage', formData)
+                console.log(res);   
+            } catch (e) {
+                console.log(e);
+            }
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
 
 // Get all products
 export const getProducts = () => {

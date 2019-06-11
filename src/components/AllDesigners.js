@@ -22,16 +22,10 @@ class AllDesigners extends Component {
                             <div id="collapse1" className="panel-collapse collapse">
                                 <ul className="list-group">
                                     <li className="list-group-item">
-                                        <span><a href="/alldesigner">accessories</a></span>
+                                        <span><a href="/alldesigner">Optical</a></span>
                                     </li>
                                     <li className="list-group-item">
-                                        <span><a href="/alldesigner">bags</a></span>
-                                    </li>
-                                    <li className="list-group-item">
-                                        <span><a href="/alldesigner">clothing</a></span>
-                                    </li>
-                                    <li className="list-group-item">
-                                        <span><a href="/alldesigner">shoes</a></span>
+                                        <span><a href="/alldesigner">Sunglasses</a></span>
                                     </li>
                                     <li className="list-group-item mb-4">
                                         <span><a href="/alldesigner">all</a></span>

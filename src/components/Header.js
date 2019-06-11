@@ -58,9 +58,14 @@ class Header extends Component {
 
                 {/* Menu navbar left */}
                 <Nav className="mr-auto" navbar>
-                  <NavItem className="navItemDesigner my-auto">
+                <NavItem className="navItemDesigner mx-2 my-auto">
                     <Link to="/alldesigners" className="iconzz">
-                      ALL COLLECTION
+                      MEN
+                    </Link>
+                  </NavItem>
+                  <NavItem className="navItemDesigner mx-2 my-auto">
+                    <Link to="/alldesigners" className="iconzz">
+                      WOMEN
                     </Link>
                   </NavItem>
                   <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
@@ -109,9 +114,14 @@ class Header extends Component {
 
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
-                  <NavItem className="navItemDesigner my-auto">
+                  <NavItem className="navItemDesigner mx-2 my-auto">
                     <Link to="/alldesigners" className="iconzz">
-                      ALL COLLECTION
+                      MEN
+                    </Link>
+                  </NavItem>
+                  <NavItem className="navItemDesigner mx-2 my-auto">
+                    <Link to="/alldesigners" className="iconzz">
+                      WOMEN
                     </Link>
                   </NavItem>
                   <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
@@ -168,9 +178,14 @@ class Header extends Component {
 
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
-                  <NavItem className="navItemDesigner my-auto">
+                  <NavItem className="navItemDesigner mx-2 my-auto">
                     <Link to="/alldesigners" className="iconzz">
-                      ALL COLLECTION
+                      MEN
+                    </Link>
+                  </NavItem>
+                  <NavItem className="navItemDesigner mx-2 my-auto">
+                    <Link to="/alldesigners" className="iconzz">
+                      WOMEN
                     </Link>
                   </NavItem>
                   <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
