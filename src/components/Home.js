@@ -15,6 +15,8 @@ import "../css/home.css"
 
 
 class Home extends Component {
+
+
   homeBody1 = () => {
     return(
       <div className="container p-5">
@@ -24,7 +26,7 @@ class Home extends Component {
             <div className="card-body px-0">
               <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
               <div className="text-center mt-4">
-                <Link to="/alldesigners" className="btn btn-outline-dark buttonHome">SHOP NOW</Link>
+                <Link to={`/shop/women/allproducts`} className="btn btn-outline-dark buttonHome text-uppercase">shop women</Link>
               </div>
             </div>
           </div>
@@ -33,7 +35,7 @@ class Home extends Component {
             <div className="card-body px-0">
               <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
               <div className="text-center mt-4">
-                <Link to="/alldesigners" className="btn btn-outline-dark buttonHome">SHOP NOW</Link>
+                <Link to={`/shop/men/allproducts`} className="btn btn-outline-dark buttonHome text-uppercase">shop men</Link>
               </div>
             </div>
           </div>
@@ -92,4 +94,4 @@ class Home extends Component {
   }
 }
 
-export default (Home)
+export default Home

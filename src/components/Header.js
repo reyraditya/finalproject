@@ -59,12 +59,12 @@ class Header extends Component {
                 {/* Menu navbar left */}
                 <Nav className="mr-auto" navbar>
                 <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/men/allproducts" className="iconzz1">
                       MEN
                     </Link>
                   </NavItem>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/women/allproducts" className="iconzz">
                       WOMEN
                     </Link>
                   </NavItem>
@@ -92,7 +92,7 @@ class Header extends Component {
                   </NavItem>
                   <NavItem className="m-2 mx-2 my-auto">
                     <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
-                    <span className="shoppingCount">(1)</span>
+                    <span className="shoppingCount"></span>
                     </Link>
                   </NavItem>
                 </Nav>
@@ -115,12 +115,12 @@ class Header extends Component {
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/men/allproducts" className="iconzz1">
                       MEN
                     </Link>
                   </NavItem>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/women/allproducts" className="iconzz">
                       WOMEN
                     </Link>
                   </NavItem>
@@ -156,7 +156,7 @@ class Header extends Component {
                   </UncontrolledDropdown>
                   <NavItem>
                     <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
-                    <span className="shoppingCount">(1)</span>
+                    <span className="shoppingCount"></span>
                     </Link>
                   </NavItem>
                 </Nav>
@@ -179,12 +179,12 @@ class Header extends Component {
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/men/allproducts" className="iconzz1">
                       MEN
                     </Link>
                   </NavItem>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/alldesigners" className="iconzz">
+                    <Link to="/shop/women/allproducts" className="iconzz">
                       WOMEN
                     </Link>
                   </NavItem>
@@ -217,8 +217,9 @@ class Header extends Component {
                     </DropdownMenu>
                   </UncontrolledDropdown>
                   <NavItem>
-                    <Link className="nav-link" to="/cart"><img src={shoppingBag} alt="shoppingbag" />
-                    <span className="shoppingCount">(1)</span>
+                    <Link className="nav-link" to="/cart">
+                      <img src={shoppingBag} alt="shoppingbag" />
+                      <span className="shoppingCount"></span>
                     </Link>
                   </NavItem>
                 </Nav>

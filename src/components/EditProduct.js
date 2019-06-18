@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getProducts} from '../action/index'
+import {getProducts, deleteImage, editProducts} from '../action/index'
 
 import addIcon from '../components/icons/add.png'
 import closeIcon from '../components/icons/cross.png'
@@ -29,50 +29,48 @@ class EditProduct extends Component {
         
         this.setState({
         pictures: this.state.pictures.concat(files),
-          file: [...this.state.file, ...url]
+          file: [url]
         })
       }
 
-    renderList = () => {
-        return this.state.file.map((img,i) => {
-            return (
-            <div className="d-inline">
-                <img className="imageProduct mr-3 ml-3 mb-3" alt="imgupload" src={img}/>
-                <button className="removeButtonImage" onClick={() => {this.deleteImages(i)}}>
-                    <img className="iconRemoveImage" aria-hidden="true" alt="x" src={closeIcon}></img>
-                </button> 
-            </div>
-            )
-        })
-    }
+    deleteImages = async (productid)=>{
+        await this.props.deleteImage(productid)
+        this.props.getProducts()
+      }
 
-    deleteImages=(i)=>{
-        Object.keys(this.state.pictures).filter(keys => {
-            if(parseInt(keys) === i){
-                this.state.pictures.splice(i,1)
-                this.state.file.splice(i,1)
-            }
-        })
-        this.setState({
-            pictures: this.state.pictures,
-            file: this.state.file
-        })
-        console.log(i);
+    onClickEdit = () => {
+        console.log(this.props.products[this.props.match.params.path].id);
         
-      }
+        const productid = this.props.products[this.props.match.params.path].id
+        const product_name = this.productName.value
+        const designer = this.designer.value
+        const gender = this.gender.value
+        const category = this.category.value
+        const description = this.description.value
+        const image = this.imginput.files
+        const stock = this.stock.value
+        const price = this.price.value
+
+        this.props.editProducts(productid, product_name, designer, gender, category, description, image, stock,price)
+        console.log(image);
+        
+    }
 
   render() {
       console.log(this.props.products[this.props.match.params.path]);
 
       if(this.props.products.length !== 0){
+          
         var{
+          id,  
           product_name,
           designer,
           gender,
           category,
           description,
           stock,
-          price
+          price,
+          image
         } = this.props.products[this.props.match.params.path]}
       
     return (
@@ -129,7 +127,7 @@ class EditProduct extends Component {
                         <input className="accountInputForm p-2 form-control" type="number" min="1" id="price" ref={input => this.price = input} defaultValue={price}/>
                     </form>
                     <div>
-                        <label className="bodyInput mt-3 d-block">Edit images</label>
+                        <label className="bodyInput mt-3 d-block">Edit image</label>
                     </div>
                 </div>  
               </div>
@@ -138,16 +136,28 @@ class EditProduct extends Component {
                         style={{display: "none"}}
                         ref={input => this.imginput = input}
                         type="file"  
-                        onChange={this.handleChange} multiple/>
+                        onChange={this.handleChange}/>
                     
-                    <button className="buttonAddImg iconAddImage mt-4 d-inline" onClick={() => {this.imginput.click()}}>
+                    <button disabled = {image ? true : false} className="buttonAddImg iconAddImage mt-4 d-inline" onClick={() => {this.imginput.click()}}>
                         <img alt="img" src={addIcon}></img>
                     </button>
-                    {this.renderList()}
+                    {image ? 
+                    <div className="d-inline">
+                        <img className="imageProduct mr-3 ml-3 mb-3" alt="imgupload" src={`http://localhost:1995/addproduct/addimages/${image}`}/>
+                         <button className="removeButtonImage" onClick={() => {this.deleteImages(id)}}>
+                            <img className="iconRemoveImage" aria-hidden="true" alt="x" src={closeIcon}></img>
+                        </button>
+                    </div>  : null}
+                    {this.state.file.length ? 
+                    <div className="d-inline">
+                        <img className="imageProduct mr-3 ml-3 mb-3" alt="imgupload" src={this.state.file[0]}/>
+                         <button className="removeButtonImage" onClick={() => {this.deleteImages(id)}}>
+                            <img className="iconRemoveImage" aria-hidden="true" alt="x" src={closeIcon}></img>
+                        </button>
+                    </div>  : null}
                 </div>
                 <div>
-                    <button type="button" className="btn btn-block buttonAddress mt-5 text-uppercase"
-                    >
+                    <button type="button" className="btn btn-block buttonAddress mt-5 text-uppercase" onClick={() => this.onClickEdit()}>
                         Save
                     </button>
                 </div>
@@ -164,4 +174,4 @@ const mps = state => {
     return {products: state.prod.products}
 }
 
-export default connect (mps, {getProducts}) (EditProduct)
+export default connect (mps, {getProducts, deleteImage, editProducts}) (EditProduct)

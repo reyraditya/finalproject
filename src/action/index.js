@@ -106,7 +106,7 @@ export const onRegisterUser = (username, email, password) => {
     }
 }
 
-// Show all address
+// Retrieve all address
  export const getAddress = () => {
      return async dispatch => {
         try {
@@ -150,7 +150,7 @@ export const editCred = (username, email, password) => {
     }
 }
 
-// get user's cred by user id
+// Retrieve user's cred by user id
 export const getUser = () => {
     return async dispatch => {
         try {
@@ -170,7 +170,7 @@ export const getUser = () => {
     } 
 }
 
-// get user's credentials (username and email) => as protective in register
+// Retrieve user's credentials (username and email) => as protective in register
 export const getCred = () => {
     return async () => {
         try {
@@ -216,42 +216,22 @@ export const deleteAvatar = (username) => {
     return async () => {
         try {
            const res = await axios.delete(`/users/${username}`)
-            console.log(res);
+           console.log(res);
             
         } catch (e) {
-            console.log(e);
+          console.log(e);
       
         }
     }
 }
 
-// Add product
-export const addProduct = (product_name, designer, gender, category, description, stock, price, files) => {
+// Delete image
+export const deleteImage = (productid) => {
     return async () => {
         try {
-            const res = await axios.post('/addproduct', {
-                product_name,
-                designer,
-                gender,
-                category,
-                description,
-                stock,
-                price
-            })
+            const res = await axios.delete(`/deleteimage/${productid}`)
             console.log(res);
-            try {
-                const formData = new FormData();
-                if(files.length){
-                    for (let i = 0; i < files.length; i++) {
-                        //   console.log("notdafault");
-                          formData.append("productimage", files[i]);
-                        }
-                }
-                const res = await axios.post('/productimage', formData)
-                console.log(res);   
-            } catch (e) {
-                console.log(e);
-            }
+            
         } catch (e) {
             console.log(e);
             
@@ -259,8 +239,35 @@ export const addProduct = (product_name, designer, gender, category, description
     }
 }
 
+// Add product
+export const addProduct = (product_name, designer, gender, category, description, image, stock, price) => {
+    return async () => {
+        try {
+            const formData = new FormData()
 
-// Get all products
+            formData.append('product_name', product_name)
+            formData.append('designer', designer)
+            formData.append('gender', gender)
+            formData.append('category', category)
+            formData.append('description', description)
+            formData.append('image', image)
+            formData.append('stock', stock)
+            formData.append('price', price)
+            
+            const res = await axios.post('/addproduct', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+// Retrieve all products
 export const getProducts = () => {
     return async (dispatch) => {
         try {
@@ -279,6 +286,76 @@ export const getProducts = () => {
     }
 }
 
+// Retrieve products based on gender
+export const getProductsGender = (gender, category) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/allproduct/${gender}/${category}`)
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_PRODUCT',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+        
+        }
+    }
+}
+
+// Retrieve designers
+export const getDesigners = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/designers')
+            console.log(res);
+            
+            return dispatch({
+                type: 'SHOW_DESIGNERS',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Edit products
+export const editProducts = (productid, product_name, designer, gender, category, description, image, stock, price) => {
+    return async () => {
+        try {
+            const formData = new FormData()
+
+            formData.append('product_name', product_name)
+            formData.append('designer', designer)
+            formData.append('gender', gender)
+            formData.append('category', category)
+            formData.append('description', description)
+            formData.append('image', image[0])
+            formData.append('stock', stock)
+            formData.append('price', price)
+
+            const res = await axios.patch(`/editproduct/${productid}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            console.log(res);
+            console.log('success');
+            console.log(image[0]);
+            
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
 // Delete products
 export const deleteProducts = (productid) => {
     return async () => {
@@ -288,6 +365,97 @@ export const deleteProducts = (productid) => {
         } catch (e) {
             console.log(e);
     
+        }
+    }
+}
+
+// Post wishlist
+export const addWishlist = (productid, userid) => {
+    return async () => {
+        try {
+            const res = await axios.post('/wishlist/add', {
+                productid,
+                userid
+            })
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+
+        }
+    }
+}
+
+// Retrieve wishlist
+export const getWishlist = (userid) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/wishlist/${userid}`)
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_CARTWISH',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Remove wishlist
+export const removeWishlist = (id) => {
+    return async () => {
+        try {
+            const res = await axios.delete(`/wishlist/removewishlist/${id}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Add cart
+export const addCart = (productid, userid) => {
+    return async () => {
+        try {
+            const res = await axios.post('/cart/add', {
+                userid, 
+                productid
+            })
+            console.log(res);
+    
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve cart
+export const getCart = (userid) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/cart/${userid}`)
+            console.log(typeof(res.data));
+
+            if(res.data.length){
+                return dispatch({
+                    type: 'SHOW_CARTWISH',
+                    payload: res
+                })
+            } else {
+                return dispatch({
+                    type: 'EMPTY_CARTWISH'
+                })
+            }
+        } catch (e) {
+            console.log(e);
+            
         }
     }
 }

@@ -6,9 +6,22 @@
     letter-spacing: 1.5px;
     line-height: 20px !important;
 }
+.iconzz1{
+    color: black !important;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    line-height: 20px !important;
+    margin-left: -8px;
+    margin-right: 5px;
+}
 
 /* On hover navbar icons */
 .iconzz:hover {
+    color: rgb(218, 214, 214) !important;
+    text-decoration: none;
+}
+.iconzz1:hover {
     color: rgb(218, 214, 214) !important;
     text-decoration: none;
 }

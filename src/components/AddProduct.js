@@ -65,9 +65,9 @@ class AddProduct extends Component {
           const description = this.description.value
           const stock = this.stock.value
           const price = this.price.value
-          const files = this.imginput.files
+          const image = this.imginput.files[0]
 
-          this.props.addProduct(product_name, designer, gender, category, description, stock, price, files)
+          this.props.addProduct(product_name, designer, gender, category, description, image, stock, price)
       }
 
   render() {
@@ -137,7 +137,7 @@ class AddProduct extends Component {
                         style={{display: "none"}}
                         ref={input => this.imginput = input}
                         type="file"  
-                        onChange={this.handleChange} multiple/>
+                        onChange={this.handleChange}/>
                     
                     <button className="buttonAddImg iconAddImage mt-4 d-inline" onClick={() => {this.imginput.click()}}>
                         <img alt="img" src={addIcon}></img>

@@ -7,7 +7,7 @@ import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
-import AllDesigners from './AllDesigners';
+import Shop from './Shop';
 import Cart from './Cart';
 import ManageAccount from './ManageAccount';
 import ManageAddress from './ManageAddress';
@@ -15,6 +15,8 @@ import EditAddress from './EditAddress';
 import ManageProduct from './ManageProduct';
 import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
+import DetailProduct from './DetailProduct';
+import Wishlist from './Wishlist';
 
 import { keepLogin } from '../action';
 
@@ -37,7 +39,7 @@ class App extends Component {
                     <Route path="/" exact component={Home}/>
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
-                    <Route path="/alldesigners" component={AllDesigners} />
+                    <Route path="/shop/:gender/:category" component={Shop} />
                     <Route path="/cart" component={Cart} />
                     <Route path="/account" component={ManageAccount}/>
                     <Route path="/addresses" component={ManageAddress}/>
@@ -45,6 +47,8 @@ class App extends Component {
                     <Route path="/manageproduct/" component={ManageProduct}/>
                     <Route path="/addproduct/" component={AddProduct}/>
                     <Route path="/editproduct/:path" component={EditProduct}/>
+                    <Route path="/detailproduct/:productid" component={DetailProduct}/>
+                    <Route path="/wishlist" component={Wishlist}/>
                 </div>
             </BrowserRouter>
         )

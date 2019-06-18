@@ -106,3 +106,7 @@
     color: black !important;
     font-weight: bolder !important;
 }
+
+.buttonRemoveCart{
+    border: none !important;
+}
