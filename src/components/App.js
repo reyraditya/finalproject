@@ -17,6 +17,8 @@ import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import DetailProduct from './DetailProduct';
 import Wishlist from './Wishlist';
+import Checkout from './Checkout';
+import OrderHistory from './OrderHistory';
 
 import { keepLogin } from '../action';
 
@@ -49,6 +51,8 @@ class App extends Component {
                     <Route path="/editproduct/:path" component={EditProduct}/>
                     <Route path="/detailproduct/:productid" component={DetailProduct}/>
                     <Route path="/wishlist" component={Wishlist}/>
+                    <Route path="/checkout" component={Checkout}/>
+                    <Route path="/orderhistory" component={OrderHistory}/>
                 </div>
             </BrowserRouter>
         )

@@ -1,0 +1,39 @@
+.checkoutBorder{
+    border-bottom: 1px solid black !important
+}
+
+.radioAddress{
+    display: flex;
+    flex-direction: row !important;
+}
+.inlinebutton{
+    /* display: inline-flex; */
+    float: left !important;
+}
+
+input[type='radio'] {
+    box-sizing: border-box;
+    appearance: none;
+    background: white;
+    outline: 1px solid #333;
+    border: 1px solid white;
+    width: 10px;
+    height: 10px;
+    display: inline-flex;
+  }
+  
+  input[type='radio']:checked {
+    background: #333;
+  }
+
+  .optionAdd{
+      margin-top: -3px !important;
+  }
+
+  .optionShipper{
+    margin-top: -3px !important;
+  }
+
+  .optionBank{
+    margin-top: -3px !important;
+  }

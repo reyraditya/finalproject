@@ -107,10 +107,10 @@ export const onRegisterUser = (username, email, password) => {
 }
 
 // Retrieve all address
- export const getAddress = () => {
+ export const getAddress = (userid) => {
      return async dispatch => {
         try {
-         const userid = cookie.get('idLogin')
+        //  const userid = cookie.get('idLogin')
          const res = await axios.get(`/addresses/${userid}`)
 
          dispatch({
@@ -453,6 +453,58 @@ export const getCart = (userid) => {
                     type: 'EMPTY_CARTWISH'
                 })
             }
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Move cart to wishlist
+export const moveToWishlist = (cartwishid) => {
+    return async () => {
+        try {
+            const res = await axios.post(`/addtowishlist/${cartwishid}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve shippers
+export const getShippers = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/shipper')
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_SHIPPERS',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve bank
+export const getBank = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/bank')
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_BANK',
+                payload: res
+            })
+            
         } catch (e) {
             console.log(e);
             

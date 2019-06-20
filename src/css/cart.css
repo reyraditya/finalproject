@@ -110,3 +110,8 @@
 .buttonRemoveCart{
     border: none !important;
 }
+
+.buttonWishlistCart{
+    border: none !important;
+    margin-left: -5px !important;
+}

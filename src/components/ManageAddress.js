@@ -140,10 +140,10 @@ class ManageAddress extends Component {
                 <Link to="/addresses" className="d-block mt-2">
                   Addresses
                 </Link>
-                <Link to="/addresses" className="d-block mt-2">
+                <Link to="/orderhistory" className="d-block mt-2">
                   Order history
                 </Link>
-                <Link to="/addresses" className="d-block mt-2">
+                <Link to="/wishlist" className="d-block mt-2">
                   Wishlist
                 </Link>
               </div>

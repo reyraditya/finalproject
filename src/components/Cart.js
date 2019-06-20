@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
-import { onLogoutUser, onLoginClick, getCart, removeWishlist } from '../action';
+import { onLogoutUser, onLoginClick, getCart, removeWishlist, moveToWishlist } from '../action';
 
 import '../css/cart.css';
 import closeIcon from './icons/cross.png';
@@ -17,15 +17,21 @@ class Cart extends Component{
     }
 
     onSubmitClick = () => {
-        const email = this.email.value
-        const password = this.password.value
-        this.props.onLoginClick(email, password)
-      }
-
-      onRemoveCart = async (id, userid) => {
-        await this.props.removeWishlist(id)
-        this.props.getCart(userid)
+      const email = this.email.value
+      const password = this.password.value
+      this.props.onLoginClick(email, password)
     }
+
+    onRemoveCart = async (id, userid) => {
+      await this.props.removeWishlist(id)
+      this.props.getCart(userid)
+    }
+
+    onMoveWishlist = async (id, userid) => {
+      await this.props.moveToWishlist(id)
+      this.props.getCart(userid)
+    }
+
 
     renderList = () => {
       if(this.props.cart.length){
@@ -39,7 +45,9 @@ class Cart extends Component{
                   <div>{cart.designer}</div>
                   <div className="mt-2">{cart.product_name}</div>
                   <div className="mt-5 mb-2">
-                    <a href="/wishlist">Move to Wishlist</a>
+                      <button className="buttonWishlistCart cartBody" onClick={() => {this.onMoveWishlist(cart.id, cart.user_id)}}>
+                        Move to Wishlist
+                      </button>
                   </div>
                 </div>
                 <div className="col-2 my-2 text-right">${cart.price}</div>
@@ -58,29 +66,33 @@ class Cart extends Component{
       }
     }
 
+    total = () => {
+      if(this.props.cart.length){
+        var sumprice = 0
+        this.props.cart.forEach(obj => {
+            sumprice += obj.price
+      }); return sumprice
+    } else {
+      return 0
+    }
+  }
+
     render(){
       console.log(this.props.cart);
       console.log(this.props.cart.length);
       console.log(cookie.get('idLogin'));
-      
-      if(this.props.cart.length){
-          var sumprice = 0
-            this.props.cart.forEach(obj => {
-              sumprice += obj.price
-        })
-      }
            
-      const {user} = this.props
+      // const {user} = this.props
 
         if (cookie.get('idLogin') !== undefined) {
           return (
             <div>
               <div >
                 <div className="container cart" >
-                  {/* Cart List */}
+                  {/* Cart List & checkout */}
                   {this.props.cart.length ? 
                     <div className="row">
-                    <div className="col-6">
+                    <div className="col-12">
                     <div className="cartTitle p-2 text-center">
                       Shopping Bag
                     </div>
@@ -103,36 +115,45 @@ class Cart extends Component{
                         </div>
                       </div>
                       <div className="col-2 my-2 text-right">
-                        <div>${sumprice}</div>
+                        <div>${this.total()}</div>
                         <div>$0</div>
                         <div>Incl.</div>
-                        <div className="mt-4 orderTotal">${sumprice}</div>
+                        <div className="mt-4 orderTotal">${this.total()}</div>
                       </div>
+                    </div>
+                    <div>
+                      <Link to="/checkout">
+                          <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark mt-5">
+                            checkout
+                          </button>
+                        </Link>
                     </div>
                   </div>
                   {/* checkout */}
-                  <div className="col-6">
+                  {/* <div className="col-6">
                     <div className="row">
-                      <div className="col-12">
-                        <div className="cartTitle p-2 text-center">
+                      <div className="col-12"> */}
+                        {/* <div className="cartTitle p-2 text-center">
                           logged in as
-                        </div>
-                        <div className="borderCheckoutLogin mt-4 border-dark">
-                          <div className="checkoutLogin2 text-center mt-2 pt-2 px-5 mx-5">
+                        </div> */}
+                        {/* <div className="borderCheckoutLogin mt-4 border-dark"> */}
+                          {/* <div className="checkoutLogin2 text-center mt-2 pt-2 px-5 mx-5">
                             <div className="pb-2">{user.email}</div>
                             <button className="checkoutLogin2" onClick= {this.props.onLogoutUser}>
                                 <Link to='/login'>Not your account? Sign is as another user</Link>
                             </button>
-                          </div>
-                          <div className="mt-4 px-5 mx-5 mb-4 text-center">
-                            <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark">
-                              checkout
-                            </button>
-                          </div>
-                        </div>                        
-                      </div>
-                    </div>
-                  </div>
+                          </div> */}
+                          {/* <div className="mt-4 px-5 mx-5 mb-4 text-center">
+                            <Link to="/checkout">
+                              <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark">
+                                checkout
+                              </button>
+                            </Link>
+                          </div> */}
+                        {/* </div>                         */}
+                      {/* </div> */}
+                    {/* </div> */}
+                  {/* </div> */}
                   </div>: 
                   <div className="col-12">
                   <div className=" cartTitle text-center">
@@ -153,13 +174,12 @@ class Cart extends Component{
                   </div>
               </div>
               </div>
-              }
-                  
+              }  
+              </div>
                 </div>
-              </div>
-              <div className="footer">
-                <Footer />
-              </div>
+                  <div className="footer">
+                    <Footer />
+                </div>
             </div>
         )   
         } else {
@@ -176,4 +196,4 @@ const mps = state => {
     return {user: state.auth, cart: state.prod.cartwish}
 }
 
-export default connect(mps, {onLogoutUser, onLoginClick, getCart, removeWishlist})(Cart);
+export default connect(mps, {onLogoutUser, onLoginClick, getCart, removeWishlist, moveToWishlist})(Cart);
