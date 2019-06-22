@@ -1,0 +1,39 @@
+.titleOrder{
+    color: black !important;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 9px;
+    font-weight: bolder;
+    letter-spacing: 0.8px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-top: 50px;
+    border-bottom: 2px solid black;
+}
+
+.titleGrand{
+    color: black !important;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 9px;
+    font-weight: bolder;
+    letter-spacing: 0.8px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+
+.titleOrderHistory{
+    color: black !important;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: bolder;
+    letter-spacing: 0.8px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-top: 90px;
+    margin-left: -10px !important
+}
+
+.renderOrder{
+    border: 1px solid black
+}

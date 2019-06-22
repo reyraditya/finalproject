@@ -66,8 +66,8 @@ class ManageAccount extends Component{
             <div className="title col-2 mx-2">
               <Link to="/account" className="d-block">Account details</Link>
               <Link to="/addresses" className="d-block mt-2">Addresses</Link>
-              <Link to="/addresses" className="d-block mt-2">Order history</Link>
-              <Link to="/addresses" className="d-block mt-2">Wishlist</Link>
+              <Link to="/orderhistory" className="d-block mt-2">Order history</Link>
+              <Link to="/wishlist" className="d-block mt-2">Wishlist</Link>
             </div>
             <div className="col-7">
               <div className="container containerAccount">

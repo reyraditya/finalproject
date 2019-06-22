@@ -177,7 +177,7 @@ class Header extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
 
               {/* Menu navbar left */}
-              <Nav className="mr-auto" navbar>
+              {/* <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner mx-2 my-auto">
                     <Link to="/shop/men/allproducts" className="iconzz1">
                       MEN
@@ -196,7 +196,7 @@ class Header extends Component {
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
                   </UncontrolledDropdown>
-                </Nav>
+                </Nav> */}
 
                 {/* Menu navbar right */}
                 <Nav className="ml-auto" navbar>
@@ -208,20 +208,23 @@ class Header extends Component {
                       <Link className="dropdown-item" to="/manageproduct">
                         <DropdownItem>MANAGE PRODUCT</DropdownItem>
                       </Link>
-                      <Link className="dropdown-item text-center mb-1" to="/account">
-                        <DropdownItem>ACCOUNT</DropdownItem>
+                      <Link className="dropdown-item" to="/manageorder">
+                        <DropdownItem>MANAGE ORDERS</DropdownItem>
                       </Link>
+                      {/* <Link className="dropdown-item text-center mb-1" to="/account">
+                        <DropdownItem>ACCOUNT</DropdownItem>
+                      </Link> */}
                       <Button className="dropdown-item text-center" href="/" onClick={this.props.onLogoutUser}>
                         LOGOUT
                       </Button>
                     </DropdownMenu>
                   </UncontrolledDropdown>
-                  <NavItem>
+                  {/* <NavItem>
                     <Link className="nav-link" to="/cart">
                       <img src={shoppingBag} alt="shoppingbag" />
                       <span className="shoppingCount"></span>
                     </Link>
-                  </NavItem>
+                  </NavItem> */}
                 </Nav>
               </Collapse>
             </div>

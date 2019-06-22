@@ -442,8 +442,10 @@ export const getCart = (userid) => {
         try {
             const res = await axios.get(`/cart/${userid}`)
             console.log(typeof(res.data));
-
+            cookie.set('cart', res.data.length, { path: '/' })
+            
             if(res.data.length){
+                
                 return dispatch({
                     type: 'SHOW_CARTWISH',
                     payload: res
@@ -510,4 +512,44 @@ export const getBank = () => {
             
         }
     }
+}
+
+// Place order
+export const placeOrder = (user_id, address_id, bank_id, shipper_id, price_total, wishcart) => {
+    return async () => {
+        try {
+            const res = await axios.post('/placeorder', {
+                user_id,
+                address_id,
+                bank_id,
+                shipper_id,
+                price_total,
+                wishcart
+            })
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve order by user
+export const getOrder = (userid) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/order/${userid}`)
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_ORDERS',
+                payload: res
+            })
+        
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }  
 }
