@@ -54,7 +54,7 @@ class App extends Component {
                     <Route path="/wishlist" component={Wishlist}/>
                     <Route path="/checkout" component={Checkout}/>
                     <Route path="/orderhistory" component={OrderHistory}/>
-                    <Route path="/detailorder/:path" component={DetailOrder}/>
+                    <Route path="/detailorder/:path/:orderid" component={DetailOrder}/>
                 </div>
             </BrowserRouter>
         )
