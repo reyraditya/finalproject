@@ -1,7 +1,8 @@
 const initialorder = {
     shippers: [],
     bank: [],
-    orderhistory: []
+    orderhistory: [],
+    orderadmin: []
 }
 
 export default (state = initialorder, action) => {
@@ -24,6 +25,14 @@ export default (state = initialorder, action) => {
             return{
                 ...state,
                 orderhistory: action.payload.data
+            }
+
+        case 'SHOW_ORDERADMIN':
+            console.log(action.payload);
+            
+            return{
+                ...state,
+                orderadmin: action.payload.data
             }
 
         default:

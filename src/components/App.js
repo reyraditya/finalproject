@@ -20,6 +20,8 @@ import Wishlist from './Wishlist';
 import Checkout from './Checkout';
 import OrderHistory from './OrderHistory';
 import DetailOrder from './DetailOrder'
+import ConfirmPayment from './ConfirmPayment'
+import ManageOrder from './ManageOrder'
 
 import { keepLogin } from '../action';
 
@@ -55,6 +57,8 @@ class App extends Component {
                     <Route path="/checkout" component={Checkout}/>
                     <Route path="/orderhistory" component={OrderHistory}/>
                     <Route path="/detailorder/:path/:orderid" component={DetailOrder}/>
+                    <Route path="/confirmpayment/:orderid" component={ConfirmPayment}/>
+                    <Route path="/manageorder" component={ManageOrder}/>
                 </div>
             </BrowserRouter>
         )

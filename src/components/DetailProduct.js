@@ -49,6 +49,8 @@ class DetailProduct extends Component {
           } = products[0]
       }
 
+      console.log(id);
+      
     return (
       <div className="container p-5 mt-5">
         <div className="d-flex row">

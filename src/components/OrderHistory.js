@@ -11,42 +11,16 @@ import '../css/orderhistory.css'
 const cookie = new Cookies()
 
 class OrderHistory extends Component {
-  state = {
-    addImg: false, 
-    preview: '',
-    img: null
-  }
-
-  
   async componentDidMount(){
     await this.props.getOrder(cookie.get('idLogin'))
   }
   
-  addImg = () => {
-    this.imginput.click()
-    if(this.imginput.files){
-      this.setState({addImg: !this.state.addImg})
-    }
-  }
-
-  changeImg = () => {
-    this.setState(prevState => ({
-      addImg: !prevState.addImg
-    }))
-  }
-
-  pickImg = () => {
-    
-  }
-  
-
     renderOrder = () => {
         return this.props.orders.map((order,i) => {
             return (
                 <div key={i}>
                   <div className="mt-4 p-3 renderOrder">
-                    <div className="d-flex">
-                      <div className="col-6">
+                      <div>
                         {/* order id */}
                         <div className="titleGrand">
                             order id: {order.id}
@@ -71,30 +45,23 @@ class OrderHistory extends Component {
                         <div className="titleGrand mt-3">
                             grand total: ${order.price_total}
                         </div>
-                        <div className="buttonDetailOrder">
-                            <Link to={`/detailorder/${i}/${order.id}`}>
-                                <button className="d-inline mx-2 buttonWishlist buttonAccount">
-                                    detail order
+                        <div>
+                          <div className="buttonDetailOrder d-flex">
+                            <div className="mx-auto">
+                              <Link to={`/detailorder/${i}/${order.id}`}>
+                                  <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                      detail order
+                                  </button>
+                              </Link>   
+                              <Link to={`/confirmpayment/${i}`}>
+                                <button className="d-inline buttonWishlist buttonAccount">
+                                      confirm payment
                                 </button>
-                            </Link>   
+                              </Link>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      {/* Image proof */}
-                      <div className="col-6">
-                        <img className="uploadProof" src={order.image ? `http://localhost:1995/proof/${order.image}` : this.state.preview ? this.state.preview : require('../components/icons/upload.png')} alt="img proof"></img>
-                      <div>
-                        <div className="buttonUploadProof">
-                          <label className="buttonUploadReceipt buttonAccount" hidden={this.state.addImg}>
-                              <input hidden type='file' onChange={this.addImg} ref={input => this.imginput = input}/>
-                                choose receipt
-                          </label>
-                          <button hidden={!this.state.addImg} className="buttonUploadReceipt buttonAccount">
-                                save
-                          </button>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
             )

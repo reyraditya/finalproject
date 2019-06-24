@@ -553,3 +553,43 @@ export const getOrder = (userid) => {
         }
     }  
 }
+
+// Upload transaction proof
+export const uploadProof = (id, image) => {
+    return async () => {
+        try {
+            const formData = new FormData()
+    
+            formData.append('id', id)
+            formData.append('image', image[0])
+
+            await axios.post('/proof', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve orders preview for admin
+export const getOrderAdmin = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/allorders')
+            console.log(res);
+
+            return dispatch({
+                type: 'SHOW_ORDERADMIN',
+                payload: res
+            })
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
