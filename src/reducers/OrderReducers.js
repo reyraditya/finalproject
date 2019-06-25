@@ -2,7 +2,10 @@ const initialorder = {
     shippers: [],
     bank: [],
     orderhistory: [],
-    orderadmin: []
+    orderadmin: [],
+    // orderpaid: [],
+    // orderrejected:[],
+    // ordershipped:[]
 }
 
 export default (state = initialorder, action) => {
@@ -34,6 +37,30 @@ export default (state = initialorder, action) => {
                 ...state,
                 orderadmin: action.payload.data
             }
+
+        // case 'SHOW_ORDERPAID':
+        //     console.log(action.payload);
+            
+        //     return{
+        //         ...state,
+        //         orderpaid: action.payload.data
+        //     }
+
+        // case 'SHOW_ORDERREJECTED':
+        //     console.log(action.payload);
+            
+        //     return{
+        //         ...state,
+        //         orderrejected: action.payload.data
+        //     }
+
+        // case 'SHOW_ORDERSHIPPED':
+        //     console.log(action.payload);
+            
+        //     return{
+        //         ...state,
+        //         ordershipped: action.payload.data
+        //     }
 
         default:
             return state

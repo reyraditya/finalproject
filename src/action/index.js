@@ -593,3 +593,79 @@ export const getOrderAdmin = () => {
         }
     }
 }
+
+// Change order status to paid
+export const setPaid = (orderid) => {
+    return async () => {
+        try {
+            const res = await axios.patch(`/statuspaid/${orderid}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Change order status to rejected
+export const setRejected = (orderid) => {
+    return async () => {
+        try {
+            const res = await axios.patch(`/statusrejected/${orderid}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Change order status to paid
+export const setShipped = (orderid) => {
+    return async () => {
+        try {
+            const res = await axios.patch(`/statusshipped/${orderid}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// // Retrieve order with status paid
+// export const getOrderPaid = () => {
+//     return async (dispatch) => {
+//         try {
+//             const res = await axios.get('/orderpaid')
+
+//             return dispatch({
+//                 type: 'SHOW_ORDERPAID',
+//                 payload: res
+//             })
+//         } catch (e) {
+//             console.log(e);
+            
+//         }
+//     }
+// }
+
+// // Retrieve order with status rejected
+// export const getOrderRejected = () => {
+//     return async (dispatch) => {
+//         try {
+//             const res = await axios.get('/orderrejected')
+
+//             return dispatch({
+//                 type: 'SHOW_ORDERREJECTED',
+//                 payload: res
+//             })
+//         } catch (e) {
+//             console.log(e);
+            
+//         }
+//     }
+// }

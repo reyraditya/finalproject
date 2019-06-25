@@ -1,4 +1,31 @@
 .manageOrderTab{
-   margin-left: 300px;
-   margin-right: 300px;
+   margin-left: 100px;
+   margin-right: 100px;
+}
+
+.buttonManageOrder{
+    margin-top: 70px;
+    margin-left: 210px;
+}
+
+.uploadProofManage{
+    margin-left: 340px;
+    width: 208px;
+    height: 195px;
+}
+
+.buttonApprove{
+    background-color: green
+}
+
+.buttonReject{
+    margin-left: 120px
+}
+
+.buttonCancel{
+    background-color: red
+}
+
+.buttonShipped{
+    margin-left: 130px;
 }

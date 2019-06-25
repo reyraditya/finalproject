@@ -49,24 +49,31 @@ class ConfirmPayment extends Component {
       saveAva = async () => {
         if(this.props.orders.length !== 0){
             var {
-                id,
-            } = this.props.orders[this.props.match.params.orderid]
+                orderid
+            } = this.props.match.params
         }
-        console.log(id);
+        
         
 
-        await this.props.uploadProof(id, this.proofinput.files)
+        await this.props.uploadProof(orderid, this.proofinput.files)
         console.log(this.proofinput.files);
         
         this.setState({addImg: !this.state.addImg})
         this.props.getOrder(cookie.get('idLogin'))
+        console.log(this.props.match.params.orderid);
+        
       }
 
     render() {
         // console.log(this.props.match.params.orderid);
         // console.log(this.props.orders[this.props.match.params.orderid]);
+        console.log(this.props.orders);
+        
 
         if(this.props.orders.length !== 0){
+            const order = this.props.orders.filter(obj => {
+                return obj.id === this.props.match.params.orderid
+            })
             var {
                 bank_name,
                 createdAt,
@@ -77,10 +84,12 @@ class ConfirmPayment extends Component {
                 shipper_name,
                 time_estimation,
                 image
-            } = this.props.orders[this.props.match.params.orderid]
+            } = order[0]
+            console.log(order);
+            console.log(this.props.orders);
+            
         }
         
-
         return (
         <div>
             <div className="container-fluid d-flex mx-2">
@@ -134,8 +143,8 @@ class ConfirmPayment extends Component {
                                 </div>
                             </div>
                             <div>
-                               <img className="uploadProof" src={image ? `http://localhost:1995/proof/${image}` : this.state.preview ? this.state.preview : require('../components/icons/upload.png')} alt="img proof"></img>
-                                <div>
+                               <img className="uploadProof" src={this.state.preview ? this.state.preview: image ? `http://localhost:1995/proof/${image}`  : require('../components/icons/upload.png')} alt="img proof"></img>
+                                <div> 
                                 <div className="buttonUploadProof">
                                     <label className="buttonUploadReceipt buttonAccount text-center" hidden={this.state.addImg}>
                                         <input hidden type='file' ref={input => this.proofinput = input} onChange={ this.imageChange} />

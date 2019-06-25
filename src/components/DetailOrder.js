@@ -11,6 +11,7 @@ const cookie = new Cookies()
 class DetailOrder extends Component {
   state = {
     orderstatus: [],
+    user: [],
     payment: [],
     shipper: [],
     address: [],
@@ -20,6 +21,7 @@ class DetailOrder extends Component {
 
    async componentDidMount(){
      await this.getOrderStatus()
+     await this.getClient()
      await this.getOrderPayment()
      await this.getOrderShipper()
      await this.getOrderAddress()
@@ -37,6 +39,23 @@ class DetailOrder extends Component {
       this.setState({
         orderstatus: res.data
     })
+      
+    } catch (e) {
+      console.log(e);
+      
+    }
+  }
+
+  // Retrieve user's credentials
+  getClient = async () => {
+    try {
+      const { orderid } = this.props.match.params
+      const res = await axios.get(`/userdetail/${orderid}`)
+      console.log(res.data);
+
+      this.setState({
+        user: res.data
+      })
       
     } catch (e) {
       console.log(e);
@@ -163,10 +182,14 @@ class DetailOrder extends Component {
     console.log(cookie.get('idLogin'));
     console.log(this.props.match.params.orderid);
 
-    const {orderstatus, payment, shipper, address, grandprice} = this.state
+    const {orderstatus, user, payment, shipper, address, grandprice} = this.state
     
     if(this.state.orderstatus.length){
       var {id, status, createdAt} = orderstatus[0]
+    }
+
+    if(this.state.user.length){
+      var{userid, username, email} = user[0]
     }
     
     if(this.state.payment.length){
@@ -185,9 +208,73 @@ class DetailOrder extends Component {
       var{grandtotal} = grandprice[0]
     }
 
-
-    return (
-      <div className="container mt-5 mb-5 pb-5">
+    if(cookie.get('status') === 'user'){
+      return (
+        <div className="container mt-5 mb-5 pb-5">
+          <div className="text-center titleOrderHistory">
+              Order Details
+          </div>
+          {/* Order status */}
+          <div className="mt-5">
+            <div className="titleOrder mb-2">Order status</div>
+            <div className="bodyOrderDetail">
+              <div className="mt-3">
+                order id: {id}
+              </div>
+              <div className="mt-1">
+                status: {status}
+              </div>
+              <div className="mt-1">
+                order placed at: {createdAt}
+              </div>
+            </div>
+          </div>
+          {/* Payment method */}
+          <div className="mt-3">
+            <div className="titleOrder mb-2">Payment method</div>
+            <div className="bodyOrderDetail">
+              <div className="mt-3">{payment_method}</div>
+              <div className="mt-1 text-uppercase">{bank_name}</div>
+              <div className="mt-1">IBAN: {iban}</div>
+            </div>
+          </div>
+          {/* Shipping info */}
+          <div className="mt-3">
+            <div className="titleOrder mb-2">Shipment info</div>
+            <div className="bodyOrderDetail">
+              <div className="mt-3">{shipper_name} - {category}</div>
+              <div className="mt-1">${price}</div>
+              <div className="mt-1">shipping duration: {time_estimation}</div>
+            </div>
+          </div>
+          {/* Shipping address */}
+          <div className="mt-3">
+            <div className="titleOrder mb-2">Shipment address</div>
+            <div className="bodyOrderDetail">
+              <div className="mt-3">{first_name} {last_name}</div>
+              <div className="mt-1">{street}, {city}</div>
+              <div className="mt-1">{province}, {country}</div>
+              <div className="mt-1">{postal_code}</div>
+              <div className="mt-1">{phone}</div>
+            </div>
+          </div>
+          {/* Product */}
+          <div className="titleOrder mb-2">Product(s)</div>
+          <div className="mt-5">{this.renderProduct()}</div>
+          {/* Grand Total */}
+          <div className="title mt-5 text-center">Grand total: ${grandtotal}</div>
+          <div className="text-center">
+            <Link to="/orderhistory">
+              <button className="mt-5 buttonOrderHistory">
+                  return to order history
+              </button>
+            </Link>
+          </div>
+        </div>
+      )
+    } else if(cookie.get('status') === 'admin'){
+       return (
+        <div className="container mt-5 mb-5 pb-5">
         <div className="text-center titleOrderHistory">
             Order Details
         </div>
@@ -206,6 +293,15 @@ class DetailOrder extends Component {
             </div>
           </div>
         </div>
+        {/* Client id */}
+        <div className="mt-3">
+            <div className="titleOrder mb-2">client information</div>
+            <div className="bodyOrderDetail">
+              <div className="mt-3">client id: {userid}</div>
+              <div className="mt-1">username: {username}</div>
+              <div className="mt-1">email: {email}</div>
+            </div>
+          </div>
         {/* Payment method */}
         <div className="mt-3">
           <div className="titleOrder mb-2">Payment method</div>
@@ -241,14 +337,15 @@ class DetailOrder extends Component {
         {/* Grand Total */}
         <div className="title mt-5 text-center">Grand total: ${grandtotal}</div>
         <div className="text-center">
-          <Link to="/orderhistory">
+          <Link to="/manageorder">
             <button className="mt-5 buttonOrderHistory">
-                return to order history
+                return to manage order
             </button>
           </Link>
         </div>
       </div>
-    )
+       )
+    }
   }
 }
 

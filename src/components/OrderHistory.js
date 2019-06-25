@@ -17,57 +17,219 @@ class OrderHistory extends Component {
   
     renderOrder = () => {
         return this.props.orders.map((order,i) => {
+          if(order.status === 'waiting payment'){
             return (
-                <div key={i}>
-                  <div className="mt-4 p-3 renderOrder">
+              <div key={i}>
+                <div className="mt-4 p-3 renderOrder">
+                    <div>
+                      {/* order id */}
+                      <div className="titleGrand">
+                          order id: {order.id}
+                      </div>
+                      <div className="titleGrand">
+                          time: {order.createdAt}
+                      </div>
+                      {/* shipper */}
+                      <div className="titleGrand mt-3">
+                          shipper:
+                      </div>
+                      <div className="titleGrand">
+                        {order.shipper_name}, {order.time_estimation}
+                      </div>
+                      {/* wire information */}
+                      <div className="titleGrand mt-3">
+                          <div>{order.payment_method}:</div>
+                          <div className="mt-1">{order.bank_name}</div>
+                          <div className="mt-1">iban:{order.iban}</div>
+                      </div>
+                      {/* total order */}
+                      <div className="titleGrand mt-3">
+                          grand total: ${order.price_total}
+                      </div>
                       <div>
-                        {/* order id */}
-                        <div className="titleGrand">
-                            order id: {order.id}
-                        </div>
-                        <div className="titleGrand">
-                            time: {order.createdAt}
-                        </div>
-                        {/* shipper */}
-                        <div className="titleGrand mt-3">
-                            shipper:
-                        </div>
-                        <div className="titleGrand">
-                          {order.shipper_name}, {order.time_estimation}
-                        </div>
-                        {/* wire information */}
-                        <div className="titleGrand mt-3">
-                            <div>{order.payment_method}:</div>
-                            <div className="mt-1">{order.bank_name}</div>
-                            <div className="mt-1">iban:{order.iban}</div>
-                        </div>
-                        {/* total order */}
-                        <div className="titleGrand mt-3">
-                            grand total: ${order.price_total}
-                        </div>
-                        <div>
-                          <div className="buttonDetailOrder d-flex">
-                            <div className="mx-auto">
-                              <Link to={`/detailorder/${i}/${order.id}`}>
-                                  <button className="d-inline mx-2 buttonWishlist buttonAccount">
-                                      detail order
-                                  </button>
-                              </Link>   
-                              <Link to={`/confirmpayment/${i}`}>
-                                <button className="d-inline buttonWishlist buttonAccount">
-                                      confirm payment
+                        <div className="buttonDetailOrder d-flex">
+                          <div className="mx-auto">
+                            <Link to={`/detailorder/${i}/${order.id}`}>
+                                <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                    detail order
                                 </button>
-                              </Link>
-                            </div>
+                            </Link>   
+                            <Link to={`/confirmpayment/${order.id}`}>
+                              <button className="d-inline buttonWishlist buttonAccount">
+                                    confirm payment
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
-                  </div>
+                    </div>
                 </div>
+              </div>
             )
+          }   
         })
     }
 
+    renderPaid = () => {
+      if(this.props.orders.length){
+        return this.props.orders.map((order, i) => {
+          if(order.status === 'paid'){
+            return(
+              <div key={i}>
+                    <div className="mt-4 p-3 renderOrder">
+                        <div>
+                          {/* order id */}
+                          <div className="titleGrand">
+                              order id: {order.id}
+                          </div>
+                          <div className="titleGrand">
+                              time: {order.createdAt}
+                          </div>
+                          {/* shipper */}
+                          <div className="titleGrand mt-3">
+                              shipper:
+                          </div>
+                          <div className="titleGrand">
+                            {order.shipper_name}, {order.time_estimation}
+                          </div>
+                          {/* wire information */}
+                          <div className="titleGrand mt-3">
+                              <div>{order.payment_method}:</div>
+                              <div className="mt-1">{order.bank_name}</div>
+                              <div className="mt-1">iban:{order.iban}</div>
+                          </div>
+                          {/* total order */}
+                          <div className="titleGrand mt-3">
+                              grand total: ${order.price_total}
+                          </div>
+                          <div>
+                            <div className="buttonDetailOrder d-flex">
+                              <div className="mx-auto">
+                                <Link to={`/detailorder/${i}/${order.id}`}>
+                                    <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                        detail order
+                                    </button>
+                                </Link>   
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                )
+              }
+           })
+        }
+    }
+
+    renderRejected = () => {
+      if(this.props.orders.length){
+        return this.props.orders.map((order,i) => {
+          if(order.status === 'rejected'){
+            return (
+              <div key={i}>
+              <div className="mt-4 p-3 renderOrder">
+                  <div>
+                    {/* order id */}
+                    <div className="titleGrand">
+                        order id: {order.id}
+                    </div>
+                    <div className="titleGrand">
+                        time: {order.createdAt}
+                    </div>
+                    {/* shipper */}
+                    <div className="titleGrand mt-3">
+                        shipper:
+                    </div>
+                    <div className="titleGrand">
+                      {order.shipper_name}, {order.time_estimation}
+                    </div>
+                    {/* wire information */}
+                    <div className="titleGrand mt-3">
+                        <div>{order.payment_method}:</div>
+                        <div className="mt-1">{order.bank_name}</div>
+                        <div className="mt-1">iban:{order.iban}</div>
+                    </div>
+                    {/* total order */}
+                    <div className="titleGrand mt-3">
+                        grand total: ${order.price_total}
+                    </div>
+                    <div>
+                      <div className="buttonDetailOrder d-flex">
+                        <div className="mx-auto">
+                          <Link to={`/detailorder/${i}/${order.id}`}>
+                              <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                  detail order
+                              </button>
+                          </Link>   
+                          <Link to={`/confirmpayment/${order.id}`}>
+                            <button className="d-inline buttonWishlist buttonAccount">
+                                  reconfirm payment
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            )
+          }  
+        })
+      }
+    }
+
+    renderShipped = () => {
+      if(this.props.orders.length){
+        return this.props.orders.map((order, i) => {
+          if(order.status === 'shipped'){
+            return(
+              <div key={i}>
+                    <div className="mt-4 p-3 renderOrder">
+                        <div>
+                          {/* order id */}
+                          <div className="titleGrand">
+                              order id: {order.id}
+                          </div>
+                          <div className="titleGrand">
+                              time: {order.createdAt}
+                          </div>
+                          {/* shipper */}
+                          <div className="titleGrand mt-3">
+                              shipper:
+                          </div>
+                          <div className="titleGrand">
+                            {order.shipper_name}, {order.time_estimation}
+                          </div>
+                          {/* wire information */}
+                          <div className="titleGrand mt-3">
+                              <div>{order.payment_method}:</div>
+                              <div className="mt-1">{order.bank_name}</div>
+                              <div className="mt-1">iban:{order.iban}</div>
+                          </div>
+                          {/* total order */}
+                          <div className="titleGrand mt-3">
+                              grand total: ${order.price_total}
+                          </div>
+                          <div>
+                            <div className="buttonDetailOrder d-flex">
+                              <div className="mx-auto">
+                                <Link to={`/detailorder/${i}/${order.id}`}>
+                                    <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                        detail order
+                                    </button>
+                                </Link>   
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+            )
+          }
+        })
+      }
+    }
 
   render() {
     console.log(this.props.orders);
@@ -100,6 +262,27 @@ class OrderHistory extends Component {
                   <div>
                       {this.renderOrder()}
                   </div>
+                  {/* Status paid */}
+                  <div className="titleOrder pb-2">
+                      paid
+                  </div>
+                  <div>
+                    {this.renderPaid()}
+                  </div>
+                  {/* Status rejected */}
+                  <div className="titleOrder pb-2">
+                      rejected
+                  </div>
+                  <div>
+                    {this.renderRejected()}
+                  </div>
+                  {/* Status shipped */}
+                  <div className="titleOrder pb-2">
+                      shipped
+                  </div>
+                  <div>
+                    {this.renderShipped()}
+                  </div>
               </div>
             </div>
             <div className="footer">
@@ -112,7 +295,11 @@ class OrderHistory extends Component {
 }
 
 const mps = state => {
-    return {orders: state.order.orderhistory}
+    return {
+      orders: state.order.orderhistory, 
+      // orderpaid: state.order.orderpaid,
+      // orderrejected: state.order.orderrejected
+    }
 }
 
 export default connect (mps, {getOrder})(OrderHistory)

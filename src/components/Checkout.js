@@ -46,7 +46,7 @@ class Checkout extends Component {
         const wishcart = this.props.cart
 
         await this.props.placeOrder(user_id, address_id, bank_id, shipper_id, price_total, wishcart)
-        this.props.getCart(cookie.get('idLogin'))
+        await this.props.getCart(cookie.get('idLogin'))
     }
 
   renderAddress = () => {
@@ -179,8 +179,9 @@ renderCart = () => {
     console.log(this.state.grandTotal);
     console.log(this.props.bank);
     console.log(this.props.cart);
+    console.log(typeof cookie.get('cart'));
     
-    if(cookie.get('cart')){
+    if(parseInt(cookie.get('cart'))){
         return (
           <div>
             <div className="container cart">
