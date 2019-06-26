@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import {getOrderAdmin, setPaid, setRejected, setShipped} from '../action/index';
 
 import '../css/manageOrder.css'
+
+const cookie = new Cookies()
 
 class ManageOrder extends Component {
     async componentDidMount(){
@@ -312,47 +315,48 @@ class ManageOrder extends Component {
         // console.log(this.props.orderadmin);
         // console.log(this.props.orderpaid);
         console.log(this.props.orderrejected);
-        
-        return (
-            <div>
-                <div className="container-fluid">
-                    <div className="col-12">
-                    <div className="container mx-auto containerAccount">
-                         <h1 className="text-center titleOrderHistory">Manage Order</h1>
-                    </div>
-                    <div className="manageOrderTab">
-                        <div className="titleOrder pb-2">
-                            Waiting for approval
+        if(cookie.get('status') === 'admin'){
+            return (
+                <div>
+                    <div className="container-fluid">
+                        <div className="col-12">
+                        <div className="container mx-auto containerAccount">
+                             <h1 className="text-center titleOrderHistory">Manage Order</h1>
                         </div>
-                        <div>
-                            {this.renderList()}
-                        </div>
-                        {/* Status paid */}
-                        <div className="titleOrder pb-2">
-                            paid
-                        </div>
-                        <div>
-                            {this.renderPaid()}
-                        </div>
-                        {/* Status cancelled */}
-                        <div className="titleOrder pb-2">
-                            rejected
-                        </div>
-                        <div>
-                            {this.renderRejected()}
-                        </div>
-                        {/* Status shipped */}
-                        <div className="titleOrder pb-2">
-                            shipped
-                        </div>
-                        <div>
-                           {this.renderShipped()}
+                        <div className="manageOrderTab">
+                            <div className="titleOrder pb-2">
+                                Waiting for approval
+                            </div>
+                            <div>
+                                {this.renderList()}
+                            </div>
+                            {/* Status paid */}
+                            <div className="titleOrder pb-2">
+                                paid
+                            </div>
+                            <div>
+                                {this.renderPaid()}
+                            </div>
+                            {/* Status cancelled */}
+                            <div className="titleOrder pb-2">
+                                rejected
+                            </div>
+                            <div>
+                                {this.renderRejected()}
+                            </div>
+                            {/* Status shipped */}
+                            <div className="titleOrder pb-2">
+                                shipped
+                            </div>
+                            <div>
+                               {this.renderShipped()}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        )
+            )
+        } return <Redirect to='/'></Redirect>
     }
 }
 

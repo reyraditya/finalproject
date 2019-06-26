@@ -63,49 +63,52 @@ class Wishlist extends Component {
     console.log(this.props.wishlist.length); 
     console.log(this.props.wishlist); 
 
-    if(this.props.wishlist.length !== 0){
-        return (
-            <div className="container-fluid">
-                <div className="mt-5 pt-3 titleWishlist text-center text-uppercase">
-                  Wishlist
-                </div>
-                <div className="mt-3 bodyWishlist text-center">
-                    Use this page to manage the items you have added to your wishlist. Items saved can be removed or added to your shopping bag for purchase.
-                </div>
-                <div className="container mt-5">
-                    <div className="row">
-                        {this.renderList()}
+
+    if(cookie.get('status') === 'user'){
+        if(this.props.wishlist.length !== 0){
+            return (
+                <div className="container-fluid">
+                    <div className="mt-5 pt-3 titleWishlist text-center text-uppercase">
+                      Wishlist
                     </div>
-                </div>
-            </div>
-          )
-    } else {
-        return(
-            <div className="container-fluid">
-                <div className="mt-5 pt-5 titleWishlist text-center text-uppercase">
-                   create a wishlist
-                </div>
-                <div className="mt-5 bodyWishlist text-center">
-                    Use this page to manage the items you have added to your wishlist. Items saved can be removed or added to your shopping bag for purchase.
-                </div>
-                <div className="container mt-3">
-                    <div className="d-flex text-center">
-                        <div className="mx-auto">
-                            <Link to="/shop/men/allproducts">
-                                <button className="d-inline mx-2 buttonWishlist buttonAccount">
-                                    shop men
-                                </button>
-                            </Link>
-                            <Link to="/shop/women/allproducts">
-                                <button className="d-inline buttonWishlist buttonAccount">
-                                    shop woman
-                                </button>
-                            </Link>
+                    <div className="mt-3 bodyWishlist text-center">
+                        Use this page to manage the items you have added to your wishlist. Items saved can be removed or added to your shopping bag for purchase.
+                    </div>
+                    <div className="container mt-5">
+                        <div className="row">
+                            {this.renderList()}
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+              )
+        } else {
+            return(
+                <div className="container-fluid">
+                    <div className="mt-5 pt-5 titleWishlist text-center text-uppercase">
+                       create a wishlist
+                    </div>
+                    <div className="mt-5 bodyWishlist text-center">
+                        Use this page to manage the items you have added to your wishlist. Items saved can be removed or added to your shopping bag for purchase.
+                    </div>
+                    <div className="container mt-3">
+                        <div className="d-flex text-center">
+                            <div className="mx-auto">
+                                <Link to="/shop/men/allproducts/alldesigner">
+                                    <button className="d-inline mx-2 buttonWishlist buttonAccount">
+                                        shop men
+                                    </button>
+                                </Link>
+                                <Link to="/shop/women/allproducts/alldesigner">
+                                    <button className="d-inline buttonWishlist buttonAccount">
+                                        shop woman
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
   }
 }

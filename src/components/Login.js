@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
 
 import { onLoginClick } from '../action';
 import { onSetTimeOut } from '../action';
 
 import "../css/login.css"
 
+const cookie = new Cookies()
 
 class Login extends Component {
 
@@ -71,7 +73,11 @@ class Login extends Component {
         </div>
       )
     } else {
-      return <Redirect to="/"/>
+      if(cookie.get('status') === 'user'){
+        return <Redirect to="/"/>
+      } else if (cookie.get('status') === 'admin'){
+        return <Redirect to="/manageproduct"/>
+      }
     }
   }
 }

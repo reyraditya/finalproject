@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from '../config/axios';
 
@@ -128,8 +128,8 @@ class ManageAddress extends Component {
 
   render() {
     console.log(this.props.addresses);
-    
-    if(!this.state.add){
+    if(cookie.get('status') === 'user'){
+      if(!this.state.add){
         return (
           <div>
             <div className="container-fluid d-flex mx-2">
@@ -288,6 +288,7 @@ class ManageAddress extends Component {
         </div>
       </div>
     );
+    } return <Redirect to="/manageproduct"></Redirect>
   }
 }
 

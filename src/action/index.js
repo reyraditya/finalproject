@@ -70,6 +70,7 @@ export const onLogoutUser = () => {
     cookie.remove("username")
     cookie.remove("email")
     cookie.remove("password")
+    cookie.remove('status')
     return {type: "LOGOUT_USER"};
 }
 

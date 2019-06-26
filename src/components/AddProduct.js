@@ -68,6 +68,7 @@ class AddProduct extends Component {
           const image = this.imginput.files[0]
 
           this.props.addProduct(product_name, designer, gender, category, description, image, stock, price)
+          window.location.reload()
       }
 
   render() {
@@ -145,11 +146,10 @@ class AddProduct extends Component {
                     {this.renderList()}
                 </div>
                 <div>
-                    <Link to = "/manageproduct">
                     <button type="button" className="btn btn-block buttonAddress mt-5 text-uppercase"
                     onClick={() => this.onAddProduct()}>
                         add product
-                    </button></Link>
+                    </button>
                 </div>
               </div>
            </div> 

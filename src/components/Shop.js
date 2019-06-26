@@ -11,6 +11,7 @@ class Shop extends Component {
     state = {
         gender: '',
         category: '',
+        designer: ''
     }
 
     async componentDidMount(){
@@ -38,43 +39,75 @@ class Shop extends Component {
     renderList = () => {
         if(this.props.products.length){
             return this.props.products.map(product => {
-                return (
-                  <div className="col-3 pb-4 cardDisplay">
-                    <div className="card">
-                      <Link to={`/detailproduct/${product.id}`}>
-                        <img
-                          className="card-img-top"
-                          src={`http://localhost:1995/addproduct/addimages/${product.image}`}
-                          alt="img"
-                        />
-                      </Link>
-                      <div className="card-body">
-                        <Link to={`/detailproduct/${product.id}`}>
-                          <p className="card-title">
-                            {product.designer}
-                          </p>
-                        </Link>
-                        <Link to={`/detailproduct/${product.id}`}>
-                          <p className="card-text cardText">
-                            {product.product_name}
-                          </p>
-                        </Link>
-                        <p className="card-text">${product.price}</p>
+                console.log(product.designer, this.props.match.params.designer);
+                if(product.designer === this.props.match.params.designer){
+                    return (
+                      <div className="col-3 pb-4 cardDisplay">
+                        <div className="card">
+                          <Link to={`/detailproduct/${product.id}`}>
+                            <img
+                              className="card-img-top"
+                              src={`http://localhost:1995/addproduct/addimages/${product.image}`}
+                              alt="img"
+                            />
+                          </Link>
+                          <div className="card-body">
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-title">
+                                {product.designer}
+                              </p>
+                            </Link>
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-text cardText">
+                                {product.product_name}
+                              </p>
+                            </Link>
+                            <p className="card-text">${product.price}</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                );
+                    );
+                } else if (this.props.match.params.designer === 'alldesigner') {
+                    return(
+                        <div className="col-3 pb-4 cardDisplay">
+                        <div className="card">
+                          <Link to={`/detailproduct/${product.id}`}>
+                            <img
+                              className="card-img-top"
+                              src={`http://localhost:1995/addproduct/addimages/${product.image}`}
+                              alt="img"
+                            />
+                          </Link>
+                          <div className="card-body">
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-title">
+                                {product.designer}
+                              </p>
+                            </Link>
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-text cardText">
+                                {product.product_name}
+                              </p>
+                            </Link>
+                            <p className="card-text">${product.price}</p>
+                          </div>
+                        </div>
+                      </div> 
+                    )
+                }
             })
         }
     }
 
     renderListDesigners = () => {
+        const {gender, category} = this.props.match.params
+
         if(this.props.designers.length){
             return this.props.designers.map(brand => {
                 return(
                         <li className="list-group-item">
                             <span>
-                                <Link to="/alldesigners/designers">{brand.designer}</Link>
+                                <Link to={`/shop/${gender}/${category}/${brand.designer}`}>{brand.designer}</Link>
                             </span>
                         </li>
                 )
@@ -103,13 +136,13 @@ class Shop extends Component {
                             <div id="collapse1" className="panel-collapse collapse">
                                 <ul className="list-group">
                                     <li className="list-group-item">
-                                        <span><Link to={`/shop/${gender}/allproducts`}>all</Link></span>
+                                        <span><Link to={`/shop/${gender}/allproducts/alldesigner`}>all</Link></span>
                                     </li>
                                     <li className="list-group-item">
-                                        <span><Link to={`/shop/${gender}/eau de parfum`}>eau de parfum</Link></span>
+                                        <span><Link to={`/shop/${gender}/eau de parfum/alldesigner`}>eau de parfum</Link></span>
                                     </li>
                                     <li className="list-group-item mb-4">
-                                        <span><Link to={`/shop/${gender}/eau de toilette`}>eau de toilette</Link></span>
+                                        <span><Link to={`/shop/${gender}/eau de toilette/alldesigner`}>eau de toilette</Link></span>
                                     </li>
                                     
                                 </ul>
@@ -127,7 +160,7 @@ class Shop extends Component {
                                 <ul className="list-group">
                                     <li className="list-group-item">
                                         <span>
-                                            <Link to={`/shop/${gender}/allproducts`}>all</Link>
+                                            <Link to={`/shop/${gender}/allproducts/alldesigner`}>all</Link>
                                         </span>
                                     </li>
                                     {this.renderListDesigners()}

@@ -52,8 +52,6 @@ class ConfirmPayment extends Component {
                 orderid
             } = this.props.match.params
         }
-        
-        
 
         await this.props.uploadProof(orderid, this.proofinput.files)
         console.log(this.proofinput.files);
@@ -143,7 +141,7 @@ class ConfirmPayment extends Component {
                                 </div>
                             </div>
                             <div>
-                               <img className="uploadProof" src={this.state.preview ? this.state.preview: image ? `http://localhost:1995/proof/${image}`  : require('../components/icons/upload.png')} alt="img proof"></img>
+                               <img className="uploadProof" src={this.state.preview ? this.state.preview : image ? `http://localhost:1995/proof/${image}`  : require('../components/icons/upload.png')} alt="img proof"></img>
                                 <div> 
                                 <div className="buttonUploadProof">
                                     <label className="buttonUploadReceipt buttonAccount text-center" hidden={this.state.addImg}>

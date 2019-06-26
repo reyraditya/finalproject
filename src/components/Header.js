@@ -59,23 +59,23 @@ class Header extends Component {
                 {/* Menu navbar left */}
                 <Nav className="mr-auto" navbar>
                 <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/shop/men/allproducts" className="iconzz1">
+                    <Link to="/shop/men/allproducts/alldesigner" className="iconzz1">
                       MEN
                     </Link>
                   </NavItem>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/shop/women/allproducts" className="iconzz">
+                    <Link to="/shop/women/allproducts/alldesigner" className="iconzz">
                       WOMEN
                     </Link>
                   </NavItem>
-                  <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
+                  {/* <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
                     <DropdownToggle className="iconzz navItemSearch" nav>
                       SEARCH
                     </DropdownToggle>
                     <DropdownMenu right className="dropdownMenu dropdownzSearch">
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
-                  </UncontrolledDropdown>
+                  </UncontrolledDropdown> */}
                 </Nav>
 
                 {/* Menu navbar right */}
@@ -115,23 +115,23 @@ class Header extends Component {
               {/* Menu navbar left */}
               <Nav className="mr-auto" navbar>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/shop/men/allproducts" className="iconzz1">
+                    <Link to="/shop/men/allproducts/alldesigner" className="iconzz1">
                       MEN
                     </Link>
                   </NavItem>
                   <NavItem className="navItemDesigner mx-2 my-auto">
-                    <Link to="/shop/women/allproducts" className="iconzz">
+                    <Link to="/shop/women/allproducts/alldesigner" className="iconzz">
                       WOMEN
                     </Link>
                   </NavItem>
-                  <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
+                  {/* <UncontrolledDropdown className="dropdownSearch m-2 mx-2 my-auto" nav inNavbar>
                     <DropdownToggle className="iconzz navItemSearch" nav>
                       SEARCH
                     </DropdownToggle>
                     <DropdownMenu right className="dropdownMenu dropdownzSearch">
                         <input className="dropdown-item inputSearch" type="text" placeholder="SEARCH COLLECTION"></input>
                     </DropdownMenu>
-                  </UncontrolledDropdown>
+                  </UncontrolledDropdown> */}
                 </Nav>
 
                 {/* Menu navbar right */}
@@ -170,7 +170,7 @@ class Header extends Component {
           <div>
           <Navbar light expand="md" className="mb-2 fixed-top navbar2">
             <div className="container-fluid mx-3">
-              <NavbarBrand href="/">
+              <NavbarBrand>
                 <img src={mainLogo} alt="ESSENCE"></img>
               </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />

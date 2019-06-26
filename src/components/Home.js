@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import Cookies from 'universal-cookie'
 
 import header1 from './img/header.jpg';
 import header1a from './img/img-header.jpg'
@@ -12,7 +13,7 @@ import Footer from './Footer';
 
 import "../css/home.css"
 
-
+const cookie = new Cookies()
 
 class Home extends Component {
 
@@ -83,14 +84,29 @@ class Home extends Component {
     }  
   
   render() {
-    return (
-      <div>
-        {this.homeBody1()}
-        {this.homeBody2()}
-        {this.homeBody3()}
-        <Footer/>
-      </div>
-    )
+    if(cookie.get('status') === 'user'){
+      return (
+        <div>
+          {this.homeBody1()}
+          {this.homeBody2()}
+          {this.homeBody3()}
+          <Footer/>
+        </div>
+      )
+    }else if(cookie.get('status') === 'admin'){
+      return(
+        <Redirect to="/manageproduct"/>
+      )
+    } else {
+      return(
+        <div>
+          {this.homeBody1()}
+          {this.homeBody2()}
+          {this.homeBody3()}
+          <Footer/>
+        </div>
+      )
+    } 
   }
 }
 

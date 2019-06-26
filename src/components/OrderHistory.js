@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import {connect} from 'react-redux';
 
@@ -233,72 +233,71 @@ class OrderHistory extends Component {
 
   render() {
     console.log(this.props.orders);
-    
-    return (
-      <div>
-          <div>
-            <div className="container-fluid d-flex mx-2">
-              <div className="title col-2 mx-2">
-                <Link to="/account" className="d-block">
-                  Account details
-                </Link>
-                <Link to="/addresses" className="d-block mt-2">
-                  Addresses
-                </Link>
-                <Link to="/orderhistory" className="d-block mt-2">
-                  Order history
-                </Link>
-                <Link to="/wishlist" className="d-block mt-2">
-                  Wishlist
-                </Link>
-              </div>
-              <div className="col-7">
-                <div className="container containerAccount">
-                  <h1 className="text-center titleOrderHistory">Order History</h1>
+    if(cookie.get('status') === 'user'){
+      return (
+        <div>
+            <div>
+              <div className="container-fluid d-flex mx-2">
+                <div className="title col-2 mx-2">
+                  <Link to="/account" className="d-block">
+                    Account details
+                  </Link>
+                  <Link to="/addresses" className="d-block mt-2">
+                    Addresses
+                  </Link>
+                  <Link to="/orderhistory" className="d-block mt-2">
+                    Order history
+                  </Link>
+                  <Link to="/wishlist" className="d-block mt-2">
+                    Wishlist
+                  </Link>
                 </div>
-                  <div className="titleOrder pb-2">
-                      Waiting for payment
+                <div className="col-7">
+                  <div className="container containerAccount">
+                    <h1 className="text-center titleOrderHistory">Order History</h1>
                   </div>
-                  <div>
-                      {this.renderOrder()}
-                  </div>
-                  {/* Status paid */}
-                  <div className="titleOrder pb-2">
-                      paid
-                  </div>
-                  <div>
-                    {this.renderPaid()}
-                  </div>
-                  {/* Status rejected */}
-                  <div className="titleOrder pb-2">
-                      rejected
-                  </div>
-                  <div>
-                    {this.renderRejected()}
-                  </div>
-                  {/* Status shipped */}
-                  <div className="titleOrder pb-2">
-                      shipped
-                  </div>
-                  <div>
-                    {this.renderShipped()}
-                  </div>
+                    <div className="titleOrder pb-2">
+                        Waiting for payment
+                    </div>
+                    <div>
+                        {this.renderOrder()}
+                    </div>
+                    {/* Status paid */}
+                    <div className="titleOrder pb-2">
+                        paid - your products will be shipped immediately
+                    </div>
+                    <div>
+                      {this.renderPaid()}
+                    </div>
+                    {/* Status rejected */}
+                    <div className="titleOrder pb-2">
+                        rejected - reconfirm your payment
+                    </div>
+                    <div>
+                      {this.renderRejected()}
+                    </div>
+                    {/* Status shipped */}
+                    <div className="titleOrder pb-2">
+                        shipped - enjoy your products
+                    </div>
+                    <div>
+                      {this.renderShipped()}
+                    </div>
+                </div>
+              </div>
+              <div className="footer">
+                <Footer />
               </div>
             </div>
-            <div className="footer">
-              <Footer />
-            </div>
-          </div>
-      </div>
-    )
+        </div>
+      )
+    } return <Redirect to='/'></Redirect>
   }
 }
 
 const mps = state => {
     return {
       orders: state.order.orderhistory, 
-      // orderpaid: state.order.orderpaid,
-      // orderrejected: state.order.orderrejected
     }
 }
 

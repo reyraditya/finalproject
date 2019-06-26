@@ -161,12 +161,12 @@ class Cart extends Component{
                   </div>
                   <div className="d-flex mt-3 text-center">
                   <div className="mx-auto">
-                      <Link to="/shop/men/allproducts">
+                      <Link to="/shop/men/allproducts/alldesigner">
                           <button className="d-inline mx-2 buttonWishlist buttonAccount">
                               shop men
                           </button>
                       </Link>
-                      <Link to="/shop/women/allproducts">
+                      <Link to="/shop/women/allproducts/alldesigner">
                           <button className="d-inline buttonWishlist buttonAccount">
                               shop woman
                           </button>

@@ -15,7 +15,8 @@ const cookie = new Cookie()
 class ManageAccount extends Component{ 
   state = { 
     avatar: {avatarDefault},
-    editAva: true
+    editAva: true,
+    preview: ''
   }
 
   componentDidMount(){
@@ -38,11 +39,17 @@ class ManageAccount extends Component{
     this.props.getUser()
   }
 
-  editAva = () => {
+  editAva = (event) => {
+    event.preventDefault()
+
     this.imginput.click()
     if(this.imginput.files){
       this.setState({editAva: !this.state.editAva})
     }
+
+    const imagePreview = URL.createObjectURL(event.target.files[0])
+    this.setState({preview: [imagePreview]})
+    
   }
 
   deleteAva = async () => {
@@ -76,7 +83,7 @@ class ManageAccount extends Component{
                   <p className="body text-center">Account Information</p>
                   {/* Avatarbox */}
                   <div className="text-center mb-2">
-                    <img className="avatar" src={avatar ? `http://localhost:1995/avatar/${avatar}` : require(`../components/icons/user.png`)} alt="avatar">
+                    <img className="avatar" src={this.state.preview ? this.state.preview : avatar ? `http://localhost:1995/avatar/${avatar}` : require(`../components/icons/user.png`)} alt="avatar">
                     </img>
                   </div>
                   <div className="mb-4">
@@ -152,7 +159,7 @@ class ManageAccount extends Component{
                   <p className="body text-center">Account Information</p>
                   {/* Avatarbox */}
                   <div className="text-center mb-2">
-                    <img className="avatar" src={avatar ? `http://localhost:1995/avatar/${avatar}` : require(`../components/icons/user.png`)} alt="avatar">
+                    <img className="avatar" src={this.state.preview ? this.state.preview : avatar ? `http://localhost:1995/avatar/${avatar}` : require(`../components/icons/user.png`)} alt="avatar">
                     </img>
                   </div>
                   <div className="mb-4">
