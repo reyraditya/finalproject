@@ -637,6 +637,23 @@ export const setShipped = (orderid) => {
     }
 }
 
+// Retrieve newest product to home
+export const newestProd = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/home')
+            
+            return dispatch({
+                type: 'SHOW_PRODUCT',
+                payload: res
+            })
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
 // // Retrieve order with status paid
 // export const getOrderPaid = () => {
 //     return async (dispatch) => {

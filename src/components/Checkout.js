@@ -181,79 +181,81 @@ renderCart = () => {
     console.log(this.props.cart);
     console.log(typeof cookie.get('cart'));
     
-    if(parseInt(cookie.get('cart'))){
-        return (
-          <div>
-            <div className="container cart">
-                <div className="cartTitle p-2 text-center">
-                    Checkout
-                </div>
-                {/* address */}
-                <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
-                    <div>shipping address</div>
-                </div>
-                <div>
-                    {this.props.addresses.length ? 
-                        <div>
-                            {this.renderAddress()}
-                        </div> :
-                        <Link to="/addresses">
-                            <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark mt-5">
-                                Manage addresses
-                            </button>
-                        </Link> }
-                 {/* shipping method */}
-                 <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
-                    <div>shipping method</div>
-                </div>
-                <div>
-                    {this.renderShipper()}
-                </div>
-                {/* billing */}
-                <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
-                    <div>payment method: international wire</div>
-                </div>
-                <div>
-                    {this.renderBank()}
-                </div>
-                {/* order summary */}
-                <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
-                    <div>order summary</div>
-                </div>
-                <div>
-                    {this.renderCart()}
-                </div>
-                {/* Total and Grandtotal */}
-                <div className="cartBodyTitle mt-3 mb-5 row">
-                          <div className="col-3 my-2" />
-                          <div className="col-5 my-2">
-                            <div>total</div>
-                            <div>shipping estimation</div>
-                            <div>duties and taxes</div>
-                            <div className="mt-4 orderTotal">
-                              order total
-                            </div>
-                          </div>
-                          <div className="col-2 my-2 text-right">
-                            <div>${this.state.orderTotal}</div>
-                            <div>${this.state.shipprice}</div>
-                            <div>Incl.</div>
-                            <div className="mt-4 orderTotal">${this.state.grandTotal}</div>
-                          </div>
+    if(cookie.get('status') === 'user'){
+        if(parseInt(cookie.get('cart'))){
+            return (
+              <div>
+                <div className="container cart">
+                    <div className="cartTitle p-2 text-center">
+                        Checkout
                     </div>
-                {/* Button proceed order */}
-                {/* <Link to="/orderhistory"> */}
-                    <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark mt-5"
-                    onClick={() => {this.onPlaceOrder()}}>
-                        proceed order
-                    </button>
-                {/* </Link> */}
-                    
+                    {/* address */}
+                    <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
+                        <div>shipping address</div>
+                    </div>
+                    <div>
+                        {this.props.addresses.length ? 
+                            <div>
+                                {this.renderAddress()}
+                            </div> :
+                            <Link to="/addresses">
+                                <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark mt-5">
+                                    Manage addresses
+                                </button>
+                            </Link> }
+                     {/* shipping method */}
+                     <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
+                        <div>shipping method</div>
+                    </div>
+                    <div>
+                        {this.renderShipper()}
+                    </div>
+                    {/* billing */}
+                    <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
+                        <div>payment method: international wire</div>
+                    </div>
+                    <div>
+                        {this.renderBank()}
+                    </div>
+                    {/* order summary */}
+                    <div className="cartBodyTitle checkoutBorder mt-3 text-uppercase">
+                        <div>order summary</div>
+                    </div>
+                    <div>
+                        {this.renderCart()}
+                    </div>
+                    {/* Total and Grandtotal */}
+                    <div className="cartBodyTitle mt-3 mb-5 row">
+                              <div className="col-3 my-2" />
+                              <div className="col-5 my-2">
+                                <div>total</div>
+                                <div>shipping estimation</div>
+                                <div>duties and taxes</div>
+                                <div className="mt-4 orderTotal">
+                                  order total
+                                </div>
+                              </div>
+                              <div className="col-2 my-2 text-right">
+                                <div>${this.state.orderTotal}</div>
+                                <div>${this.state.shipprice}</div>
+                                <div>Incl.</div>
+                                <div className="mt-4 orderTotal">${this.state.grandTotal}</div>
+                              </div>
+                        </div>
+                    {/* Button proceed order */}
+                    {/* <Link to="/orderhistory"> */}
+                        <button className="buttonCheckoutLogin btn buttonCheckout btn-block btn-dark mt-5"
+                        onClick={() => {this.onPlaceOrder()}}>
+                            proceed order
+                        </button>
+                    {/* </Link> */}
+                        
+                    </div>
                 </div>
-            </div>
-          </div>
-        )
-    } return <Redirect to='/orderhistory'></Redirect>
+              </div>
+            )
+        } return <Redirect to='/orderhistory'></Redirect>
+    }
   }
 }
 

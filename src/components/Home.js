@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {newestProd} from '../action/index'
 import Cookies from 'universal-cookie'
 
 import header1 from './img/header.jpg';
@@ -16,7 +18,9 @@ import "../css/home.css"
 const cookie = new Cookies()
 
 class Home extends Component {
-
+  componentDidMount(){
+    this.props.newestProd()
+  }
 
   homeBody1 = () => {
     return(
@@ -46,27 +50,59 @@ class Home extends Component {
     }
 
     homeBody2 = () => {
-      return (
-        <div className="container homeBody2 pt-5">
-          <div className="row">
-            <div className="d-inline mx-auto">
-              <Link to="/alldesigners"><img src={header2} alt="header2-prada"></img></Link>
-              <Link to="/alldesigners" className="d-block text-center mt-3">THE HAT</Link>
-              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Prada</Link>
-            </div>
-            <div className="d-inline mx-auto">
-              <Link to="/alldesigners"><img src={header2a} alt="header2-martine-rose"></img></Link>
-              <Link to="/alldesigners" className="d-block text-center mt-3">THE SHIRT</Link>
-              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Martine Rose</Link>
-            </div>
-            <div className="d-inline mx-auto">
-              <Link to="/alldesigners"><img src={header2b} alt="header2-balenciaga"></img></Link>
-              <Link to="/alldesigners" className="d-block text-center mt-3">THE SHOES</Link>
-              <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Balenciaga</Link>
-            </div>
-          </div>
-        </div>
-      )
+      if(this.props.products.length){
+        return(this.props.products.map(product => {
+          return(
+              <div className="newestProduct col-4 cardDisplay">
+                        <div className="card">
+                          <Link to={`/detailproduct/${product.id}`}>
+                            <img
+                              className="card-img-top"
+                              src={`http://localhost:1995/addproduct/addimages/${product.image}`}
+                              alt="img"
+                            />
+                          </Link>
+                          <div className="card-body text-center">
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-title">
+                                {product.designer}
+                              </p>
+                            </Link>
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <p className="card-text text-center cardText">
+                                {product.product_name}
+                              </p>
+                            </Link>
+                            <p className="card-text">${product.price}</p>
+                          </div>
+                        </div>
+                      </div>
+            
+                )
+            })
+          )
+      }
+      // return (
+      //   <div className="container homeBody2 pt-5">
+      //     <div className="row">
+      //       <div className="d-inline mx-auto">
+      //         <Link to="/alldesigners"><img src={header2} alt="header2-prada"></img></Link>
+      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE HAT</Link>
+      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Prada</Link>
+      //       </div>
+      //       <div className="d-inline mx-auto">
+      //         <Link to="/alldesigners"><img src={header2a} alt="header2-martine-rose"></img></Link>
+      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE SHIRT</Link>
+      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Martine Rose</Link>
+      //       </div>
+      //       <div className="d-inline mx-auto">
+      //         <Link to="/alldesigners"><img src={header2b} alt="header2-balenciaga"></img></Link>
+      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE SHOES</Link>
+      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Balenciaga</Link>
+      //       </div>
+      //     </div>
+      //   </div>
+      // )
     }
 
     homeBody3 = () => {
@@ -84,11 +120,21 @@ class Home extends Component {
     }  
   
   render() {
+    console.log(this.props.products);
+    
+
     if(cookie.get('status') === 'user'){
       return (
         <div>
           {this.homeBody1()}
-          {this.homeBody2()}
+          <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5">
+            Newest products
+          </div>
+          <div className="container homeBody2 pt-5">
+            <div className="row">
+              {this.homeBody2()}
+            </div>
+          </div>
           {this.homeBody3()}
           <Footer/>
         </div>
@@ -101,7 +147,14 @@ class Home extends Component {
       return(
         <div>
           {this.homeBody1()}
-          {this.homeBody2()}
+          <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5">
+            Newest products
+          </div>
+          <div className="container homeBody2 pt-5">
+          <div className="row">
+              {this.homeBody2()}
+            </div>
+          </div>
           {this.homeBody3()}
           <Footer/>
         </div>
@@ -110,4 +163,8 @@ class Home extends Component {
   }
 }
 
-export default Home
+const mps = state => {
+  return {products: state.prod.products}
+}
+
+export default connect (mps, {newestProd}) (Home)
