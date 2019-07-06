@@ -44,6 +44,7 @@ class Cart extends Component{
                 <div className="col-5 my-2">
                   <div>{cart.designer}</div>
                   <div className="mt-2">{cart.product_name}</div>
+                  <div className="mt-2">{cart.category}</div>
                   <div className="mt-5 mb-2">
                       <button className="buttonWishlistCart cartBody" onClick={() => {this.onMoveWishlist(cart.id, cart.user_id)}}>
                         Move to Wishlist

@@ -420,6 +420,20 @@ export const removeWishlist = (id) => {
     }
 }
 
+// Remove wishlist to cart
+export const moveToCart = (cartwishid) => {
+    return async () => {
+        try {
+            const res = await axios.post(`/addtocart/${cartwishid}`)
+            console.log(res);
+            
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
 // Add cart
 export const addCart = (productid, userid) => {
     return async () => {
@@ -641,10 +655,27 @@ export const setShipped = (orderid) => {
 export const newestProd = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get('/home')
+            const res = await axios.get('/homewomen')
             
             return dispatch({
                 type: 'SHOW_PRODUCT',
+                payload: res
+            })
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+}
+
+// Retrieve newest product to home
+export const newestProdMen = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get('/homemen')
+            
+            return dispatch({
+                type: 'SHOW_MEN',
                 payload: res
             })
         } catch (e) {

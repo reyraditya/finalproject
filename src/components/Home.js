@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {newestProd} from '../action/index'
+import {newestProdMen} from '../action/index'
 import Cookies from 'universal-cookie'
 
-import header1 from './img/header.jpg';
-import header1a from './img/img-header.jpg'
-import header2 from './img/header2.jpg';
-import header2a from './img/header2-martine-rose.jpg';
-import header2b from './img/header2-balenciaga-trainers.jpg';
+import header1 from './img/898589-800w.jpg';
+import header1a from './img/chanelchance.jpg'
 import header3 from './img/header3-alt.jpg';
 
 import Footer from './Footer';
@@ -20,6 +18,7 @@ const cookie = new Cookies()
 class Home extends Component {
   componentDidMount(){
     this.props.newestProd()
+    this.props.newestProdMen()
   }
 
   homeBody1 = () => {
@@ -27,18 +26,21 @@ class Home extends Component {
       <div className="container p-5">
         <div className="d-flex row">
           <div className="card homeCard1 col-md-6 mt-4" >
-            <Link to="/alldesigners"><img className="card-img-top" src={header1a} alt="Valentino" /></Link>
+            <Link to="/detailproduct/31"><img className="card-img-top" src={header1a} alt="Valentino" /></Link>
             <div className="card-body px-0">
-              <p className="card-text">Relaxed, refined and rooted in reality. See the new season from Valentino.</p>
+              <p className="card-text">The signature CHANCE bottle is reinvented with a silver cap and golden accent.</p>
               <div className="text-center mt-4">
                 <Link to={`/shop/women/allproducts/alldesigner`} className="btn btn-outline-dark buttonHome text-uppercase">shop women</Link>
               </div>
             </div>
           </div>
+          {/* Prada Luna Rossa ad */}
           <div className="card homeCard1 col-md-6 mt-2 mt-4" >
-            <Link to="/alldesigners"><img className="card-img-top" src={header1} alt="Margiela" /></Link>
+            <Link to="/detailproduct/54">
+              <img className="card-img-top" src={header1} alt="Margiela" />
+            </Link>
             <div className="card-body px-0">
-              <p className="card-text">John Galliano has given Maison Margiela a new dimension. Shop the new collection.</p>
+              <p className="card-text">The latest iteration of Prada Luna Rossa, Prada Black comes on energetic but leaves a distinct impression.</p>
               <div className="text-center mt-4">
                 <Link to={`/shop/men/allproducts/alldesigner`} className="btn btn-outline-dark buttonHome text-uppercase">shop men</Link>
               </div>
@@ -49,74 +51,75 @@ class Home extends Component {
       )
     }
 
+    // List of newest products
     homeBody2 = () => {
       if(this.props.products.length){
         return(this.props.products.map(product => {
-          return(
-              <div className="newestProduct col-4 cardDisplay">
-                        <div className="card">
-                          <Link to={`/detailproduct/${product.id}`}>
-                            <img
-                              className="card-img-top"
-                              src={`http://localhost:1995/addproduct/addimages/${product.image}`}
-                              alt="img"
-                            />
-                          </Link>
-                          <div className="card-body text-center">
+            return(
+                <div className="newestProduct col-4 cardDisplay">
+                          <div className="card">
                             <Link to={`/detailproduct/${product.id}`}>
-                              <p className="card-title">
-                                {product.designer}
-                              </p>
+                              <img
+                                className="card-img-top"
+                                src={`http://localhost:1995/addproduct/addimages/${product.image}`}
+                                alt="img"
+                              />
                             </Link>
-                            <Link to={`/detailproduct/${product.id}`}>
-                              <p className="card-text text-center cardText">
-                                {product.product_name}
-                              </p>
-                            </Link>
-                            <p className="card-text">${product.price}</p>
+                            <div className="card-body text-center">
+                              <Link to={`/detailproduct/${product.id}`}>
+                                <p className="card-title">
+                                  {product.designer}
+                                </p>
+                              </Link>
+                              <Link to={`/detailproduct/${product.id}`}>
+                                <p className="card-text text-center cardText">
+                                  {product.product_name}
+                                </p>
+                              </Link>
+                              <p className="card-text">${product.price}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-            
-                )
+
+                  )
             })
           )
       }
-      // return (
-      //   <div className="container homeBody2 pt-5">
-      //     <div className="row">
-      //       <div className="d-inline mx-auto">
-      //         <Link to="/alldesigners"><img src={header2} alt="header2-prada"></img></Link>
-      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE HAT</Link>
-      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Prada</Link>
-      //       </div>
-      //       <div className="d-inline mx-auto">
-      //         <Link to="/alldesigners"><img src={header2a} alt="header2-martine-rose"></img></Link>
-      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE SHIRT</Link>
-      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Martine Rose</Link>
-      //       </div>
-      //       <div className="d-inline mx-auto">
-      //         <Link to="/alldesigners"><img src={header2b} alt="header2-balenciaga"></img></Link>
-      //         <Link to="/alldesigners" className="d-block text-center mt-3">THE SHOES</Link>
-      //         <Link to="/alldesigners" className="d-block text-center textHomeBody2">by Balenciaga</Link>
-      //       </div>
-      //     </div>
-      //   </div>
-      // )
     }
 
     homeBody3 = () => {
-      return(
-        <div className="container homeBody3 p-5">
-            <Link to="/story"><img src={header3} alt="Acne Studios"></img></Link>
-          <div className="text-center mt-4">
-            <Link to="/story" className="homeBody3Head">IN FOCUS: ACNE STUDIOS</Link>
-          </div>
-          <div className="text-center mt-2">
-           <Link to="/story" className="d-block">Nothing at Acne Studios is quite as you expected. These are key pieces from the new season, as worn by artist Albert Riera Galceran.</Link>
-          </div>
-        </div>
-      )
+      if(this.props.mensproducts.length){
+        return(this.props.mensproducts.map(product => {
+            return(
+                <div className="newestProduct col-4 cardDisplay">
+                          <div className="card">
+                            <Link to={`/detailproduct/${product.id}`}>
+                              <img
+                                className="card-img-top"
+                                src={`http://localhost:1995/addproduct/addimages/${product.image}`}
+                                alt="img"
+                              />
+                            </Link>
+                            <div className="card-body text-center">
+                              <Link to={`/detailproduct/${product.id}`}>
+                                <p className="card-title">
+                                  {product.designer}
+                                </p>
+                              </Link>
+                              <Link to={`/detailproduct/${product.id}`}>
+                                <p className="card-text text-center cardText">
+                                  {product.product_name}
+                                </p>
+                              </Link>
+                              <p className="card-text">${product.price}</p>
+                            </div>
+                          </div>
+                        </div>
+              
+                  )
+            })
+          )
+      }
     }  
   
   render() {
@@ -124,18 +127,25 @@ class Home extends Component {
     
 
     if(cookie.get('status') === 'user'){
-      return (
+      return(
         <div>
           {this.homeBody1()}
           <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5">
-            Newest products
+            Women's newest arrivals
           </div>
           <div className="container homeBody2 pt-5">
             <div className="row">
-              {this.homeBody2()}
+                {this.homeBody2()}
             </div>
           </div>
-          {this.homeBody3()}
+          <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5 mt-5">
+            Men's newest arrivals
+          </div>
+          <div className="container homeBody2 pt-5">
+            <div className="row mb-5 pt-5">
+              {this.homeBody3()}
+            </div>
+          </div>
           <Footer/>
         </div>
       )
@@ -148,14 +158,21 @@ class Home extends Component {
         <div>
           {this.homeBody1()}
           <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5">
-            Newest products
+            Women's newest arrivals
           </div>
           <div className="container homeBody2 pt-5">
-          <div className="row">
-              {this.homeBody2()}
+            <div className="row">
+                {this.homeBody2()}
             </div>
           </div>
-          {this.homeBody3()}
+          <div className="container text-center homeBody3Head homeBody2 mb-3 pt-5 mt-5">
+            Men's newest arrivals
+          </div>
+          <div className="container homeBody2 pt-5">
+            <div className="row mb-5 pt-5">
+              {this.homeBody3()}
+            </div>
+          </div>
           <Footer/>
         </div>
       )
@@ -164,7 +181,10 @@ class Home extends Component {
 }
 
 const mps = state => {
-  return {products: state.prod.products}
+  return {
+    products: state.prod.products,
+    mensproducts: state.prod.newMen
+  }
 }
 
-export default connect (mps, {newestProd}) (Home)
+export default connect (mps, {newestProd, newestProdMen}) (Home)

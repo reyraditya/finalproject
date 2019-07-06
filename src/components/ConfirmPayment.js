@@ -109,7 +109,7 @@ class ConfirmPayment extends Component {
                                 Wishlist
                             </Link>
                         </div>
-                    <div className="col-7">>
+                    <div className="col-7">
                         <div className="container containerAccount">
                             <h1 className="text-center titleOrderHistory">Order History</h1>
                         </div>

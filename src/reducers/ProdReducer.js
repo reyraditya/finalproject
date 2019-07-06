@@ -2,6 +2,7 @@ const initialproduct = {
     products: [],
     designers: [],
     cartwish: [],
+    newMen: []
 }
 
 export default (state = initialproduct, action) => {
@@ -10,6 +11,12 @@ export default (state = initialproduct, action) => {
             return{
                 ...state,
                 products: action.payload.data
+            }
+
+        case 'SHOW_MEN':
+            return{
+                ...state,
+                newMen: action.payload.data
             }
         
         case 'SHOW_DESIGNERS':

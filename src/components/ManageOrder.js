@@ -348,7 +348,7 @@ class ManageOrder extends Component {
                             <div className="titleOrder pb-2">
                                 shipped
                             </div>
-                            <div>
+                            <div className='mb-5 pb-5'>
                                {this.renderShipped()}
                             </div>
                         </div>

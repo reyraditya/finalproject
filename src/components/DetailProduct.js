@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from '../config/axios';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import Cookies from 'universal-cookie'
+import Cookies from 'universal-cookie';
+
+import Footer from '../components/Footer'
 
 import {addWishlist, addCart} from '../action/index'
 
@@ -19,6 +21,7 @@ class DetailProduct extends Component {
       this.getDetailProduct()
   }
 
+
     getDetailProduct = async () => {
         const { productid } = this.props.match.params
         const res = await axios.get(`/detailproduct/${productid}`)
@@ -30,7 +33,7 @@ class DetailProduct extends Component {
         console.log(this.state);
         
     }
-
+   
 
   render() {
       console.log(this.props.match.params.productid);
@@ -54,7 +57,8 @@ class DetailProduct extends Component {
     
     if(cookie.get('idLogin')){
         return (
-          <div className="container p-5 mt-5">
+          <div>
+              <div className="container p-5 mt-5">
             <div className="d-flex row">
               <div className="card homeCard1 mt-5 col-md-6 mt-4" >
                     <img className="card-img-top" src={`http://localhost:1995/addproduct/addimages/${image}`} 
@@ -80,21 +84,46 @@ class DetailProduct extends Component {
                         </div>
                     </div>
                     <div>
-                        <button className="btn btn-block buttonDetailProduct mt-5 text-uppercase" onClick={() => {
-                            this.props.addCart(id, cookie.get('idLogin'))}}>
+                        <button className="btn btn-block buttonDetailProduct mt-5 text-uppercase" data-toggle="modal" data-target="#modalCart" 
+                        onClick={() => {this.props.addCart(id, cookie.get('idLogin'))}}
+                        >
                             add to bag
                         </button>
+                        {/* Modal cart */}
+                        <div className="modal fade" id="modalCart" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                                <div className="modalBody">
+                                    <div className="d-block text-center mt-1">This product has been added to your bag</div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
                     </div>
                     <div>
-                        <button className="btn btn-block buttonDetailProduct2 mt-3 text-uppercase" onClick={() => {this.props.addWishlist(id, cookie.get('idLogin'))}}>
+                        <button className="btn btn-block buttonDetailProduct2 mt-3 text-uppercase" data-toggle="modal" data-target="#modalWishlist" onClick={() => {this.props.addWishlist(id, cookie.get('idLogin'))}}>
                             <div className="addToWishlist">
                                 <img className="heartWishlist d-inline mx-2" src={heart} alt='heart'></img>
                                 <div className="d-inline">add to wishlist</div>
                             </div>
                         </button>
+                        {/* Modal wishlist */}
+                        <div className="modal fade" id="modalWishlist" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                                <div className="modalBody">
+                                    <div className="d-block text-center mt-1">Added to wishlist</div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
                     </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="footer">
+                <Footer />
             </div>
           </div>
         )

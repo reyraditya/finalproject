@@ -3,8 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Cookies from 'universal-cookie';
 
-import { onLoginClick } from '../action';
-import { onSetTimeOut } from '../action';
+import { onLoginClick, onSetTimeOut } from '../action';
 
 import "../css/login.css"
 

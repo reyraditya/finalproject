@@ -147,3 +147,9 @@
 .heartWishlist{
     width: 20px !important
 }
+
+.modal-content{
+    background-color: white;
+    color: black;
+}
+
